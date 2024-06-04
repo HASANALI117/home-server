@@ -29,7 +29,7 @@ create_directories() {
 
     # Create .env file if it doesn't exist
     if [ ! -f "$ENV_FILE" ]; then
-        cp "./.env.example" "$ENV_FILE"
+        cp ".env.example" "$ENV_FILE"
         echo ".env file created at $ENV_FILE"
     else
         echo ".env file already exists at $ENV_FILE"
@@ -70,7 +70,7 @@ set_permissions() {
 
 create_compose_files() {
     echo "Creating master docker-compose file..."
-    cp "./docker-compose-udms.yml" "$MASTER_COMPOSE"
+    cp "docker-compose-udms.yml" "$MASTER_COMPOSE"
     echo "Master docker-compose file created: $MASTER_COMPOSE"
 
     local services=(
@@ -90,7 +90,7 @@ create_compose_files() {
 
     echo "Creating compose files..."
     for service in "${services[@]}"; do
-        cp "./compose/$service.yml" "$COMPOSE/$service.yml"
+        cp "compose/$service.yml" "$COMPOSE/$service.yml"
         echo "Created: $COMPOSE/$service.yml"
     done
     echo "Compose files created."
