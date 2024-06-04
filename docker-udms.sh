@@ -9,12 +9,16 @@ install_docker() {
     echo "Docker and Docker Compose installed."
 }
 
+echo
+
 verify_docker() {
     echo "Verifying Docker installation..."
-    sudo docker --version
-    sudo docker compose --version
+    sudo docker version
+    sudo docker compose version
     echo "Docker installation verified."
 }
+
+echo
 
 create_directories() {
     echo "Creating necessary directories..."
@@ -26,7 +30,33 @@ create_directories() {
     echo "  - $SCRIPTS"
     echo "  - $SECRETS"
     echo "  - $SHARED"
+
+    # Create .env file if it doesn't exist
+    if [ ! -f "$ENV_FILE" ]; then
+        touch "$ENV_FILE"
+        echo ".env file created at $ENV_FILE"
+    else
+        echo ".env file already exists at $ENV_FILE"
+    fi
+
+    # Prompt user for .env values
+    read -p "Enter PUID: " PUID
+    echo "PUID=$PUID" >> "$ENV_FILE"
+
+    read -p "Enter PGID: " PGID
+    echo "PGID=$PGID" >> "$ENV_FILE"
+
+    read -p "Enter TZ: " TZ
+    echo "TZ=$TZ" >> "$ENV_FILE"
+
+    read -p "Enter SERVER_IP: " SERVER_IP
+    echo "SERVER_IP=$SERVER_IP" >> "$ENV_FILE"
+
+    read -p "Enter PLEX_CLAIM: " PLEX_CLAIM
+    echo "PLEX_CLAIM=$PLEX_CLAIM" >> "$ENV_FILE"
 }
+
+echo
 
 set_permissions() {
     echo "Setting permissions for secrets folder and .env file..."
@@ -43,6 +73,8 @@ set_permissions() {
     sudo setfacl -Rm g:docker:rwx "$DOCKER_ROOT"
     echo "Permissions set for Docker root folder: $DOCKER_ROOT"
 }
+
+echo
 
 create_compose_files() {
     echo "Creating master docker-compose file..."
@@ -72,6 +104,8 @@ create_compose_files() {
     echo "Compose files created."
 }
 
+echo
+
 add_additional_containers() {
     while true; do
         read -r -p "Do you want to add more containers? (yes/no) " yn
@@ -86,10 +120,14 @@ add_additional_containers() {
     done
 }
 
+echo
+
 start_containers() {
     echo "Starting the containers..."
     docker-compose -f "$MASTER_COMPOSE" up -d
 }
+
+echo
 
 edit_homepage_config() {
     local CONFIG_DIR="configs/homepage/docker-configs"
@@ -111,11 +149,15 @@ edit_homepage_config() {
     echo "Homepage configuration files replaced."
 }
 
+echo
+
 stop_qbittorrent() {
     echo "Stopping qbittorrent container..."
-    docker stop qbittorrent
+    sudo docker stop qbittorrent
     echo "qbittorrent container stopped."
 }
+
+echo
 
 edit_qbittorrent_config() {
     QBITTORRENT_CONF="$APPDATA/qbittorrent/qbittorrent.conf"
@@ -129,11 +171,15 @@ edit_qbittorrent_config() {
     fi
 }
 
+echo
+
 start_qbittorrent() {
     echo "Starting qbittorrent container..."
-    docker start qbittorrent
+    sudo docker start qbittorrent
     echo "qbittorrent container started."
 }
+
+echo
 
 main() {
     read -r -p "Enter your username: " USER
