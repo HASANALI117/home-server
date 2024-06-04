@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+# set -e
 
 install_docker() {
     echo "Installing Docker and Docker Compose..."
@@ -11,8 +11,8 @@ install_docker() {
 
 verify_docker() {
     echo "Verifying Docker installation..."
-    docker --version
-    docker-compose --version
+    sudo docker --version
+    sudo docker compose --version
     echo "Docker installation verified."
 }
 
