@@ -9,16 +9,12 @@ install_docker() {
     echo "Docker and Docker Compose installed."
 }
 
-echo
-
 verify_docker() {
     echo "Verifying Docker installation..."
     sudo docker version
     sudo docker compose version
     echo "Docker installation verified."
 }
-
-echo
 
 create_directories() {
     echo "Creating necessary directories..."
@@ -56,8 +52,6 @@ create_directories() {
     echo "PLEX_CLAIM=$PLEX_CLAIM" >> "$ENV_FILE"
 }
 
-echo
-
 set_permissions() {
     echo "Setting permissions for secrets folder and .env file..."
     sudo chown root:root "$SECRETS" "$ENV_FILE"
@@ -73,8 +67,6 @@ set_permissions() {
     sudo setfacl -Rm g:docker:rwx "$DOCKER_ROOT"
     echo "Permissions set for Docker root folder: $DOCKER_ROOT"
 }
-
-echo
 
 create_compose_files() {
     echo "Creating master docker-compose file..."
@@ -104,8 +96,6 @@ create_compose_files() {
     echo "Compose files created."
 }
 
-echo
-
 add_additional_containers() {
     while true; do
         read -r -p "Do you want to add more containers? (yes/no) " yn
@@ -120,14 +110,10 @@ add_additional_containers() {
     done
 }
 
-echo
-
 start_containers() {
     echo "Starting the containers..."
     sudo docker compose -f "$MASTER_COMPOSE" up -d
 }
-
-echo
 
 edit_homepage_config() {
     local CONFIG_DIR="configs/homepage/docker-configs"
@@ -149,15 +135,11 @@ edit_homepage_config() {
     echo "Homepage configuration files replaced."
 }
 
-echo
-
 stop_qbittorrent() {
     echo "Stopping qbittorrent container..."
     sudo docker stop qbittorrent
     echo "qbittorrent container stopped."
 }
-
-echo
 
 edit_qbittorrent_config() {
     QBITTORRENT_CONF="$APPDATA/qbittorrent/qbittorrent.conf"
@@ -171,15 +153,11 @@ edit_qbittorrent_config() {
     fi
 }
 
-echo
-
 start_qbittorrent() {
     echo "Starting qbittorrent container..."
     sudo docker start qbittorrent
     echo "qbittorrent container started."
 }
-
-echo
 
 main() {
     read -r -p "Enter your username: " USER
@@ -194,16 +172,27 @@ main() {
     MASTER_COMPOSE="$DOCKER_ROOT/docker-compose-udms.yml"
 
     install_docker
+    echo
     verify_docker
+    echo
     create_directories
+    echo
     set_permissions
+    echo
     copy_compose_files
+    echo
     add_additional_containers
+    echo
     start_containers
+    echo
     edit_homepage_config
+    echo
     stop_qbittorrent
+    echo
     edit_qbittorrent_config
+    echo
     start_qbittorrent
+    echo
 
     echo "Setup complete."
 }
