@@ -124,7 +124,7 @@ echo
 
 start_containers() {
     echo "Starting the containers..."
-    docker-compose -f "$MASTER_COMPOSE" up -d
+    sudo docker compose -f "$MASTER_COMPOSE" up -d
 }
 
 echo
