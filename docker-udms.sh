@@ -29,7 +29,7 @@ create_directories() {
 
     # Create .env file if it doesn't exist
     if [ ! -f "$ENV_FILE" ]; then
-        touch "$ENV_FILE"
+        cp "./.env.example" "$ENV_FILE"
         echo ".env file created at $ENV_FILE"
     else
         echo ".env file already exists at $ENV_FILE"
@@ -70,7 +70,7 @@ set_permissions() {
 
 create_compose_files() {
     echo "Creating master docker-compose file..."
-    cp "$DOCKER_ROOT/docker-compose-udms.yml" "$MASTER_COMPOSE"
+    cp "./docker-compose-udms.yml" "$MASTER_COMPOSE"
     echo "Master docker-compose file created: $MASTER_COMPOSE"
 
     local services=(
@@ -90,25 +90,25 @@ create_compose_files() {
 
     echo "Creating compose files..."
     for service in "${services[@]}"; do
-        cp "$DOCKER_ROOT/compose/$service.yml" "$COMPOSE/$service.yml"
+        cp "./compose/$service.yml" "$COMPOSE/$service.yml"
         echo "Created: $COMPOSE/$service.yml"
     done
     echo "Compose files created."
 }
 
-add_additional_containers() {
-    while true; do
-        read -r -p "Do you want to add more containers? (yes/no) " yn
-        case $yn in
-            [Yy]* ) 
-                read -r -p "Enter the name of the container: " container
-                cp "$DOCKER_ROOT/compose/$container.yml" "$COMPOSE/$container.yml"
-                ;;
-            [Nn]* ) break;;
-            * ) echo "Please answer yes or no.";;
-        esac
-    done
-}
+# add_additional_containers() {
+#     while true; do
+#         read -r -p "Do you want to add more containers? (yes/no) " yn
+#         case $yn in
+#             [Yy]* ) 
+#                 read -r -p "Enter the name of the container: " container
+#                 cp "$DOCKER_ROOT/compose/$container.yml" "$COMPOSE/$container.yml"
+#                 ;;
+#             [Nn]* ) break;;
+#             * ) echo "Please answer yes or no.";;
+#         esac
+#     done
+# }
 
 start_containers() {
     echo "Starting the containers..."
