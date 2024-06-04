@@ -44,7 +44,7 @@ set_permissions() {
     echo "Permissions set for Docker root folder: $DOCKER_ROOT"
 }
 
-copy_compose_files() {
+create_compose_files() {
     echo "Creating master docker-compose file..."
     cp "$DOCKER_ROOT/docker-compose-udms.yml" "$MASTER_COMPOSE"
     echo "Master docker-compose file created: $MASTER_COMPOSE"
@@ -64,11 +64,12 @@ copy_compose_files() {
         "docker-gc"
     )
 
-    echo "Copying compose files..."
+    echo "Creating compose files..."
     for service in "${services[@]}"; do
         cp "$DOCKER_ROOT/compose/$service.yml" "$COMPOSE/$service.yml"
+        echo "Created: $COMPOSE/$service.yml"
     done
-    echo "Compose files copied."
+    echo "Compose files created."
 }
 
 add_additional_containers() {
