@@ -29,7 +29,7 @@ create_directories() {
 
     # Create .env file if it doesn't exist
     if [ ! -f "$ENV_FILE" ]; then
-        cp ".env.example" "$ENV_FILE"
+        curl -o "$ENV_FILE" "https://raw.githubusercontent.com/HASANALI117/home-server/main/.env.example"
         echo ".env file created at $ENV_FILE"
     else
         echo ".env file already exists at $ENV_FILE"
@@ -75,7 +75,7 @@ set_permissions() {
 
 create_compose_files() {
     echo "Creating master docker-compose file..."
-    cp "docker-compose-udms.yml" "$MASTER_COMPOSE"
+    curl -o "$MASTER_COMPOSE" "https://raw.githubusercontent.com/HASANALI117/home-server/main/docker-compose-udms.yml"
     echo "Master docker-compose file created: $MASTER_COMPOSE"
 
     local services=(
@@ -95,7 +95,7 @@ create_compose_files() {
 
     echo "Creating compose files..."
     for service in "${services[@]}"; do
-        cp "compose/$service.yml" "$COMPOSE/$service.yml"
+        curl -o "$COMPOSE/$service.yml" "https://raw.githubusercontent.com/HASANALI117/home-server/main/compose/$service.yml"
         echo "Created: $COMPOSE/$service.yml"
     done
     echo "Compose files created."
