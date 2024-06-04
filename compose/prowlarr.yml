@@ -6,9 +6,9 @@ services:
     security_opt:
       - no-new-privileges:true
     restart: unless-stopped
-    profiles: ["apps", "all"]
+    # profiles: ["apps", "all"]
     networks:
-      - t3_proxy
+      - default
     ports:
       - "9696:9696"
     volumes:

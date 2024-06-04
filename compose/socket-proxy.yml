@@ -6,14 +6,13 @@ services:
     security_opt:
       - no-new-privileges:true
     restart: unless-stopped
-    profiles: ["core", "all"]
+    # profiles: ["core", "all"]
     networks:
       socket_proxy:
-        ipv4_address: 192.168.91.254 # You can specify a static IP    # privileged: true # true for VM. False for unprivileged LXC container.
+        ipv4_address: 192.168.91.254 # You can specify a static IP
+    privileged: true # true for VM. false for unprivileged LXC container on Proxmox.
     ports:
-    # - "$ZEROTIER_IP_SYNOLOGY:2375:2375" # Port 2375 should only ever get exposed to the internal network. When possible use this line.
-    # I use the next line instead, as I want portainer to manage multiple docker endpoints within my home network.
-      - "2375:2375"
+      - "127.0.0.1:2375:2375" # Do not expose this to the internet with port forwarding
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
@@ -34,7 +33,7 @@ services:
       - BUILD=0
       - COMMIT=0
       - CONFIGS=0
-      - CONTAINERS=1 # Traefik, portainer, etc.
+      - CONTAINERS=1 # Traefik, Portainer, etc.
       - DISTRIBUTION=0
       - EXEC=0
       - IMAGES=1 # Portainer

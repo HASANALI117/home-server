@@ -14,7 +14,7 @@ services:
       # - /var/run/docker.sock:/var/run/docker.sock # Use Docker Socket Proxy instead for improved security
       - $DOCKERDIR/appdata/docker-gc/docker-gc-exclude:/etc/docker-gc-exclude
     environment:
-      CRON: 0 0 0 * * ? # Everyday at midnight. Previously 0 0 * * *
+      CRON: 0 0 0 * * ? # Every day at midnight
       FORCE_IMAGE_REMOVAL: 1
       FORCE_CONTAINER_REMOVAL: 0
       GRACE_PERIOD_SECONDS: 604800
