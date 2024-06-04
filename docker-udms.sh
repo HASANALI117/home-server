@@ -50,6 +50,11 @@ create_directories() {
 
     read -p "Enter PLEX_CLAIM: " PLEX_CLAIM
     echo "PLEX_CLAIM=$PLEX_CLAIM" >> "$ENV_FILE"
+
+    # Add the new variables to the .env file
+    echo "USERDIR=$USERDIR" >> "$ENV_FILE"
+    echo "DOCKERDIR=$DOCKER_ROOT" >> "$ENV_FILE"
+    echo "SECRETSDIR=$SECRETS" >> "$ENV_FILE"
 }
 
 set_permissions() {
@@ -161,6 +166,7 @@ start_qbittorrent() {
 
 main() {
     read -r -p "Enter your username: " USER
+    USERDIR="/home/$USER"
     DOCKER_ROOT="/home/$USER/docker"
     APPDATA="$DOCKER_ROOT/appdata"
     COMPOSE="$DOCKER_ROOT/compose"
