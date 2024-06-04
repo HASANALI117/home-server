@@ -1,0 +1,15 @@
+services:
+  mango:
+    image: hkalexling/mango
+    container_name: mango
+    expose:
+      - 9000
+    ports:
+      - 9000:9000
+    volumes:
+      - $DOCKERDIR/appdata/mango:/config
+      - $DATADIR/data/media/manga:/data/manga # Manga is just an example you can have the name you want. See the following
+      - $DATADIR/data/media/comics:/data/comics # Use as many as you want
+      - $DATADIR/data/media/manhwa:/data/manhwa #
+      - $DATADIR/data/media/manhua:/data/manhua #
+      - $DATADIR/data/media/books:/data/books #
