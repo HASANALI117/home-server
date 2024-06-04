@@ -179,7 +179,7 @@ main() {
     echo
     set_permissions
     echo
-    copy_compose_files
+    create_compose_files
     echo
     add_additional_containers
     echo
