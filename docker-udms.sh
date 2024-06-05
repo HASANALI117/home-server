@@ -17,6 +17,7 @@ MASTER_COMPOSE="$DOCKER_ROOT/docker-compose-udms.yml"
 ENV_EXAMPLE_URL="https://raw.githubusercontent.com/HASANALI117/home-server/main/.env.example"
 DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/HASANALI117/home-server/main/docker-compose-udms.yml"
 HOMEPAGE_CONFIG_URL="https://raw.githubusercontent.com/HASANALI117/home-server/main/configs/homepage/docker-configs"
+COMPOSE_FILES_URL="https://raw.githubusercontent.com/HASANALI117/home-server/main/compose"
 
 # Helper function to print error messages
 error_exit() {
@@ -125,7 +126,7 @@ create_compose_files() {
 
     echo "Creating compose files..."
     for service in "${services[@]}"; do
-        curl -o "$COMPOSE/$service.yml" "https://raw.githubusercontent.com/HASANALI117/home-server/main/compose/$service.yml" || error_exit "Failed to download compose file for $service."
+        curl -o "$COMPOSE/$service.yml" "$COMPOSE_FILES_URL/$service.yml" || error_exit "Failed to download compose file for $service."
         echo "Created: $COMPOSE/$service.yml"
     done
     echo "Compose files created."
