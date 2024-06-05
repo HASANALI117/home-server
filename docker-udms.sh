@@ -16,6 +16,39 @@ verify_docker() {
     echo "Docker installation verified."
 }
 
+create_env_file() {
+    # Create .env file if it doesn't exist
+    if [ ! -f "$ENV_FILE" ]; then
+        curl -o "$ENV_FILE" "https://raw.githubusercontent.com/HASANALI117/home-server/main/.env.example"
+        echo ".env file created at $ENV_FILE"
+    else
+        echo ".env file already exists at $ENV_FILE"
+    fi
+
+    # Get PUID and PGID values
+    PUID=$(id -u)
+    echo "PUID=$PUID" >> "$ENV_FILE"
+
+    PGID=$(id -g)
+    echo "PGID=$PGID" >> "$ENV_FILE"
+
+    # Prompt user for .env values
+    read -p "Enter TZ: " TZ
+    echo "TZ=$TZ" >> "$ENV_FILE"
+
+    read -p "Enter SERVER_IP: " SERVER_IP
+    echo "SERVER_IP=$SERVER_IP" >> "$ENV_FILE"
+
+    read -p "Enter PLEX_CLAIM: " PLEX_CLAIM
+    echo "PLEX_CLAIM=$PLEX_CLAIM" >> "$ENV_FILE"
+    echo "PLEX_CLAIM=$PLEX_CLAIM" >> "$SECRETS/plex_claim"
+
+    # Add the new variables to the .env file
+    echo "USERDIR=$USERDIR" >> "$ENV_FILE"
+    echo "DOCKERDIR=$DOCKER_ROOT" >> "$ENV_FILE"
+    echo "SECRETSDIR=$SECRETS" >> "$ENV_FILE"
+}
+
 create_directories() {
     echo "Creating necessary directories..."
     mkdir -p "$APPDATA" "$COMPOSE" "$LOGS" "$SCRIPTS" "$SECRETS" "$SHARED"
@@ -27,34 +60,7 @@ create_directories() {
     echo "  - $SECRETS"
     echo "  - $SHARED"
 
-    # Create .env file if it doesn't exist
-    if [ ! -f "$ENV_FILE" ]; then
-        curl -o "$ENV_FILE" "https://raw.githubusercontent.com/HASANALI117/home-server/main/.env.example"
-        echo ".env file created at $ENV_FILE"
-    else
-        echo ".env file already exists at $ENV_FILE"
-    fi
-
-    # Prompt user for .env values
-    read -p "Enter PUID: " PUID
-    echo "PUID=$PUID" >> "$ENV_FILE"
-
-    read -p "Enter PGID: " PGID
-    echo "PGID=$PGID" >> "$ENV_FILE"
-
-    read -p "Enter TZ: " TZ
-    echo "TZ=$TZ" >> "$ENV_FILE"
-
-    read -p "Enter SERVER_IP: " SERVER_IP
-    echo "SERVER_IP=$SERVER_IP" >> "$ENV_FILE"
-
-    read -p "Enter PLEX_CLAIM: " PLEX_CLAIM
-    echo "PLEX_CLAIM=$PLEX_CLAIM" >> "$ENV_FILE"
-
-    # Add the new variables to the .env file
-    echo "USERDIR=$USERDIR" >> "$ENV_FILE"
-    echo "DOCKERDIR=$DOCKER_ROOT" >> "$ENV_FILE"
-    echo "SECRETSDIR=$SECRETS" >> "$ENV_FILE"
+    create_env_file
 }
 
 set_permissions() {
@@ -121,20 +127,15 @@ start_containers() {
 }
 
 edit_homepage_config() {
-    local CONFIG_DIR="configs/homepage/docker-configs"
     local HOMEPAGE_DIR="$APPDATA/homepage"
     
     echo "Replacing homepage configuration files..."
     
     local files=("bookmarks.yaml" "services.yaml" "settings.yaml" "widgets.yaml")
-    
+
     for file in "${files[@]}"; do
-        if [ -f "$CONFIG_DIR/$file" ]; then
-            cp "$CONFIG_DIR/$file" "$HOMEPAGE_DIR/$file"
-            echo "Replaced $file"
-        else
-            echo "$file not found in $CONFIG_DIR"
-        fi
+        curl -o "$HOMEPAGE_DIR/$file" "https://raw.githubusercontent.com/HASANALI117/home-server/main/configs/homepage/docker-configs/$file"
+        echo "Replaced $file"
     done
     
     echo "Homepage configuration files replaced."
@@ -142,12 +143,12 @@ edit_homepage_config() {
 
 stop_qbittorrent() {
     echo "Stopping qbittorrent container..."
-    sudo docker stop qbittorrent
+    sudo docker compose -f "$COMPOSE/qbittorrent.yml" down
     echo "qbittorrent container stopped."
 }
 
 edit_qbittorrent_config() {
-    QBITTORRENT_CONF="$APPDATA/qbittorrent/qbittorrent.conf"
+    QBITTORRENT_CONF="$APPDATA/qbittorrent/qBittorrent/qBittorrent.conf"
     if [ -f "$QBITTORRENT_CONF" ]; then
         echo "Editing qbittorrent.conf..."
         echo "WebUI\Username=admin" >> "$QBITTORRENT_CONF"
@@ -160,12 +161,12 @@ edit_qbittorrent_config() {
 
 start_qbittorrent() {
     echo "Starting qbittorrent container..."
-    sudo docker start qbittorrent
+    sudo docker compose -f "$COMPOSE/qbittorrent.yml" up -d
     echo "qbittorrent container started."
 }
 
 main() {
-    read -r -p "Enter your username: " USER
+    USER=$(whoami)
     USERDIR="/home/$USER"
     DOCKER_ROOT="/home/$USER/docker"
     APPDATA="$DOCKER_ROOT/appdata"
