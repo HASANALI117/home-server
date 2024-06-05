@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+# set -e
 
 # Configuration variables
 USER=$(whoami)
@@ -20,31 +20,31 @@ HOMEPAGE_CONFIG_URL="https://raw.githubusercontent.com/HASANALI117/home-server/m
 COMPOSE_FILES_URL="https://raw.githubusercontent.com/HASANALI117/home-server/main/compose"
 
 # Helper function to print error messages
-error_exit() {
-    echo "$1" 1>&2
-    exit 1
-}
+# error_exit() {
+#     echo "$1" 1>&2
+#     exit 1
+# }
 
 # Function to install Docker and Docker Compose
 install_docker() {
     echo "Installing Docker and Docker Compose..."
-    curl -fsSL https://get.docker.com -o get-docker.sh || error_exit "Failed to download Docker installation script."
-    sudo sh get-docker.sh || error_exit "Docker installation failed."
+    curl -fsSL https://get.docker.com -o get-docker.sh #|| error_exit "Failed to download Docker installation script."
+    sudo sh get-docker.sh #|| error_exit "Docker installation failed."
     echo "Docker and Docker Compose installed."
 }
 
 # Function to verify Docker installation
 verify_docker() {
     echo "Verifying Docker installation..."
-    sudo docker version || error_exit "Docker is not installed correctly."
-    sudo docker compose version || error_exit "Docker Compose is not installed correctly."
+    sudo docker version #|| error_exit "Docker is not installed correctly."
+    sudo docker compose version #|| error_exit "Docker Compose is not installed correctly."
     echo "Docker installation verified."
 }
 
 # Function to create the .env file
 create_env_file() {
     if [ ! -f "$ENV_FILE" ]; then
-        curl -o "$ENV_FILE" "$ENV_EXAMPLE_URL" || error_exit "Failed to download .env.example."
+        curl -o "$ENV_FILE" "$ENV_EXAMPLE_URL" #|| error_exit "Failed to download .env.example."
         echo ".env file created at $ENV_FILE"
     else
         echo ".env file already exists at $ENV_FILE"
@@ -94,7 +94,7 @@ set_permissions() {
     echo "Permissions set for secrets folder and .env file."
 
     echo "Setting permissions for Docker root folder..."
-    sudo apt install -y acl || error_exit "Failed to install ACL."
+    sudo apt install -y acl #|| error_exit "Failed to install ACL."
     sudo chmod 775 "$DOCKER_ROOT"
     sudo setfacl -Rdm u:"$USER":rwx "$DOCKER_ROOT"
     sudo setfacl -Rm u:"$USER":rwx "$DOCKER_ROOT"
@@ -106,7 +106,7 @@ set_permissions() {
 # Function to create Docker Compose files
 create_compose_files() {
     echo "Creating master docker-compose file..."
-    curl -o "$MASTER_COMPOSE" "$DOCKER_COMPOSE_URL" || error_exit "Failed to download master docker-compose file."
+    curl -o "$MASTER_COMPOSE" "$DOCKER_COMPOSE_URL" #|| error_exit "Failed to download master docker-compose file."
     echo "Master docker-compose file created: $MASTER_COMPOSE"
 
     local services=(
@@ -126,7 +126,7 @@ create_compose_files() {
 
     echo "Creating compose files..."
     for service in "${services[@]}"; do
-        curl -o "$COMPOSE/$service.yml" "$COMPOSE_FILES_URL/$service.yml" || error_exit "Failed to download compose file for $service."
+        curl -o "$COMPOSE/$service.yml" "$COMPOSE_FILES_URL/$service.yml" #|| error_exit "Failed to download compose file for $service."
         echo "Created: $COMPOSE/$service.yml"
     done
     echo "Compose files created."
@@ -135,7 +135,7 @@ create_compose_files() {
 # Function to start Docker containers
 start_containers() {
     echo "Starting the containers..."
-    sudo docker compose -f "$MASTER_COMPOSE" up -d || error_exit "Failed to start containers."
+    sudo docker compose -f "$MASTER_COMPOSE" up -d #|| error_exit "Failed to start containers."
 }
 
 # Function to replace homepage configuration files
@@ -147,7 +147,7 @@ edit_homepage_config() {
     local files=("bookmarks.yaml" "services.yaml" "settings.yaml" "widgets.yaml")
 
     for file in "${files[@]}"; do
-        curl -o "$HOMEPAGE_DIR/$file" "$HOMEPAGE_CONFIG_URL/$file" || error_exit "Failed to download $file for homepage."
+        curl -o "$HOMEPAGE_DIR/$file" "$HOMEPAGE_CONFIG_URL/$file" #|| error_exit "Failed to download $file for homepage."
         echo "Replaced $file"
     done
     
@@ -157,7 +157,7 @@ edit_homepage_config() {
 # Function to stop qbittorrent container
 stop_qbittorrent() {
     echo "Stopping qbittorrent container..."
-    sudo docker compose -f "$COMPOSE/qbittorrent.yml" down || error_exit "Failed to stop qbittorrent container."
+    sudo docker compose -f "$COMPOSE/qbittorrent.yml" down #|| error_exit "Failed to stop qbittorrent container."
     echo "qbittorrent container stopped."
 }
 
@@ -177,7 +177,7 @@ edit_qbittorrent_config() {
 # Function to start qbittorrent container
 start_qbittorrent() {
     echo "Starting qbittorrent container..."
-    sudo docker compose -f "$COMPOSE/qbittorrent.yml" up -d || error_exit "Failed to start qbittorrent container."
+    sudo docker compose -f "$COMPOSE/qbittorrent.yml" up -d #|| error_exit "Failed to start qbittorrent container."
     echo "qbittorrent container started."
 }
 
