@@ -64,7 +64,7 @@ create_env_file() {
 
     read -p "Enter PLEX_CLAIM: " PLEX_CLAIM
     echo "PLEX_CLAIM=$PLEX_CLAIM" >> "$ENV_FILE"
-    echo "PLEX_CLAIM=\$PLEX_CLAIM" > "$SECRETS/plex_claim"
+    echo "\$PLEX_CLAIM" > "$SECRETS/plex_claim"
 
     echo "USERDIR=$USERDIR" >> "$ENV_FILE"
     echo "DOCKERDIR=$DOCKER_ROOT" >> "$ENV_FILE"
