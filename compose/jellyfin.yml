@@ -10,8 +10,8 @@ services:
     restart: "no"
     # profiles: ["media", "all"]
     user: $PUID:$PGID
-    devices:
-      - /dev/dri:/dev/dri # for harware transcoding
+    # devices:
+    # - /dev/dri:/dev/dri # for harware transcoding
     ports:
       - "8096:8096"
       # - "8920:8920" # Emby also uses same port if running both

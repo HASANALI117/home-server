@@ -167,8 +167,6 @@ edit_qbittorrent_config() {
     else
         echo "qbittorrent.conf not found."
     fi
-
-    start_containers
 }
 
 # Main function
@@ -185,13 +183,11 @@ main() {
     echo
     start_containers
     echo
-    edit_homepage_config
-    echo
-    stop_qbittorrent
-    echo
     edit_qbittorrent_config
     echo
-    start_qbittorrent
+    edit_homepage_config
+    echo
+    start_containers
     echo
 
     echo "Setup complete."
