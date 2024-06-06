@@ -154,15 +154,10 @@ edit_homepage_config() {
     echo "Homepage configuration files replaced."
 }
 
-# Function to stop qbittorrent container
-stop_qbittorrent() {
-    echo "Stopping qbittorrent container..."
-    sudo docker compose -f "$COMPOSE/qbittorrent.yml" down #|| error_exit "Failed to stop qbittorrent container."
-    echo "qbittorrent container stopped."
-}
-
 # Function to edit qbittorrent configuration
 edit_qbittorrent_config() {
+    sudo docker compose -f "$MASTER_COMPOSE" down
+
     QBITTORRENT_CONF="$APPDATA/qbittorrent/qBittorrent/qBittorrent.conf"
     if [ -f "$QBITTORRENT_CONF" ]; then
         echo "Editing qbittorrent.conf..."
@@ -172,13 +167,8 @@ edit_qbittorrent_config() {
     else
         echo "qbittorrent.conf not found."
     fi
-}
 
-# Function to start qbittorrent container
-start_qbittorrent() {
-    echo "Starting qbittorrent container..."
-    sudo docker compose -f "$COMPOSE/qbittorrent.yml" up -d #|| error_exit "Failed to start qbittorrent container."
-    echo "qbittorrent container started."
+    start_containers
 }
 
 # Main function
