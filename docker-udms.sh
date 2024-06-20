@@ -5,9 +5,10 @@
 # Configuration variables
 USER=$(whoami)
 USERDIR="/home/$USER"
+DATADIR="/media/storage"
 DOCKER_ROOT="$USERDIR/docker"
 APPDATA="$DOCKER_ROOT/appdata"
-COMPOSE="$DOCKER_ROOT/compose"
+COMPOSE="$DOCKER_ROOT/compose/$USER"
 LOGS="$DOCKER_ROOT/logs"
 SCRIPTS="$DOCKER_ROOT/scripts"
 SECRETS="$DOCKER_ROOT/secrets"
@@ -51,24 +52,25 @@ create_env_file() {
     fi
 
     PUID=$(id -u)
-    echo "PUID=$PUID" >> "$ENV_FILE"
-    
     PGID=$(id -g)
-    echo "PGID=$PGID" >> "$ENV_FILE"
     
     read -p "Enter TZ: " TZ
-    echo "TZ=$TZ" >> "$ENV_FILE"
-
     read -p "Enter SERVER_IP: " SERVER_IP
-    echo "SERVER_IP=$SERVER_IP" >> "$ENV_FILE"
-
     read -p "Enter PLEX_CLAIM: " PLEX_CLAIM
-    echo "PLEX_CLAIM=$PLEX_CLAIM" >> "$ENV_FILE"
-    echo "\$PLEX_CLAIM" > "$SECRETS/plex_claim"
 
-    echo "USERDIR=$USERDIR" >> "$ENV_FILE"
-    echo "DOCKERDIR=$DOCKER_ROOT" >> "$ENV_FILE"
-    echo "SECRETSDIR=$SECRETS" >> "$ENV_FILE"
+    echo "$PLEX_CLAIM" > "$SECRETS/plex_claim"
+
+    cat <<EOF > "$ENV_FILE"
+    "HOSTNAME=$USER"
+    "USERDIR=$USERDIR"
+    "DOCKERDIR=$DOCKER_ROOT"
+    "SECRETSDIR=$SECRETS"
+    "SERVER_IP=$SERVER_IP"
+    "DATADIR=$DATADIR"
+    "TZ=$TZ"
+    "PUID=$PUID"
+    "PGID=$PGID"
+EOF
 }
 
 # Function to create necessary directories

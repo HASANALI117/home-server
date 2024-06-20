@@ -13,7 +13,7 @@ services:
       - "7878:7878"
     volumes:
       - $DOCKERDIR/appdata/radarr:/config
-      - $DATADIR/data/media/movies:/data/movies
+      - $DATADIR/media/movies:/movies
       - $DATADIR/downloads:/data/downloads
       - "/etc/localtime:/etc/localtime:ro"
     environment:

@@ -1,7 +1,7 @@
 services:
   # Plex - Media Server
   plex:
-    image: plexinc/pms-docker:plexpass
+    image: lscr.io/linuxserver/plex:latest
     container_name: plex
     networks:
       - default
@@ -23,7 +23,7 @@ services:
       - "32414:32414/udp"
     volumes:
       - $DOCKERDIR/appdata/plex:/config
-      - $DATADIR/data/media:/data/media # Media Folder
+      - $DATADIR/media:/media # Media Folder
       - /dev/shm:/data/transcode # Offload transcoding to RAM if you have enough RAM
     environment:
       TZ: $TZ

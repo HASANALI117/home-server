@@ -1,7 +1,7 @@
 services:
   # Prowlarr - Torrent proxy
   prowlarr:
-    image: ghcr.io/linuxserver/prowlarr:develop
+    image: ghcr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     security_opt:
       - no-new-privileges:true

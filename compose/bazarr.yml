@@ -1,7 +1,7 @@
 services:
   # Bazarr - Subtitle Management
   bazarr:
-    image: lscr.io/linuxserver/bazarr
+    image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
     security_opt:
       - no-new-privileges:true
@@ -13,7 +13,7 @@ services:
       - "6767:6767"
     volumes:
       - $DOCKERDIR/appdata/bazarr:/config
-      - $DATADIR/media:/data/media
+      - $DATADIR/media:/media
     environment:
       TZ: $TZ
       PUID: $PUID
