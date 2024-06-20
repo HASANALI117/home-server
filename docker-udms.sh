@@ -60,16 +60,16 @@ create_env_file() {
 
     echo "$PLEX_CLAIM" > "$SECRETS/plex_claim"
 
-    cat <<EOF > "$ENV_FILE"
-    "HOSTNAME=$USER"
-    "USERDIR=$USERDIR"
-    "DOCKERDIR=$DOCKER_ROOT"
-    "SECRETSDIR=$SECRETS"
-    "SERVER_IP=$SERVER_IP"
-    "DATADIR=$DATADIR"
-    "TZ=$TZ"
-    "PUID=$PUID"
-    "PGID=$PGID"
+    cat <<EOF >> "$ENV_FILE"
+HOSTNAME="$USER"
+USERDIR="$USERDIR"
+DOCKERDIR="$DOCKER_ROOT"
+SECRETSDIR="$SECRETS"
+SERVER_IP="$SERVER_IP"
+DATADIR="$DATADIR"
+TZ="$TZ"
+PUID="$PUID"
+PGID="$PGID"
 EOF
 }
 
@@ -164,22 +164,22 @@ edit_qbittorrent_config() {
     if [ -f "$QBITTORRENT_CONF" ]; then
         touch "$QBITTORRENT_CONF"
         echo "Editing qbittorrent.conf..."
-        cat <<EOF > "$QBITTORRENT_CONF"
-        [Preferences]
-        Connection\PortRangeMin=6881
-        Connection\UPnP=false
-        Downloads\SavePath=/downloads/
-        Downloads\TempPath=/downloads/incomplete/
-        General\Locale=en
-        MailNotification\req_auth=true
-        WebUI\Address=*
-        WebUI\Enabled=true
-        WebUI\HostHeaderValidation=false
-        WebUI\LocalHostAuth=false
-        WebUI\Password_PBKDF2="@ByteArray(ARQ77eY1NUZaQsuDHbIMCA==:0WMRkYTUWVT9wVvdDtHAjU9b3b7uB8NR1Gur2hmQCvCDpm39Q+PsJRJPaCU51dEiz+dTzh8qbPsL8WkFljQYFQ==)"
-        WebUI\Port=8080
-        WebUI\ServerDomains=*
-        WebUI\Username=admin
+        cat <<EOF >> "$QBITTORRENT_CONF"
+[Preferences]
+Connection\PortRangeMin=6881
+Connection\UPnP=false
+Downloads\SavePath=/downloads/
+Downloads\TempPath=/downloads/incomplete/
+General\Locale=en
+MailNotification\req_auth=true
+WebUI\Address=*
+WebUI\Enabled=true
+WebUI\HostHeaderValidation=false
+WebUI\LocalHostAuth=false
+WebUI\Password_PBKDF2="@ByteArray(ARQ77eY1NUZaQsuDHbIMCA==:0WMRkYTUWVT9wVvdDtHAjU9b3b7uB8NR1Gur2hmQCvCDpm39Q+PsJRJPaCU51dEiz+dTzh8qbPsL8WkFljQYFQ==)"
+WebUI\Port=8080
+WebUI\ServerDomains=*
+WebUI\Username=admin
 EOF
         echo "qbittorrent.conf edited."
     else
