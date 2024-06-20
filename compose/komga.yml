@@ -1,20 +1,13 @@
 services:
-  # Komga - Manga Server
   komga:
     image: gotson/komga
     container_name: komga
     volumes:
-      - $DOCKERDIR/appdata/kaizoku:/config
-      - $DATADIR/data/media/manga:/data/manga # Manga is just an example you can have the name you want. See the following
-      - $DATADIR/data/media/comics:/data/comics # Use as many as you want
-      - $DATADIR/data/media/manhwa:/data/manhwa #
-      - $DATADIR/data/media/manhua:/data/manhua #
-      - $DATADIR/data/media/books:/data/books #
+      - $DOCKERDIR/appdata/komga:/config
+      - $DATADIR/data/media/manga:/data
+    environment:
+      - TZ=$TZ
     ports:
       - 25600:25600
-    # remove the whole environment section if you don't need it
-    environment:
-      TZ: $TZ
-      PUID: $PUID
-      PGID: $PGID
+    user: "1000:1000"
     restart: unless-stopped
