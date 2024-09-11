@@ -88,7 +88,7 @@ The script sets up Docker Compose files for the following services:
 
 - **`sonarr`**: A TV series manager that automatically downloads and organizes TV shows. [Documentation](https://docs.linuxserver.io/images/docker-radarr/)
 
-- **`radarr`**: A movie collection manager that automates the process of downloading and organizing movies. [Documentation](https://radarr.video/docs/)
+- **`radarr`**: A movie collection manager that automates the process of downloading and organizing movies. [Documentation](https://docs.linuxserver.io/images/docker-radarr/)
 
 - **`prowlarr`**: A Usenet and torrent indexer that integrates with various other services for managing downloads. [Documentation](https://docs.linuxserver.io/images/docker-prowlarr/)
 
@@ -98,19 +98,36 @@ The script sets up Docker Compose files for the following services:
 
 ## Adding More Services
 
-To add more services:
+To add more services, follow these steps:
 
-1. **Create a Docker Compose YAML file** for the new service in the `compose` directory. You can simply copy and paste the Docker Compose file for the service you want to add.
+1. **Add Service Configuration**: Copy the desired service's Docker Compose YAML file from the [`compose/`]() directory.
+2. **Update [`docker-compose-udms.yml`]()**: Add the path to the copied service YAML file in the [`docker-compose-udms.yml`]() file under the appropriate section.
 
-2. **Update the `services` array** in the `create_compose_files` function to include the new service:
+Example of adding a new service in [`docker-compose-udms.yml`]():
 
-   ```bash
-   local services=(
-       "existing-service"
-       "new-service"  # Add your new service here
-   )
-   ```
-
-3. **Ensure that the new service's configuration** is available in the `COMPOSE_FILES_URL` location. If the service’s configuration file is not available at the specified URL, you may need to upload it or adjust the URL accordingly.
-
-This process allows you to quickly add new services by copying existing Docker Compose files and updating the script accordingly.
+```yml
+include:
+  ########################### SERVICES
+  # PREFIX udms = Ultimate Docker Media Server
+  # HOSTNAME=udms - defined in .env
+  # CORE
+  - compose/$HOSTNAME/socket-proxy.yml
+  - compose/$HOSTNAME/portainer.yml
+  - compose/$HOSTNAME/dozzle.yml
+  - compose/$HOSTNAME/homepage.yml
+  # MEDIA
+  - compose/$HOSTNAME/plex.yml
+  - compose/$HOSTNAME/jellyfin.yml
+  # DOWNLOADERS
+  - compose/$HOSTNAME/qbittorrent.yml
+  # PVRS
+  - compose/$HOSTNAME/radarr.yml
+  - compose/$HOSTNAME/sonarr.yml
+  - compose/$HOSTNAME/prowlarr.yml
+  # COMPLEMENTARY APPS
+  - compose/$HOSTNAME/bazarr.yml
+  # MAINTENANCE
+  - compose/$HOSTNAME/docker-gc.yml
+  # Add your new service here
+  - compose/$HOSTNAME/new-service.yml
+```
