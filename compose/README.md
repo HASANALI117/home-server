@@ -1,469 +1,80 @@
-### 1. AdGuard Home
-
-![AdGuard Home](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/adguardhome.png)
-
-- **Description**: Network-wide software for blocking ads and tracking.
-
-### 2. Airsonic
-
-![Airsonic](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/airsonic.png)
-
-- **Description**: Media streaming server.
-
-### 3. Ampache
-
-![Ampache](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ampache.png)
-
-- **Description**: Music streaming server.
-
-### 4. Apache Guacamole
-
-![Guacamole](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/guacamole.png)
-
-- **Description**: Clientless remote desktop gateway.
-
-### 5. Bazarr
-
-![Bazarr](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png)
-
-- **Description**: Subtitle manager.
-
-### 6. Bitwarden
-
-![Bitwarden](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bitwarden.png)
-
-- **Description**: Open-source password manager.
-
-### 7. Bookstack
-
-![Bookstack](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bookstack.png)
-
-- **Description**: Wiki-like documentation platform.
-
-### 8. Calibre
-
-![Calibre](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/calibre.png)
-
-- **Description**: E-book management.
-
-### 9. Caddy
-
-![Caddy](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/caddy.png)
-
-- **Description**: Web server with automatic HTTPS.
-
-### 10. Code-Server
-
-![Code-Server](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/code-server.png)
-
-- **Description**: VS Code in the browser.
-
-### 11. Deluge
-
-![Deluge](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/deluge.png)
-
-- **Description**: BitTorrent client.
-
-### 12. DokuWiki
-
-![DokuWiki](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/dokuwiki.png)
-
-- **Description**: Simple, flexible wiki software.
-
-### 13. Duplicati
-
-![Duplicati](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/duplicati.png)
-
-- **Description**: Backup software.
-
-### 14. Emby
-
-![Emby](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/emby.png)
-
-- **Description**: Media server.
-
-### 15. Firefly III
-
-![Firefly III](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/fireflyiii.png)
-
-- **Description**: Financial management tool.
-
-### 16. FreshRSS
-
-![FreshRSS](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/freshrss.png)
-
-- **Description**: RSS aggregator.
-
-### 17. Gitea
-
-![Gitea](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/gitea.png)
-
-- **Description**: Git repository hosting.
-
-### 18. Grafana
-
-![Grafana](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/grafana.png)
-
-- **Description**: Analytics and monitoring platform.
-
-### 19. Guacamole
-
-![Guacamole](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/guacamole.png)
-
-- **Description**: Clientless remote desktop gateway.
-
-### 20. Headphones
-
-![Headphones](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/headphones.png)
-
-- **Description**: Music download manager.
-
-### 21. Heimdall
-
-![Heimdall](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/heimdall.png)
-
-- **Description**: Application dashboard.
-
-### 22. Home Assistant
-
-![Home Assistant](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/homeassistant.png)
-
-- **Description**: Home automation platform.
-
-### 23. InfluxDB
-
-![InfluxDB](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/influxdb.png)
-
-- **Description**: Time series database.
-
-### 24. Jackett
-
-![Jackett](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jackett.png)
-
-- **Description**: API for torrent indexers.
-
-### 25. Jellyfin
-
-![Jellyfin](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin.png)
-
-- **Description**: Open-source media server.
-
-### 26. Lidarr
-
-![Lidarr](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lidarr.png)
-
-- **Description**: Music collection manager.
-
-### 27. MariaDB
-
-![MariaDB](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mariadb.png)
-
-- **Description**: Open-source relational database.
-
-### 28. Matomo
-
-![Matomo](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/matomo.png)
-
-- **Description**: Web analytics platform.
-
-### 29. Medusa
-
-![Medusa](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/medusa.png)
-
-- **Description**: TV show management tool.
-
-### 30. Mstream
-
-![Mstream](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mstream.png)
-
-- **Description**: Music streaming server.
-
-### 31. Mylar3
-
-![Mylar3](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mylar3.png)
-
-- **Description**: Comic book manager.
-
-### 32. Nextcloud
-
-![Nextcloud](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nextcloud.png)
-
-- **Description**: Productivity platform.
-
-### 33. NZBGet
-
-![NZBGet](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nzbget.png)
-
-- **Description**: Usenet downloader.
-
-### 34. Ombi
-
-![Ombi](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ombi.png)
-
-- **Description**: Media request system.
-
-### 35. Organizr
-
-![Organizr](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/organizr.png)
-
-- **Description**: Home server dashboard.
-
-### 36. Paperless-ng
-
-![Paperless-ng](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/paperless-ng.png)
-
-- **Description**: Document management system.
-
-### 37. Pi-hole
-
-![Pi-hole](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/pihole.png)
-
-- **Description**: Network-wide ad blocker.
-
-### 38. Plex
-
-![Plex](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plex.png)
-
-- **Description**: Media server.
-
-### 39. Portainer
-
-![Portainer](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/portainer.png)
-
-- **Description**: Docker management GUI.
-
-### 40. qbittorrent
-
-![qBittorrent](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/qbittorrent.png)
-
-- **Description**: Torrent client.
-
-### 41. Radarr
-
-![Radarr](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png)
-
-- **Description**: Movie collection manager.
-
-### 42. Restic
-
-![Restic](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/restic.png)
-
-- **Description**: Backup software.
-
-### 43. SabNZBd
-
-![SabNZBd](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sabnzbd.png)
-
-- **Description**: Usenet downloader.
-
-### 44. Sonarr
-
-![Sonarr](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr.png)
-
-- **Description**: TV show collection manager.
-
-### 45. Tautulli
-
-![Tautulli](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tautulli.png)
-
-- **Description**: Plex usage monitoring tool.
-
-### 46. The Lounge
-
-![The Lounge](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/thelounge.png)
-
-- **Description**: Self-hosted web IRC client.
-
-### 47. Traefik
-
-![Traefik](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/traefik.png)
-
-- **Description**: Reverse proxy and load balancer.
-
-### 48. Transmission
-
-![Transmission](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png)
-
-- **Description**: Torrent client.
-
-### 49. Ubooquity
-
-![Ubooquity](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ubooquity.png)
-
-- **Description**: Book and comic server.
-
-### 50. Vaultwarden
-
-![Vaultwarden](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/vaultwarden.png)
-
-- **Description**: Lightweight Bitwarden server implementation.
-
-### 51. Watchtower
-
-![Watchtower](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/watchtower.png)
-
-- **Description**: Automated container updates.
-
-### 52. Wiki.js
-
-![Wiki.js](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/wikijs.png)
-
-- **Description**: Powerful and extensible wiki platform.
-
-### 53. WireGuard
-
-![WireGuard](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/wireguard.png)
-
-- **Description**: Modern VPN protocol.
-
-### 54. Xbackbone
-
-![Xbackbone](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/xbackbone.png)
-
-- **Description**: File-sharing service.
-
-### 55. Zabbix
-
-![Zabbix](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/zabbix.png)
-
-- **Description**: Monitoring solution.
-
-Here is the continuation of the list:
-
-### 56. Zoneminder
-
-![Zoneminder](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/zoneminder.png)
-
-- **Description**: Open-source video surveillance solution.
-
-### 57. Papermerge
-
-![Papermerge](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/papermerge.png)
-
-- **Description**: Document management system focused on OCR.
-
-### 58. Netdata
-
-![Netdata](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/netdata.png)
-
-- **Description**: Real-time performance monitoring.
-
-### 59. Ghost
-
-![Ghost](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ghost.png)
-
-- **Description**: Blogging platform.
-
-### 60. OpenVPN
-
-![OpenVPN](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/openvpn.png)
-
-- **Description**: Open-source VPN solution.
-
-### 61. Lychee
-
-![Lychee](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee.png)
-
-- **Description**: Photo management tool.
-
-### 62. Node-RED
-
-![Node-RED](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nodered.png)
-
-- **Description**: Flow-based development tool for visual programming.
-
-### 63. Rocket.Chat
-
-![Rocket.Chat](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/rocketchat.png)
-
-- **Description**: Team communication platform.
-
-### 64. OpenProject
-
-![OpenProject](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/openproject.png)
-
-- **Description**: Project management tool.
-
-### 65. Rainloop
-
-![Rainloop](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/rainloop.png)
-
-- **Description**: Simple webmail client.
-
-### 66. Jellyseerr
-
-![Jellyseerr](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyseerr.png)
-
-- **Description**: Media request management tool for Jellyfin.
-
-### 67. GitLab
-
-![GitLab](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/gitlab.png)
-
-- **Description**: Git repository management platform.
-
-### 68. Uptime Kuma
-
-![Uptime Kuma](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/uptimekuma.png)
-
-- **Description**: Self-hosted monitoring tool for websites.
-
-### 69. Focalboard
-
-![Focalboard](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/focalboard.png)
-
-- **Description**: Open-source project management tool, alternative to Trello.
-
-### 70. ERPNext
-
-![ERPNext](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/erpnext.png)
-
-- **Description**: Comprehensive ERP solution.
-
-### 71. OpenMediaVault
-
-![OpenMediaVault](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/openmediavault.png)
-
-- **Description**: Network-attached storage (NAS) solution.
-
-### 72. PiAlert
-
-![PiAlert](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/pialert.png)
-
-- **Description**: Network device monitoring tool.
-
-### 73. Photoprism
-
-![Photoprism](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/photoprism.png)
-
-- **Description**: AI-powered photo management app.
-
-### 74. Syncthing
-
-![Syncthing](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/syncthing.png)
-
-- **Description**: File synchronization tool.
-
-### 75. Kimai
-
-![Kimai](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kimai.png)
-
-- **Description**: Time-tracking solution.
-
-### 76. Vault
-
-![Vault](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/vault.png)
-
-- **Description**: Secrets management and data protection tool.
-
-### 77. Navidrome
-
-![Navidrome](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/navidrome.png)
-
-- **Description**: Self-hosted music streaming server.
-
-### 78. Owncast
-
-![Owncast](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/owncast.png)
-
-- **Description**: Self-hosted live video streaming platform.
+| Image                                                                                                                                              | Service                                                                                  | Description                                                                                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/adguardhome.png" width="50" height="50">        | [AdGuard Home](https://adguard.com/en/adguard-home/overview.html)                        | Network-wide ad blocker and privacy protection solution.                                        |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/adguardhome.png" width="50" height="50">        | [AdGuard Home Sync](https://adguard.com/en/adguard-home/overview.html)                   | Syncs configurations and data across multiple AdGuard Home instances.                           |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/airsonic.png" width="50" height="50">           | [Airsonic Advanced](https://airsonic.github.io/docs/)                                    | Advanced media streaming server with support for multiple formats and streaming protocols.      |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/authelia.png" width="50" height="50">           | [Authelia](https://www.authelia.com/docs/)                                               | Authentication and authorization reverse proxy for securing applications and services.          |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/autoindex.png" width="50" height="50">          | [AutoIndex](https://github.com/tharun28/autoindex)                                       | Automatically generates directory indexes for web servers with customizable themes.             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png" width="50" height="50">             | [Bazarr](https://github.com/morpheus65535/bazarr)                                        | Subtitle manager for organizing and downloading subtitles for your media library.               |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/certdumper.png" width="50" height="50">         | [CertDumper](https://github.com/diracdeltas/cert-dumper)                                 | Tool for extracting SSL/TLS certificates from various sources.                                  |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/cloudflare-bouncer.png" width="50" height="50"> | [Cloudflare Bouncer](https://github.com/carlosedp/cloudflare-bouncer)                    | Service to manage and rotate Cloudflare API tokens for increased security.                      |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/crowdsec.png" width="50" height="50">           | [Crowdsec](https://crowdsec.net/docs/)                                                   | Security automation tool to protect your server from malicious actors.                          |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ddns-updater.png" width="50" height="50">       | [DDNS Updater](https://github.com/oznu/dns-update)                                       | Service for keeping your dynamic DNS records updated automatically.                             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/deunhealth.png" width="50" height="50">         | [Deunhealth](https://github.com/deunhealth/deunhealth)                                   | Health monitoring tool for Docker containers and services.                                      |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/docker-gc.png" width="50" height="50">          | [Docker-GC](https://github.com/spotify/docker-gc)                                        | Automatically cleans up unused Docker images and containers.                                    |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/dockge.png" width="50" height="50">             | [Dockge](https://github.com/abiosoft/dockge)                                             | Lightweight Docker environment manager for development and testing.                             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/dozzle.png" width="50" height="50">             | [Dozzle](https://github.com/amir20/dozzle)                                               | Real-time log viewer for Docker containers.                                                     |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/fireflyiii.png" width="50" height="50">         | [Firefly III](https://www.firefly-iii.org/)                                              | Personal finance manager for tracking and managing your expenses and income.                    |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/firefox.png" width="50" height="50">            | [Firefox](https://firefox-source-docs.mozilla.org/contributing/directory_structure.html) | Open-source web browser known for its privacy and customization options.                        |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/glances.png" width="50" height="50">            | [Glances](https://glances.readthedocs.io/en/latest/)                                     | Cross-platform system monitoring tool providing a comprehensive view of system performance.     |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/gluetun.png" width="50" height="50">            | [Gluetun](https://github.com/qdm12/gluetun)                                              | VPN client with support for multiple providers and features like DNS over HTTPS.                |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/grafana.png" width="50" height="50">            | [Grafana](https://grafana.com/docs/)                                                     | Open-source platform for monitoring and observability with customizable dashboards.             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/guacamole.png" width="50" height="50">          | [Guacamole](https://guacamole.apache.org/)                                               | Clientless remote desktop gateway for accessing remote desktops through a web browser.          |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/homepage.png" width="50" height="50">           | [Homepage](https://github.com/homepage/homepage)                                         | Personal homepage and dashboard application for organizing links and widgets.                   |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/influxdb.png" width="50" height="50">           | [InfluxDB](https://docs.influxdata.com/influxdb/)                                        | Open-source time series database designed for high-performance data collection and querying.    |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/it-tools.png" width="50" height="50">           | [IT Tools](https://github.com/it-tools/it-tools)                                         | Collection of utilities for IT professionals, including network tools and system monitors.      |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jdownloader.png" width="50" height="50">        | [JDownloader](http://jdownloader.org/)                                                   | Open-source download manager with support for many file hosting services.                       |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin.png" width="50" height="50">           | [Jellyfin](https://jellyfin.org/)                                                        | Open-source media server that allows you to manage and stream your media collection.            |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kaizoku.png" width="50" height="50">            | [Kaizoku](https://kaizokuapp.com/)                                                       | Manga and comic book reader and manager with extensive metadata support.                        |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kasm.png" width="50" height="50">               | [Kasm](https://www.kasmweb.com/)                                                         | Web-based virtual desktop and application platform.                                             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kavita.png" width="50" height="50">             | [Kavita](https://kavita.io/)                                                             | Self-hosted media server for managing and streaming your digital library.                       |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/komga.png" width="50" height="50">              | [Komga](https://komga.org/)                                                              | Media server for managing and reading comic books and manga.                                    |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lazylibrarian.png" width="50" height="50">      | [LazyLibrarian](https://github.com/LazyLibrarian/LazyLibrarian)                          | Management and automation tool for e-book and audiobook libraries.                              |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/loki.png" width="50" height="50">               | [Loki](https://grafana.com/oss/loki/)                                                    | Log aggregation system designed for storing and querying logs efficiently.                      |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mango.png" width="50" height="50">              | [Mango](https://github.com/Leszek-So/Official-Mango)                                     | Library management tool with support for various formats and metadata.                          |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mariadb.png" width="50" height="50">            | [MariaDB](https://mariadb.org/)                                                          | Open-source relational database management system, a fork of MySQL.                             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/medusa.png" width="50" height="50">             | [Medusa](https://github.com/pymedusa/Medusa)                                             | Automatic video library manager that handles TV shows and series.                               |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/minio.png" width="50" height="50">              | [MinIO](https://min.io/)                                                                 | High-performance, distributed object storage compatible with Amazon S3.                         |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/monitorr.png" width="50" height="50">           | [Monitorr](https://github.com/monitorr/monitorr)                                         | Monitoring and analytics dashboard for various systems and services.                            |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/muximux.png" width="50" height="50">            | [Muximux](https://muximux.com/)                                                          | Web-based dashboard for managing multiple media servers.                                        |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mylar3.png" width="50" height="50">             | [Mylar3](https://github.com/mylar3/mylar3)                                               | Automated comic book downloader and manager.                                                    |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/netdata.png" width="50" height="50">            | [Netdata](https://www.netdata.cloud/)                                                    | Real-time performance monitoring and visualization for systems and applications.                |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nextcloud.png" width="50" height="50">          | [Nextcloud](https://nextcloud.com/)                                                      | Self-hosted cloud storage solution with file sharing, collaboration, and productivity tools.    |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nzbget.png" width="50" height="50">             | [NZBGet](https://nzbget.net/)                                                            | Usenet downloader optimized for performance and minimal resource usage.                         |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ombi.png" width="50" height="50">               | [Ombi](https://ombi.app/)                                                                | Request management system for media libraries with integrated notification support.             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/organizr.png" width="50" height="50">           | [Organizr](https://organizr.com/)                                                        | Dashboard to manage and access your self-hosted applications and services.                      |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/overseerr.png" width="50" height="50">          | [Overseerr](https://docs.overseerr.dev/)                                                 | Request management and integration tool for media libraries, compatible with Radarr and Sonarr. |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/pihole.png" width="50" height="50">             | [Pi-hole](https://pi-hole.net/)                                                          | Network-wide ad blocker that protects your devices from unwanted content.                       |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plex.png" width="50" height="50">               | [Plex](https://www.plex.tv/)                                                             | Media server for organizing, streaming, and sharing your media collection.                      |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/portainer.png" width="50" height="50">          | [Portainer](https://www.portainer.io/)                                                   | Management interface for Docker containers, images, and networks.                               |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr.png" width="50" height="50">           | [Prowlarr](https://prowlarr.com/)                                                        | Indexer manager for managing and integrating with multiple torrent and usenet indexers.         |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/qbittorrent.png" width="50" height="50">        | [qBittorrent](https://www.qbittorrent.org/)                                              | Open-source torrent client with a user-friendly interface and a built-in search engine.         |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png" width="50" height="50">             | [Radarr](https://radarr.video/)                                                          | Movie collection manager that automatically downloads and organizes movies.                     |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/readarr.png" width="50" height="50">            | [Readarr](https://github.com/Readarr/Readarr)                                            | E-book and audiobook manager with support for automatic downloads and organization.             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/requestrr.png" width="50" height="50">          | [RequestRR](https://github.com/RequestRR/RequestRR)                                      | Automated request management tool for handling media library requests.                          |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sabnzbd.png" width="50" height="50">            | [SABnzbd](https://sabnzbd.org/)                                                          | Binary newsreader for automated downloading of files from Usenet.                               |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/samba.png" width="50" height="50">              | [Samba](https://www.samba.org/)                                                          | File sharing service for Unix systems that allows integration with Windows networks.            |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/scrutiny.png" width="50" height="50">           | [Scrutiny](https://github.com/zenith/scrutiny)                                           | Hard drive health monitoring tool that provides insights and alerts for disk drives.            |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/selfhosted.png" width="50" height="50">         | [Selfhosted](https://github.com/selfhosted/selfhosted)                                   | Collection of open-source applications and tools for self-hosting.                              |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr.png" width="50" height="50">             | [Sonarr](https://sonarr.tv/)                                                             | TV series management tool for automating downloads and organizing shows.                        |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/speedtest.png" width="50" height="50">          | [Speedtest](https://github.com/ookla/Speedtest-CLI)                                      | CLI tool for measuring network performance and connection speeds.                               |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/statping.png" width="50" height="50">           | [Statping](https://github.com/statping/statping)                                         | Uptime monitoring tool with a web interface for tracking the status of your services.           |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/syncthing.png" width="50" height="50">          | [Syncthing](https://syncthing.net/)                                                      | Continuous file synchronization tool with a focus on security and privacy.                      |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tautulli.png" width="50" height="50">           | [Tautulli](https://tautulli.com/)                                                        | Monitoring and analytics tool for Plex media servers.                                           |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/telegraf.png" width="50" height="50">           | [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/)                    | Plugin-driven server agent for collecting and reporting metrics.                                |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/thelounge.png" width="50" height="50">          | [The Lounge](https://thelounge.chat/)                                                    | Self-hosted web IRC client that can be accessed from any web browser.                           |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/traefik.png" width="50" height="50">            | [Traefik](https://traefik.io/)                                                           | Modern reverse proxy and load balancer with support for dynamic configurations.                 |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png" width="50" height="50">       | [Transmission](https://transmissionbt.com/)                                              | Lightweight and efficient BitTorrent client with a web-based interface.                         |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tubearchivist.png" width="50" height="50">      | [TubeArchivist](https://github.com/tubearchivist/tubearchivist)                          | Tool for managing and archiving video content from various sources.                             |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ubooquity.png" width="50" height="50">          | [Ubooquity](https://ubooquity.org/)                                                      | Lightweight, self-hosted server for managing and reading comic books and e-books.               |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/uptime-kuma.png" width="50" height="50">        | [Uptime Kuma](https://github.com/louislam/uptime-kuma)                                   | Self-hosted status monitoring solution with a user-friendly interface.                          |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/vaultwarden.png" width="50" height="50">        | [Vaultwarden](https://github.com/dani-garcia/vaultwarden)                                | Open-source password manager compatible with Bitwarden clients.                                 |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/watchtower.png" width="50" height="50">         | [Watchtower](https://github.com/containrrr/watchtower)                                   | Tool for automatically updating Docker containers when a new image is available.                |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/webtop.png" width="50" height="50">             | [Webtop](https://github.com/linuxserver/webtop)                                          | Desktop environment accessible through a web browser for remote access and management.          |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/wg-easy.png" width="50" height="50">            | [WG-Easy](https://github.com/wg-easy/wg-easy)                                            | Simple and user-friendly management tool for WireGuard VPN.                                     |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/wireguard.png" width="50" height="50">          | [WireGuard](https://www.wireguard.com/)                                                  | Modern, secure, and fast VPN tunnel that simplifies setup and configuration.                    |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/xteve.png" width="50" height="50">              | [xTeVe](https://xteve.de/)                                                               | IPTV and M3U playlist management tool for organizing and streaming TV content.                  |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/yacht.png" width="50" height="50">              | [Yacht](https://github.com/SelfhostedPro/yacht)                                          | Management UI for Docker, providing a web interface for easier container management.            |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/youtrack.png" width="50" height="50">           | [YouTrack](https://www.jetbrains.com/youtrack/)                                          | Issue tracker and project management tool with agile features.                                  |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/zabbix.png" width="50" height="50">             | [Zabbix](https://www.zabbix.com/)                                                        | Open-source monitoring tool for networks, servers, and applications.                            |
+| <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/zigbee2mqtt.png" width="50" height="50">        | [Zigbee2MQTT](https://www.zigbee2mqtt.io/)                                               | Bridge between Zigbee devices and MQTT for home automation.                                     |
