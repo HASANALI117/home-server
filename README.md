@@ -3,16 +3,16 @@
 This repository automates the setup and management of my home server using Docker and Docker Compose.
 
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Docker_%28container_engine%29_logo_%28cropped%29.png" alt="Portainer" width="120" height="80">
-  <img src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,c_fill,w_200,h_200/https://api.charmhub.io/api/v1/media/download/charm_Owpj9CsDEMZwVtup3ZTxxs0FtyvDqb2o_icon_5cef79c2d18f67464f39c8f2cf2d7ebb815b0071f04d3ffbb94f49fddd3ab666.png" alt="Portainer" width="80" height="80">
-  <img src="https://avatars.githubusercontent.com/u/122929872?v=4" alt="Homepage" width="80" height="80">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plex-logo.png" alt="Plex" width="80" height="80">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png" alt="Jellyfin" width="80" height="80">
-  <img src="https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png" alt="qBittorrent" width="80" height="80">
-  <img src="https://github.com/Sonarr/Sonarr/raw/develop/Logo/256.png" alt="Sonarr" width="80" height="80">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png" alt="Radarr" width="80" height="80">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-banner.png" alt="Prowlarr" width="80" height="80">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png" alt="Bazarr" width="80" height="80">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Docker_%28container_engine%29_logo_%28cropped%29.png" alt="Portainer" width="100" height="70">
+  <img src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,c_fill,w_200,h_200/https://api.charmhub.io/api/v1/media/download/charm_Owpj9CsDEMZwVtup3ZTxxs0FtyvDqb2o_icon_5cef79c2d18f67464f39c8f2cf2d7ebb815b0071f04d3ffbb94f49fddd3ab666.png" alt="Portainer" width="70" height="70">
+  <img src="https://avatars.githubusercontent.com/u/122929872?v=4" alt="Homepage" width="70" height="70">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plex-logo.png" alt="Plex" width="70" height="70">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png" alt="Jellyfin" width="70" height="70">
+  <img src="https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png" alt="qBittorrent" width="70" height="70">
+  <img src="https://github.com/Sonarr/Sonarr/raw/develop/Logo/256.png" alt="Sonarr" width="70" height="70">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png" alt="Radarr" width="70" height="70">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-banner.png" alt="Prowlarr" width="70" height="70">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png" alt="Bazarr" width="70" height="70">
 </p>
 
 ## Quick Setup
