@@ -72,15 +72,15 @@ The `docker-udms.sh` script performs the following tasks:
 
 The script sets up Docker Compose files for the following services:
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plex-logo.png" alt="Plex" width="50" height="50">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png" alt="Jellyfin" width="50" height="50">
-  <img src="https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png" alt="qBittorrent" width="50" height="50">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png" alt="Radarr" width="50" height="50">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-banner.png" alt="Prowlarr" width="50" height="50">
-  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png" alt="Bazarr" width="50" height="50">
-  <img src="https://github.com/Sonarr/Sonarr/raw/develop/Logo/256.png" alt="Sonarr" width="50" height="50">
-  <img src="https://avatars.githubusercontent.com/u/122929872?v=4" alt="Homepage" width="50" height="50">
+<p align="left">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plex-logo.png" alt="Plex" width="80" height="80">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png" alt="Jellyfin" width="80" height="80">
+  <img src="https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png" alt="qBittorrent" width="80" height="80">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png" alt="Radarr" width="80" height="80">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-banner.png" alt="Prowlarr" width="80" height="80">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png" alt="Bazarr" width="80" height="80">
+  <img src="https://github.com/Sonarr/Sonarr/raw/develop/Logo/256.png" alt="Sonarr" width="80" height="80">
+  <img src="https://avatars.githubusercontent.com/u/122929872?v=4" alt="Homepage" width="80" height="80">
 </p>
 
 - **`socket-proxy`**: A reverse proxy for managing access to multiple services running on the server. [Documentation](https://github.com/Tecnativa/docker-socket-proxy?tab=readme-ov-file#supported-api-versions)
