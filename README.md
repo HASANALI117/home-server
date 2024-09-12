@@ -13,6 +13,8 @@ This repository automates the setup and management of my home server using Docke
   <img src="assets/radarr.png" alt="Radarr" width="70" height="70">
   <img src="assets/prowlarr.png" alt="Prowlarr" width="70" height="70">
   <img src="assets/bazarr.png" alt="Bazarr" width="70" height="70">
+  <img src="assets/komga.png" alt="Komga" width="70" height="70">
+  <img src="assets/kavita.svg" alt="Kavita" width="70" height="70">
 </p>
 
 ## Quick Setup
