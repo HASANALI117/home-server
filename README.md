@@ -72,6 +72,17 @@ The `docker-udms.sh` script performs the following tasks:
 
 The script sets up Docker Compose files for the following services:
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plex-logo.png" alt="Plex" width="50" height="50">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png" alt="Jellyfin" width="50" height="50">
+  <img src="https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png" alt="qBittorrent" width="50" height="50">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png" alt="Radarr" width="50" height="50">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-banner.png" alt="Prowlarr" width="50" height="50">
+  <img src="https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png" alt="Bazarr" width="50" height="50">
+  <img src="https://github.com/Sonarr/Sonarr/raw/develop/Logo/256.png" alt="Sonarr" width="50" height="50">
+  <img src="https://avatars.githubusercontent.com/u/122929872?v=4" alt="Homepage" width="50" height="50">
+</p>
+
 - **`socket-proxy`**: A reverse proxy for managing access to multiple services running on the server. [Documentation](https://github.com/Tecnativa/docker-socket-proxy?tab=readme-ov-file#supported-api-versions)
 
 - **`portainer`**: A lightweight management UI that allows you to easily manage Docker environments. [Documentation](https://docs.portainer.io/)
@@ -86,7 +97,7 @@ The script sets up Docker Compose files for the following services:
 
 - **`qbittorrent`**: A popular torrent client with a built-in web interface for managing torrents. [Documentation](https://docs.linuxserver.io/images/docker-qbittorrent/)
 
-- **`sonarr`**: A TV series manager that automatically downloads and organizes TV shows. [Documentation](https://docs.linuxserver.io/images/docker-radarr/)
+- **`sonarr`**: A TV series manager that automatically downloads and organizes TV shows. [Documentation](https://docs.linuxserver.io/images/docker-sonarr/)
 
 - **`radarr`**: A movie collection manager that automates the process of downloading and organizing movies. [Documentation](https://docs.linuxserver.io/images/docker-radarr/)
 
