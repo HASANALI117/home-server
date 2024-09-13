@@ -166,3 +166,21 @@ edit_qbittorrent_config() {
     fi
 }
 
+# Add Docker aliases to bash configuration
+add_docker_aliases() {
+    echo "Adding Docker aliases to $BASH_CONFIG..."
+    
+    cat <<EOF >> "$BASH_CONFIG"
+
+# Docker Aliases
+alias dcup='sudo docker compose -f $MASTER_COMPOSE up -d --build --remove-orphans'
+alias dcdown='sudo docker compose -f $MASTER_COMPOSE down --remove-orphans'
+alias dcrec='sudo docker compose -f $MASTER_COMPOSE up -d --force-recreate --remove-orphans'
+alias dcstop='sudo docker compose -f $MASTER_COMPOSE stop'
+alias dcrestart='sudo docker compose -f $MASTER_COMPOSE restart'
+alias dcstart='sudo docker compose -f $MASTER_COMPOSE start'
+alias dcpull='sudo docker compose -f $MASTER_COMPOSE pull'
+alias dclogs='sudo docker compose -f $MASTER_COMPOSE logs -tf --tail="50"'
+EOF
+    echo "Docker aliases added. Please run 'source $BASH_CONFIG' to apply the changes."
+}

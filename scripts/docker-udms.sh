@@ -23,6 +23,8 @@ main() {
     echo
     edit_homepage_config
     echo
+    add_docker_aliases
+    echo
     start_containers
     echo
 
