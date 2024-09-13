@@ -17,8 +17,6 @@ main() {
     echo
     create_compose_files
     echo
-    start_containers
-    echo
     edit_qbittorrent_config
     echo
     edit_homepage_config

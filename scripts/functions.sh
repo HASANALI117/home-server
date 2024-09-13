@@ -137,8 +137,6 @@ start_containers() {
 
 # Replace homepage configuration files
 edit_homepage_config() {
-    local HOMEPAGE_DIR="$APPDATA/homepage"
-    
     echo "Replacing homepage configuration files..."
     
     local files=("bookmarks.yaml" "services.yaml" "settings.yaml" "widgets.yaml")
@@ -153,15 +151,16 @@ edit_homepage_config() {
 
 # Edit qbittorrent configuration
 edit_qbittorrent_config() {
-    sudo docker compose -f "$MASTER_COMPOSE" down
-
-    QBITTORRENT_CONF="$APPDATA/qbittorrent/qBittorrent/qBittorrent.conf"
-
     echo "Copying qbittorrent.conf from $QBITTORRENT_CONFIG..."
-    if cp "$QBITTORRENT_CONF" "$QBITTORRENT_CONFIG"; then
-        echo "qbittorrent.conf copied and updated."
+    if [ -f "$QBITTORRENT_CONFIG" ]; then
+        if cp "$QBITTORRENT_CONFIG" "$QBITTORRENT_CONF"; then
+            echo "qbittorrent.conf copied and updated."
+        else
+            echo "Failed to copy qbittorrent.conf from $QBITTORRENT_CONFIG." >&2
+            exit 1
+        fi
     else
-        echo "Failed to copy qbittorrent.conf from $QBITTORRENT_CONFIG." >&2
+        echo "Source qbittorrent.conf does not exist at $QBITTORRENT_CONFIG." >&2
         exit 1
     fi
 }
