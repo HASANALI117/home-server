@@ -28,7 +28,7 @@ include:
   - compose/$HOSTNAME/homepage.yml
   # MEDIA
   - compose/$HOSTNAME/plex.yml
-  - compose/$HOSTNAME/jellyfin.yml
+  # - compose/$HOSTNAME/jellyfin.yml
   # DOWNLOADERS
   # - compose/$HOSTNAME/sabnzbd.yml
   - compose/$HOSTNAME/qbittorrent.yml
@@ -46,4 +46,4 @@ include:
   # UTILITIES
   # - compose/$HOSTNAME/filebrowser.yml
   # MAINTENANCE
-  - compose/$HOSTNAME/docker-gc.yml
+  # - compose/$HOSTNAME/docker-gc.yml
