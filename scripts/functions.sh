@@ -49,23 +49,46 @@ create_env_file() {
     PGID=$(id -g)
     
     read -p "Enter TZ [America/New_York]: " TZ
-    TZ=${TZ:-"America/New_York"}
     read -p "Enter SERVER_IP: " SERVER_IP
     read -p "Enter PLEX_CLAIM (leave empty if not available): " PLEX_CLAIM
 
     [ -n "$PLEX_CLAIM" ] && echo "$PLEX_CLAIM" > "$SECRETS/plex_claim"
 
-    cat <<EOF >> "$ENV_FILE"
-HOSTNAME="$USER"
-USERDIR="$USERDIR"
-DOCKERDIR="$DOCKER_ROOT"
-SECRETSDIR="$SECRETS"
-SERVER_IP="$SERVER_IP"
-DATADIR="$DATADIR"
-TZ="$TZ"
-PUID="$PUID"
-PGID="$PGID"
-EOF
+    declare -A env_vars=(
+        ["HOSTNAME"]="$USER"
+        ["USERDIR"]="$USERDIR"
+        ["DOCKERDIR"]="$DOCKER_ROOT"
+        ["SECRETSDIR"]="$SECRETS"
+        ["SERVER_IP"]="$SERVER_IP"
+        ["DATADIR"]="$DATADIR"
+        ["TZ"]="$TZ"
+        ["PUID"]="$PUID"
+        ["PGID"]="$PGID"
+        ["HOMEPAGE_VAR_PLEX_URL"]="http://$SERVER_IP:32400/web"
+        ["HOMEPAGE_VAR_PORTAINER_URL"]="http://$SERVER_IP:9000"
+        ["HOMEPAGE_VAR_DOZZLE_URL"]="http://$SERVER_IP:8082"
+        ["HOMEPAGE_VAR_JELLYFIN_URL"]="http://$SERVER_IP:8096"
+        ["HOMEPAGE_VAR_QBITTORRENT_URL"]="http://$SERVER_IP:8081"
+        ["HOMEPAGE_VAR_SONARR_URL"]="http://$SERVER_IP:8989"
+        ["HOMEPAGE_VAR_RADARR_URL"]="http://$SERVER_IP:7878"
+        ["HOMEPAGE_VAR_PROWLARR_URL"]="http://$SERVER_IP:9696"
+        ["HOMEPAGE_VAR_BAZARR_URL"]="http://$SERVER_IP:6767"
+    )
+
+    for key in "${!env_vars[@]}"; do
+        update_env_var "$key" "${env_vars[$key]}"
+    done
+}
+
+# Function to update or add environment variables in the .env file
+update_env_var() {
+    local key=$1
+    local value=$2
+    if grep -q "^$key=" "$ENV_FILE"; then
+        sed -i "s|^$key=.*|$key=$value|" "$ENV_FILE"
+    else
+        echo "$key=$value" >> "$ENV_FILE"
+    fi
 }
 
 # Create necessary directories
@@ -149,19 +172,18 @@ edit_homepage_config() {
     echo "Homepage configuration files replaced."
 }
 
-# Edit qbittorrent configuration
+# Replace qBittorrent configuration file
 edit_qbittorrent_config() {
-    echo "Copying qbittorrent.conf from $QBITTORRENT_CONFIG..."
-    if [ -f "$QBITTORRENT_CONFIG" ]; then
-        if cp "$QBITTORRENT_CONFIG" "$QBITTORRENT_CONF"; then
-            echo "qbittorrent.conf copied and updated."
-        else
-            echo "Failed to copy qbittorrent.conf from $QBITTORRENT_CONFIG." >&2
-            exit 1
-        fi
+    echo "Replacing qBittorrent configuration file..."
+    
+    # Ensure the destination directory exists
+    mkdir -p "$(dirname "$QBITTORRENT_CONF")"
+    
+    # Copy the configuration file
+    if cp "$QBITTORRENT_CONFIG" "$QBITTORRENT_CONF"; then
+        echo "Copied qbittorrent.conf from $QBITTORRENT_CONFIG to $QBITTORRENT_CONF."
     else
-        echo "Source qbittorrent.conf does not exist at $QBITTORRENT_CONFIG." >&2
-        exit 1
+        echo "Failed to copy qbittorrent.conf from $QBITTORRENT_CONFIG."
     fi
 }
 

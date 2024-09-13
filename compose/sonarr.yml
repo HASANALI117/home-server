@@ -13,7 +13,7 @@ services:
     ports:
       - "8989:8989"
     volumes:
-      - $DOCKERDIR/appdata/sonar:/config
+      - $DOCKERDIR/appdata/sonarr:/config
       - $DATADIR/media/tvshows:/tvshows
       - $DATADIR/downloads:/data/downloads
       - "/etc/localtime:/etc/localtime:ro"
