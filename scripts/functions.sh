@@ -21,7 +21,7 @@ install_docker() {
     if ! command -v docker &> /dev/null; then
         echo "Installing Docker and Docker Compose..."
         curl -fsSL https://get.docker.com -o scripts/install-docker.sh || error_exit "Failed to download Docker installation script."
-        sudo sh get-docker.sh || error_exit "Docker installation failed."
+        sudo sh scripts/get-docker.sh || error_exit "Docker installation failed."
         echo "Docker and Docker Compose installed."
     else
         echo "Docker is already installed."
