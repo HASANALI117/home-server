@@ -3,18 +3,22 @@
 This repository automates the setup and management of my home server using Docker and Docker Compose.
 
 <p align="center">
-  <img src="assets/docker.png" alt="Portainer" width="100" height="70">
-  <img src="assets/portainer.png" alt="Portainer" width="70" height="70">
+  <img src="assets/docker-moby.png" alt="Docker" width="70" height="70">
+  <img src="assets/portainer-alt.png" alt="Portainer" width="70" height="70">
   <img src="assets/homepage.png" alt="Homepage" width="70" height="70" style="border-radius: 100%;">
   <img src="assets/plex.png" alt="Plex" width="70" height="70">
   <img src="assets/jellyfin.png" alt="Jellyfin" width="70" height="70" >
   <img src="assets/qbittorrent.png" alt="qBittorrent" width="70" height="70">
   <img src="assets/sonarr.png" alt="Sonarr" width="70" height="70">
-  <img src="assets/radarr.png" alt="Radarr" width="70" height="70">
+  <img src="assets/radarr-light.png" alt="Radarr" width="70" height="70">
   <img src="assets/prowlarr.png" alt="Prowlarr" width="70" height="70">
   <img src="assets/bazarr.png" alt="Bazarr" width="70" height="70">
   <img src="assets/komga.png" alt="Komga" width="70" height="70">
-  <img src="assets/kavita.svg" alt="Kavita" width="70" height="70">
+  <img src="assets/kavita.png" alt="Kavita" width="70" height="70">
+  <img src="assets/gitea.png" alt="Gitea" width="70" height="70">
+  <img src="assets/mariadb.png" alt="MariaDB" width="70" height="70">
+  <img src="assets/tachidesk.png" alt="TachiDesk" width="70" height="70">
+  <img src="assets/trash-guides.png" alt="Trash-Guides" width="70" height="70">
 </p>
 
 ## Quick Setup
