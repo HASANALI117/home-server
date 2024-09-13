@@ -7,11 +7,11 @@ source ./functions.sh
 
 # Main function
 main() {
+    create_directories
+    echo
     install_docker
     echo
     verify_docker
-    echo
-    create_directories
     echo
     set_permissions
     echo
