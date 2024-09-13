@@ -2,6 +2,9 @@
 
 # set -e
 
+# Source functions and configurations
+source ./functions.sh
+
 # Main function
 main() {
     install_docker

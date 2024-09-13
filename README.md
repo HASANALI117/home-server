@@ -21,20 +21,37 @@ This repository automates the setup and management of my home server using Docke
   <img src="assets/trash-guides.png" alt="Trash-Guides" width="70" height="70">
 </p>
 
+## Prerequisites
+
+- **Operating System**: Ubuntu/Debian Linux
+- **Git**: Required to clone the repository. Install Git with:
+
+  ```bash
+  sudo apt install git
+  ```
+
 ## Quick Setup
 
-To quickly set up the script, use the following command:
+To quickly set up the script, use the following commands:
 
-```bash
-curl -O "https://raw.githubusercontent.com/HASANALI117/home-server/main/docker-udms.sh"
-```
+1. **Clone the repository**:
 
-After downloading, make the script executable and run it:
+   ```bash
+   git clone https://github.com/HASANALI117/home-server.git
+   ```
 
-```bash
-chmod +x docker-udms.sh
-./docker-udms.sh
-```
+2. **Navigate to the `scripts` directory**:
+
+   ```bash
+   cd home-server/scripts
+   ```
+
+3. **Make the script executable and run it**:
+
+   ```bash
+   chmod +x docker-udms.sh
+   ./docker-udms.sh
+   ```
 
 Follow the prompts to provide configuration details. Examples of the prompts are:
 
@@ -117,7 +134,7 @@ The script sets up Docker Compose files for the following services:
 
 ## Adding More Services
 
-To add more services, follow these steps:
+There are 75+ apps in the `compose/` directory. For more information on these apps, refer to the [README in the compose directory](./compose/README.md). The script is a work in progress for adding all of them, for now to add more services, follow these steps:
 
 1. **Add Service Configuration**: Copy the desired service's Docker Compose YAML file from the [`compose/`]() directory.
 2. **Update [`docker-compose-udms.yml`]()**: Add the path to the copied service YAML file in the [`docker-compose-udms.yml`]() file under the appropriate section.

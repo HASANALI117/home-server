@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source configuration file
+source ./config.sh
+
 # Error handling
 error_exit() {
     echo "$1" | tee -a "$LOGS/error.log" 1>&2
@@ -17,7 +20,7 @@ download_file() {
 install_docker() {
     if ! command -v docker &> /dev/null; then
         echo "Installing Docker and Docker Compose..."
-        curl -fsSL https://get.docker.com -o get-docker.sh || error_exit "Failed to download Docker installation script."
+        curl -fsSL https://get.docker.com -o scripts/install-docker.sh || error_exit "Failed to download Docker installation script."
         sudo sh get-docker.sh || error_exit "Docker installation failed."
         echo "Docker and Docker Compose installed."
     else
@@ -36,7 +39,7 @@ verify_docker() {
 # Create .env file
 create_env_file() {
     if [ ! -f "$ENV_FILE" ]; then
-        download_file "$ENV_EXAMPLE_URL" "$ENV_FILE"
+        cp "$ENV_EXAMPLE" "$ENV_FILE"
         echo ".env file created at $ENV_FILE"
     else
         echo ".env file already exists at $ENV_FILE"
@@ -100,7 +103,7 @@ set_permissions() {
 # Create Docker Compose files
 create_compose_files() {
     echo "Creating master docker-compose file..."
-    download_file "$DOCKER_COMPOSE_URL" "$MASTER_COMPOSE"
+    cp "$DOCKER_COMPOSE" "$MASTER_COMPOSE"
     echo "Master docker-compose file created: $MASTER_COMPOSE"
 
     local services=(
@@ -120,7 +123,7 @@ create_compose_files() {
 
     echo "Creating compose files..."
     for service in "${services[@]}"; do
-        download_file "$COMPOSE_FILES_URL/$service.yml" "$COMPOSE/$service.yml"
+        cp "$COMPOSE_FILES/$service.yml" "$COMPOSE/$service.yml"
         echo "Created: $COMPOSE/$service.yml"
     done
     echo "Compose files created."
@@ -141,7 +144,7 @@ edit_homepage_config() {
     local files=("bookmarks.yaml" "services.yaml" "settings.yaml" "widgets.yaml")
 
     for file in "${files[@]}"; do
-        download_file "$HOMEPAGE_CONFIG_URL/$file" "$HOMEPAGE_DIR/$file"
+        cp "$HOMEPAGE_CONFIG/$file" "$HOMEPAGE_DIR/$file"
         echo "Replaced $file"
     done
     
@@ -154,11 +157,11 @@ edit_qbittorrent_config() {
 
     QBITTORRENT_CONF="$APPDATA/qbittorrent/qBittorrent/qBittorrent.conf"
 
-    echo "Downloading qbittorrent.conf from $QBITTORRENT_CONFIG_URL..."
-    if curl -o "$QBITTORRENT_CONF" "$QBITTORRENT_CONFIG_URL"; then
-        echo "qbittorrent.conf downloaded and updated."
+    echo "Copying qbittorrent.conf from $QBITTORRENT_CONFIG..."
+    if cp "$QBITTORRENT_CONF" "$QBITTORRENT_CONFIG"; then
+        echo "qbittorrent.conf copied and updated."
     else
-        echo "Failed to download qbittorrent.conf from $QBITTORRENT_CONFIG_URL." >&2
+        echo "Failed to copy qbittorrent.conf from $QBITTORRENT_CONFIG." >&2
         exit 1
     fi
 }
