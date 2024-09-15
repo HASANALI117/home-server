@@ -177,3 +177,7 @@ include:
   # Add your new service here
   - compose/$HOSTNAME/new-service.yml
 ```
+
+## Credits
+
+Special thanks to [@anandslab](https://github.com/anandslab) for his amazing guides and resources. The Docker Compose files were taken from his repository [docker-traefik](https://github.com/anandslab/docker-traefik). For more information, check out his guide on setting up a Docker media server [here](https://www.smarthomebeginner.com/docker-media-server-2024/).
