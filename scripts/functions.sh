@@ -105,8 +105,6 @@ create_directories() {
 
     # Create .env file
     create_env_file
-    # Download docker-gc-exclude file
-    download_docker_gc_exclude
 }
 
 # Set permissions

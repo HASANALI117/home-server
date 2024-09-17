@@ -21,6 +21,8 @@ main() {
     echo
     edit_homepage_config
     echo
+    download_docker_gc_exclude
+    echo
     add_docker_aliases
     echo
     start_containers
