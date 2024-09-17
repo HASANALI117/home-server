@@ -52,11 +52,11 @@ create_env_file() {
     read -p "Enter SERVER_IP: " SERVER_IP
     read -p "Enter PLEX_CLAIM (leave empty if not available): " PLEX_CLAIM
 
-    [ -n "$PLEX_CLAIM" ] && echo "$PLEX_CLAIM" > "$SECRETS/plex_claim"
+    [ -n "$PLEX_CLAIM" ] && echo "$PLEX_CLAIM" | sudo tee "$SECRETS/plex_claim" > /dev/null
 
     declare -A env_vars=(
-        ["HOSTNAME"]="$USER"
-        ["USERDIR"]="$USERDIR"
+        ["HOSTNAME"]="$HOSTNAME"
+        ["USERDIR"]="$HOST"
         ["DOCKERDIR"]="$DOCKER_ROOT"
         ["SECRETSDIR"]="$SECRETS"
         ["SERVER_IP"]="$SERVER_IP"
@@ -103,7 +103,10 @@ create_directories() {
     echo "  - $SECRETS"
     echo "  - $SHARED"
 
+    # Create .env file
     create_env_file
+    # Download docker-gc-exclude file
+    download_docker_gc_exclude
 }
 
 # Set permissions
@@ -188,20 +191,44 @@ edit_qbittorrent_config() {
 }
 
 # Add Docker aliases to bash configuration
-add_docker_aliases() {
-    echo "Adding Docker aliases to $BASH_CONFIG..."
-    
-    cat <<EOF >> "$BASH_CONFIG"
+add_docker_aliases() { 
+    echo "Adding Docker aliases from bash_aliases to $BASH_CONFIG..."
 
-# Docker Aliases
-alias dcup='sudo docker compose -f $MASTER_COMPOSE up -d --build --remove-orphans'
-alias dcdown='sudo docker compose -f $MASTER_COMPOSE down --remove-orphans'
-alias dcrec='sudo docker compose -f $MASTER_COMPOSE up -d --force-recreate --remove-orphans'
-alias dcstop='sudo docker compose -f $MASTER_COMPOSE stop'
-alias dcrestart='sudo docker compose -f $MASTER_COMPOSE restart'
-alias dcstart='sudo docker compose -f $MASTER_COMPOSE start'
-alias dcpull='sudo docker compose -f $MASTER_COMPOSE pull'
-alias dclogs='sudo docker compose -f $MASTER_COMPOSE logs -tf --tail="50"'
-EOF
-    echo "Docker aliases added. Please run 'source $BASH_CONFIG' to apply the changes."
+    # Check if bash_aliases file exists in the same directory as the script
+    if [[ -f "./bash_aliases" ]]; then
+        # Append the contents of bash_aliases to the bash configuration
+        cat "./bash_aliases" >> "$BASH_CONFIG"
+        echo "Docker aliases added from bash_aliases to $BASH_CONFIG."
+    else
+        error_exit "bash_aliases file not found in the current directory."
+    fi
+
+    # Ensure .bashrc sources .bash_aliases
+    if ! grep -q "source $BASH_CONFIG" "$BASHRC"; then
+        echo "source $BASH_CONFIG" >> "$BASHRC"
+        echo "Added 'source $BASH_CONFIG' to $BASHRC to load .bash_aliases."
+    else
+        echo "$BASHRC already sources $BASH_CONFIG."
+    fi
+
+    # Source the .bashrc to apply changes immediately
+    source "$BASHRC"
+}
+
+# Function to download docker-gc-exclude file
+download_docker_gc_exclude() {
+    echo "Downloading docker-gc-exclude file..."
+    wget -O "$APPDATA/docker-gc/docker-gc-exclude" https://raw.githubusercontent.com/clockworksoul/docker-gc-cron/master/compose/docker-gc-exclude
+    if [ $? -eq 0 ]; then
+        echo "docker-gc-exclude file downloaded successfully."
+    else
+        echo "Failed to download docker-gc-exclude file. Attempting to copy from local configs..."
+        cp "$DOCKERGC_EXCLUDE" "$APPDATA/docker-gc/docker-gc-exclude"
+        if [ $? -eq 0 ]; then
+            echo "docker-gc-exclude file copied successfully from local configs."
+        else
+            echo "Failed to copy docker-gc-exclude file from local configs."
+            exit 1
+        fi
+    fi
 }
