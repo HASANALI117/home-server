@@ -164,8 +164,8 @@ edit_homepage_config() {
     echo "Creating homepage configuration files..."
 
     # Ensure the destination directory exists
-    mkdir -p "$(dirname "$HOMEPAGE_CONFIG")"
-    
+    mkdir -p "$APPDATA/homepage"
+        
     local files=("bookmarks.yaml" "services.yaml" "settings.yaml" "widgets.yaml")
 
     # Copy the configuration files
