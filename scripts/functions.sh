@@ -161,16 +161,23 @@ start_containers() {
 
 # Replace homepage configuration files
 edit_homepage_config() {
-    echo "Replacing homepage configuration files..."
+    echo "Creating homepage configuration files..."
+
+    # Ensure the destination directory exists
+    mkdir -p "$(dirname "$HOMEPAGE_CONFIG")"
     
     local files=("bookmarks.yaml" "services.yaml" "settings.yaml" "widgets.yaml")
 
-    for file in "${files[@]}"; do
-        cp "$HOMEPAGE_CONFIG/$file" "$HOMEPAGE_DIR/$file"
-        echo "Replaced $file"
+    # Copy the configuration files
+    for file in bookmarks.yaml services.yaml settings.yaml widgets.yaml; do
+        if cp "$HOMEPAGE_CONFIG/$file" "$APPDATA/homepage/$file"; then
+            echo "Created $file"
+        else
+            echo "Failed to create $file"
+        fi
     done
     
-    echo "Homepage configuration files replaced."
+    echo "Homepage configuration files created."
 }
 
 # Replace qBittorrent configuration file
@@ -216,6 +223,10 @@ add_docker_aliases() {
 # Function to download docker-gc-exclude file
 download_docker_gc_exclude() {
     echo "Downloading docker-gc-exclude file..."
+
+    # Ensure the destination directory exists
+    mkdir -p "$APPDATA/docker-gc"
+
     wget -O "$APPDATA/docker-gc/docker-gc-exclude" https://raw.githubusercontent.com/clockworksoul/docker-gc-cron/master/compose/docker-gc-exclude
     if [ $? -eq 0 ]; then
         echo "docker-gc-exclude file downloaded successfully."
