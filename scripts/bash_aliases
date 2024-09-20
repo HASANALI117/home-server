@@ -1,5 +1,4 @@
-# Source configuration file
-source ./config.sh
+source "$HOME/.config.env"
 
 # Rename shared/config/bash_aliases.env.example and use it as a starter
 

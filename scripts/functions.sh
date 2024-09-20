@@ -110,9 +110,9 @@ create_directories() {
 # Set permissions
 set_permissions() {
     echo "Setting permissions for secrets folder and .env file..."
-    sudo chown root:root "$SECRETS" "$ENV_FILE"
-    sudo chmod 600 "$SECRETS" "$ENV_FILE"
-    echo "Permissions set for secrets folder and .env file."
+    sudo chown root:root "$SECRETS" "$ENV_FILE" "$CONFIG_FILE"
+    sudo chmod 600 "$SECRETS" "$ENV_FILE" "$CONFIG_FILE"
+    echo "Permissions set for secrets folder, .env file and config file."
 
     echo "Setting permissions for Docker root folder..."
     sudo apt install -y acl || error_exit "Failed to install ACL."
@@ -199,6 +199,9 @@ edit_qbittorrent_config() {
 add_docker_aliases() { 
     echo "Adding Docker aliases from bash_aliases to $BASH_CONFIG..."
 
+    # Create .config.env file
+    export_config_to_env
+
     # Check if bash_aliases file exists in the same directory as the script
     if [[ -f "./bash_aliases" ]]; then
         # Append the contents of bash_aliases to the bash configuration
@@ -240,4 +243,11 @@ download_docker_gc_exclude() {
             exit 1
         fi
     fi
+}
+
+
+# Function to copy config.sh to .config.env
+export_config_to_env() {
+    cp "./config.sh" "$CONFIG_FILE"
+    echo "Config file created at $CONFIG_FILE"
 }
