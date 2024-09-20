@@ -104,15 +104,7 @@ The `docker-udms.sh` script performs the following tasks:
 
 7. **Service Configuration**: Applies specific configurations to services like qbittorrent and homepage.
 
-8. **Adds Docker Aliases**: Adds useful Docker aliases to your bash configuration for easier management of Docker services:
-
-   - `dcup` - Start Docker stack
-   - `dcdown` - Stop Docker stack
-   - `dcrec` - Start or recreate a specific service or the full stack
-   - `dcstop` - Stop a specific service or the full stack
-   - `dcrestart` - Restart a specific service or the full stack
-   - `dcpull` - Pull new images for the corresponding stack or service
-   - `dclogs` - See real-time logs for the corresponding stack or service
+8. **Adds Docker Aliases**: Adds useful Docker and bash aliases to your bash configuration for easier management of Docker services and other tasks. For a full list of aliases and usage examples, refer to the [Bash Aliases & Shortcuts](./BASH-ALIASES.md) section.
 
 ## Services Managed by the Script
 
