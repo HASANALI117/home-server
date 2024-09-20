@@ -42,229 +42,95 @@
 mv shared/config/bash_aliases.env.example shared/config/bash_aliases.env
 ```
 
+---
+
 ## Docker Aliases
 
-1. `dstop`: Stops a running Docker container.
+- `dstop`: Stops a running Docker container.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     dstop my_container
-     ```
+    ```bash
+    dstop my_container
+    ```
 
-2. `dstopall`: Stops all running Docker containers.
+- `dstopall`: Stops all running Docker containers.
 
-   - **Usage**:
+- `drm`: Removes a stopped Docker container.
 
-     ```bash
-     dstopall
-     ```
+  - **Usage**:
 
-3. `drm`: Removes a stopped Docker container.
+    ```bash
+    drm container_name
+    ```
 
-   - **Usage**:
+- `dprunevol`: Removes unused Docker volumes.
 
-     ```bash
-     drm container_name
-     ```
+- `dprunesys`: Removes all unused Docker data (volumes, networks, images).
 
-   - **Example**:
+- `ddelimages`: Deletes all unused Docker images.
 
-     ```bash
-     drm my_container
-     ```
+- `derase`: Stops, removes containers, and prunes the system (Deletes everything!).
 
-4. `dprunevol`: Removes unused Docker volumes.
+- `dprune`: Safely cleans up Docker (unused images, volumes, and system).
 
-   - **Usage**:
+- `dexec`: Executes a command inside a running container (interactive mode).
 
-     ```bash
-     dprunevol
-     ```
+  - **Example**:
 
-5. `dprunesys`: Removes all unused Docker data (volumes, networks, images).
+    ```bash
+    dexec my_container /bin/bash
+    ```
 
-   - **Usage**:
+- `dps`: Shows all Docker processes.
 
-     ```bash
-     dprunesys
-     ```
+- `dpss`: Shows Docker processes in a formatted table.
 
-6. `ddelimages`: Deletes all unused Docker images.
+- `ddf`: Shows Docker data usage.
 
-   - **Usage**:
+- `dlogs`: Shows the latest 50 logs of a container.
 
-     ```bash
-     ddelimages
-     ```
+  - **Usage**:
 
-7. `derase`: Stops, removes containers, and prunes the system (Deletes everything!).
+    ```bash
+    dlogs container_name
+    ```
 
-   - **Usage**:
+- `dlogsize`: Displays the size of Docker container logs.
 
-     ```bash
-     derase
-     ```
+- `dips`: Shows IP addresses of Docker containers.
 
-8. `dprune`: Safely cleans up Docker (unused images, volumes, and system).
+- `dp600`: Locks down the permissions for `$SECRETS` and `$ENV_FILE`.
 
-   - **Usage**:
+- `dp777`: Opens permissions for `$SECRETS` and `$ENV_FILE` for editing.
 
-     ```bash
-     dprune
-     ```
-
-9. `dexec`: Executes a command inside a running container (interactive mode).
-
-   - **Usage**:
-
-     ```bash
-     dexec container_name
-     ```
-
-   - **Example**:
-
-     ```bash
-     dexec my_container /bin/bash
-     ```
-
-10. `dps`: Shows all Docker processes.
-
-- **Usage**:
-
-  ```bash
-  dps
-  ```
-
-11. `dpss`: Shows Docker processes in a formatted table.
-
-- **Usage**:
-
-  ```bash
-  dpss
-  ```
-
-12. `ddf`: Shows Docker data usage.
-
-- **Usage**:
-
-  ```bash
-  ddf
-  ```
-
-13. `dlogs`: Shows the latest 50 logs of a container.
-
-- **Usage**:
-
-  ```bash
-  dlogs container_name
-  ```
-
-14. `dlogsize`: Displays the size of Docker container logs.
-
-- **Usage**:
-
-  ```bash
-  dlogsize
-  ```
-
-15. `dips`: Shows IP addresses of Docker containers.
-
-- **Usage**:
-
-  ```bash
-  dips
-  ```
-
-16. `dp600`: Locks down the permissions for `$SECRETS` and `$ENV_FILE`.
-
-- **Usage**:
-
-  ```bash
-  dp600
-  ```
-
-17. `dp777`: Opens permissions for `$SECRETS` and `$ENV_FILE` for editing.
-
-- **Usage**:
-
-  ```bash
-  dp777
-  ```
+---
 
 ### **Docker Compose Aliases**
 
-1. `dcrun`: Runs Docker Compose with the appropriate file.
+- `dcrun`: Runs Docker Compose with the appropriate file.
 
-   - **Usage**:
+- `dclogs`: Displays the logs for Docker Compose containers.
 
-     ```bash
-     dcrun
-     ```
+- `dcup`: Starts Docker Compose services and builds missing images.
 
-2. `dclogs`: Displays the logs for Docker Compose containers.
+- `dcdown`: Stops and removes Docker Compose services.
 
-   - **Usage**:
+- `dcrec`: Recreates Docker Compose containers.
 
-     ```bash
-     dclogs
-     ```
+  - **Usage**:
 
-3. `dcup`: Starts Docker Compose services and builds missing images.
+    ```bash
+    dcrec container_name
+    ```
 
-   - **Usage**:
+- `dcstop`: Stops Docker Compose services.
 
-     ```bash
-     dcup
-     ```
+- `dcrestart`: Restarts Docker Compose services.
 
-4. `dcdown`: Stops and removes Docker Compose services.
+- `dcstart`: Starts stopped Docker Compose services.
 
-   - **Usage**:
-
-     ```bash
-     dcdown
-     ```
-
-5. `dcrec`: Recreates Docker Compose containers.
-
-   - **Usage**:
-
-     ```bash
-     dcrec container_name
-     ```
-
-6. `dcstop`: Stops Docker Compose services.
-
-   - **Usage**:
-
-     ```bash
-     dcstop
-     ```
-
-7. `dcrestart`: Restarts Docker Compose services.
-
-   - **Usage**:
-
-     ```bash
-     dcrestart
-     ```
-
-8. `dcstart`: Starts stopped Docker Compose services.
-
-   - **Usage**:
-
-     ```bash
-     dcstart
-     ```
-
-9. `dcpull`: Pulls the latest images for services defined in Docker Compose.
-
-   - **Usage**:
-
-     ```bash
-     dcpull
-     ```
+- `dcpull`: Pulls the latest images for services defined in Docker Compose.
 
 ---
 
@@ -272,847 +138,423 @@ mv shared/config/bash_aliases.env.example shared/config/bash_aliases.env
 
 #### **Manage "core" services** as defined by profiles in Docker Compose:
 
-10. `startcore`: Starts the "core" services.
+- `startcore`: Starts the "core" services.
 
-    - **Usage**:
+- `createcore`: Builds and starts "core" services (removing orphaned containers).
 
-      ```bash
-      startcore
-      ```
-
-11. `createcore`: Builds and starts "core" services (removing orphaned containers).
-
-    - **Usage**:
-
-      ```bash
-      createcore
-      ```
-
-12. `stopcore`: Stops the "core" services.
-
-    - **Usage**:
-
-      ```bash
-      stopcore
-      ```
+- `stopcore`: Stops the "core" services.
 
 #### **Manage "media" services** as defined by profiles in Docker Compose:
 
-13. `stopmedia`: Stops the "media" services.
+- `stopmedia`: Stops the "media" services.
 
-    - **Usage**:
+- `createmedia`: Builds and starts "media" services (removing orphaned containers).
 
-      ```bash
-      stopmedia
-      ```
-
-14. `createmedia`: Builds and starts "media" services (removing orphaned containers).
-
-    - **Usage**:
-
-      ```bash
-      createmedia
-      ```
-
-15. `startmedia`: Starts the "media" services.
-
-    - **Usage**:
-
-      ```bash
-      startmedia
-      ```
+- `startmedia`: Starts the "media" services.
 
 #### **Manage "downloads" services** as defined by profiles in Docker Compose:
 
-16. `stopdownloads`: Stops the "downloads" services.
+- `stopdownloads`: Stops the "downloads" services.
 
-    - **Usage**:
+- `createdownloads`: Builds and starts "downloads" services (removing orphaned containers).
 
-      ```bash
-      stopdownloads
-      ```
-
-17. `createdownloads`: Builds and starts "downloads" services (removing orphaned containers).
-
-    - **Usage**:
-
-      ```bash
-      createdownloads
-      ```
-
-18. `startdownloads`: Starts the "downloads" services.
-
-    - **Usage**:
-
-      ```bash
-      startdownloads
-      ```
+- `startdownloads`: Starts the "downloads" services.
 
 #### **Manage Starr apps** as defined by profiles in Docker Compose:
 
-19. `stoparrs`: Stops the Starr apps services.
+- `stoparrs`: Stops the Starr apps services.
 
-    - **Usage**:
+- `createarrs`: Builds and starts the Starr apps services (removing orphaned containers).
 
-      ```bash
-      stoparrs
-      ```
-
-20. `createarrs`: Builds and starts the Starr apps services (removing orphaned containers).
-
-    - **Usage**:
-
-      ```bash
-      createarrs
-      ```
-
-21. `startarrs`: Starts the Starr apps services.
-
-    - **Usage**:
-
-      ```bash
-      startarrs
-      ```
+- `startarrs`: Starts the Starr apps services.
 
 #### **Manage "dbs" (database) services** as defined by profiles in Docker Compose:
 
-22. `stopdbs`: Stops the database services.
+- `stopdbs`: Stops the database services.
 
-    - **Usage**:
+- `createdbs`: Builds and starts the database services (removing orphaned containers).
 
-      ```bash
-      stopdbs
-      ```
+- `startdbs`: Starts the database services.
 
-23. `createdbs`: Builds and starts the database services (removing orphaned containers).
-
-    - **Usage**:
-
-      ```bash
-      createdbs
-      ```
-
-24. `startdbs`: Starts the database services.
-
-    - **Usage**:
-
-      ```bash
-      startdbs
-      ```
+---
 
 ### **CrowdSec Aliases**
 
-1. `cscli`: Executes CrowdSec CLI commands.
+- `cscli`: Executes CrowdSec CLI commands.
 
-   - **Usage**:
+- `csdecisions`: Lists current CrowdSec decisions.
 
-     ```bash
-     cscli
-     ```
+- `csalerts`: Displays CrowdSec alerts.
 
-2. `csdecisions`: Lists current CrowdSec decisions.
+- `csinspect`: Inspect CrowdSec alerts in detail.
 
-   - **Usage**:
+- `cshubs`: Lists available CrowdSec hub resources.
 
-     ```bash
-     csdecisions
-     ```
+- `csparsers`: Lists available CrowdSec parsers.
 
-3. `csalerts`: Displays CrowdSec alerts.
+- `cscollections`: Lists CrowdSec collections.
 
-   - **Usage**:
+- `cshubupdate`: Updates CrowdSec hub resources.
 
-     ```bash
-     csalerts
-     ```
+- `cshubupgrade`: Upgrades CrowdSec hub resources.
 
-4. `csinspect`: Inspect CrowdSec alerts in detail.
+- `csmetrics`: Displays CrowdSec metrics.
 
-   - **Usage**:
+- `csmachines`: Lists CrowdSec registered machines.
 
-     ```bash
-     csinspect
-     ```
+- `csbouncers`: Lists CrowdSec registered bouncers.
 
-5. `cshubs`: Lists available CrowdSec hub resources.
+- `csfbstatus`: Shows the status of the CrowdSec firewall bouncer service.
 
-   - **Usage**:
+- `csfbstart`: Starts the CrowdSec firewall bouncer service.
 
-     ```bash
-     cshubs
-     ```
+- `csfbstop`: Stops the CrowdSec firewall bouncer service.
 
-6. `csparsers`: Lists available CrowdSec parsers.
+- `csfbrestart`: Restarts the CrowdSec firewall bouncer service.
 
-   - **Usage**:
+- `tailkern`: Tails the kernel log file.
 
-     ```bash
-     csparsers
-     ```
+- `tailauth`: Tails the authentication log file.
 
-7. `cscollections`: Lists CrowdSec collections.
+- `tailcsfb`: Tails the CrowdSec firewall bouncer log file.
 
-   - **Usage**:
+- `csbrestart`: Restarts both Traefik bouncer and CrowdSec firewall bouncer.
 
-     ```bash
-     cscollections
-     ```
-
-8. `cshubupdate`: Updates CrowdSec hub resources.
-
-   - **Usage**:
-
-     ```bash
-     cshubupdate
-     ```
-
-9. `cshubupgrade`: Upgrades CrowdSec hub resources.
-
-   - **Usage**:
-
-     ```bash
-     cshubupgrade
-     ```
-
-10. `csmetrics`: Displays CrowdSec metrics.
-
-    - **Usage**:
-
-      ```bash
-      csmetrics
-      ```
-
-11. `csmachines`: Lists CrowdSec registered machines.
-
-    - **Usage**:
-
-      ```bash
-      csmachines
-      ```
-
-12. `csbouncers`: Lists CrowdSec registered bouncers.
-
-    - **Usage**:
-
-      ```bash
-      csbouncers
-      ```
-
-13. `csfbstatus`: Shows the status of the CrowdSec firewall bouncer service.
-
-    - **Usage**:
-
-      ```bash
-      csfbstatus
-      ```
-
-14. `csfbstart`: Starts the CrowdSec firewall bouncer service.
-
-    - **Usage**:
-
-      ```bash
-      csfbstart
-      ```
-
-15. `csfbstop`: Stops the CrowdSec firewall bouncer service.
-
-    - **Usage**:
-
-      ```bash
-      csfbstop
-      ```
-
-16. `csfbrestart`: Restarts the CrowdSec firewall bouncer service.
-
-    - **Usage**:
-
-      ```bash
-      csfbrestart
-      ```
-
-17. `tailkern`: Tails the kernel log file.
-
-    - **Usage**:
-
-      ```bash
-      tailkern
-      ```
-
-18. `tailauth`: Tails the authentication log file.
-
-    - **Usage**:
-
-      ```bash
-      tailauth
-      ```
-
-19. `tailcsfb`: Tails the CrowdSec firewall bouncer log file.
-
-    - **Usage**:
-
-      ```bash
-      tailcsfb
-      ```
-
-20. `csbrestart`: Restarts both Traefik bouncer and CrowdSec firewall bouncer.
-
-    - **Usage**:
-
-      ```bash
-      csbrestart
-      ```
+---
 
 ### **Web Stack Aliases**
 
-1. `webrs`: Recreates the web stack services (PHP 7, Redis, Nginx).
+- `webrs`: Recreates the web stack services (PHP 7, Redis, Nginx).
 
-   - **Usage**:
-
-     ```bash
-     webrs
-     ```
+---
 
 ### **Docker Traefik 1 Swarm Aliases**
 
-1. `dslogs`: Shows the logs of the Docker service in real-time, tailing the last 50 entries.
+- `dslogs`: Shows the logs of the Docker service in real-time, tailing the last 50 entries.
 
-   - **Usage**:
+- `dsps`: Displays the processes running in the `zstack` Docker Swarm stack.
 
-     ```bash
-     dslogs
-     ```
+- `dsse`: Lists the services in the `zstack` Docker Swarm stack.
 
-2. `dsps`: Displays the processes running in the `zstack` Docker Swarm stack.
+- `dsls`: Lists all Docker Swarm stacks.
 
-   - **Usage**:
+- `dsrm`: Removes a Docker Swarm stack.
 
-     ```bash
-     dsps
-     ```
+  - **Usage**:
 
-3. `dsse`: Lists the services in the `zstack` Docker Swarm stack.
+    ```bash
+    dsrm stack_name
+    ```
 
-   - **Usage**:
+- `dsup`: Deploys the `zstack` Docker Swarm stack using the specified Compose file.
 
-     ```bash
-     dsse
-     ```
+- `dshelp`: Displays a quick list of all Docker Swarm-related commands.
 
-4. `dsls`: Lists all Docker Swarm stacks.
-
-   - **Usage**:
-
-     ```bash
-     dsls
-     ```
-
-5. `dsrm`: Removes a Docker Swarm stack.
-
-   - **Usage**:
-
-     ```bash
-     dsrm stack_name
-     ```
-
-6. `dsup`: Deploys the `zstack` Docker Swarm stack using the specified Compose file.
-
-   - **Usage**:
-
-     ```bash
-     dsup
-     ```
-
-7. `dshelp`: Displays a quick list of all Docker Swarm-related commands.
-
-   - **Usage**:
-
-     ```bash
-     dshelp
-     ```
+---
 
 ### **File Compression Aliases**
 
-1. `untargz`: Extracts a `.tar.gz` file.
+- `untargz`: Extracts a `.tar.gz` file.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     untargz archive.tar.gz
-     ```
+    ```bash
+    untargz archive.tar.gz
+    ```
 
-2. `untarbz`: Extracts a `.tar.bz` file.
+- `untarbz`: Extracts a `.tar.bz` file.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     untarbz archive.tar.bz
-     ```
+    ```bash
+    untarbz archive.tar.bz
+    ```
 
-3. `lstargz`: Lists contents of a `.tar.gz` archive.
+- `lstargz`: Lists contents of a `.tar.gz` archive.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     lstargz archive.tar.gz
-     ```
+    ```bash
+    lstargz archive.tar.gz
+    ```
 
-4. `lstarbz`: Lists contents of a `.tar.bz` archive.
+- `lstarbz`: Lists contents of a `.tar.bz` archive.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     lstarbz archive.tar.bz
-     ```
+    ```bash
+    lstarbz archive.tar.bz
+    ```
 
-5. `targz`: Compresses files into a `.tar.gz` archive.
+- `targz`: Compresses files into a `.tar.gz` archive.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     targz archive_name.tar.gz directory_or_file
-     ```
+    ```bash
+    targz archive_name.tar.gz directory_or_file
+    ```
 
-6. `tarbz`: Compresses files into a `.tar.bz` archive.
+- `tarbz`: Compresses files into a `.tar.bz` archive.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     tarbz archive_name.tar.bz directory_or_file
-     ```
+    ```bash
+    tarbz archive_name.tar.bz directory_or_file
+    ```
+
+---
 
 ### **File Navigation Aliases**
 
-35. `cd..`: Moves up one directory.
+- `cd..`: Moves up one directory.
 
-    - **Usage**:
+- `..`: Moves up one directory (alternative shortcut).
 
-    ```bash
-    cd..
-    ```
+- `...`: Moves up two directories.
 
-36. `..`: Moves up one directory (alternative shortcut).
+- `.3`: Moves up three directories.
 
-    - **Usage**:
+- `.4`: Moves up four directories.
 
-    ```bash
-    ..
-    ```
+- `.5`: Moves up five directories.
 
-37. `...`: Moves up two directories.
-
-    - **Usage**:
-
-    ```bash
-    ...
-    ```
-
-38. `.3`: Moves up three directories.
-
-    - **Usage**:
-
-    ```bash
-    .3
-    ```
-
-39. `.4`: Moves up four directories.
-
-    - **Usage**:
-
-    ```bash
-    .4
-    ```
-
-40. `.5`: Moves up five directories.
-
-    - **Usage**:
-
-    ```bash
-    .5
-    ```
+---
 
 ### **Sync and Copy Aliases**
 
-1. `scp`: Copies files and directories recursively using `scp`.
+- `scp`: Copies files and directories recursively using `scp`.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     scp source destination
-     ```
+    ```bash
+    scp source destination
+    ```
 
-2. `rsynce`: Executes `rsync` with progress, force, delete, and an exclude list.
+- `rsynce`: Executes `rsync` with progress, force, delete, and an exclude list.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     rsynce source destination
-     ```
+    ```bash
+    rsynce source destination
+    ```
 
-3. `rsyncne`: Executes `rsync` with progress, force, and delete.
+- `rsyncne`: Executes `rsync` with progress, force, and delete.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     rsyncne source destination
-     ```
+    ```bash
+    rsyncne source destination
+    ```
 
-4. `cpn`: Native copy with verbose output.
+- `cpn`: Native copy with verbose output.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     cpn source destination
-     ```
+    ```bash
+    cpn source destination
+    ```
 
-5. `cp`: Copies files using `rsync` with progress.
+- `cp`: Copies files using `rsync` with progress.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     cp source destination
-     ```
+    ```bash
+    cp source destination
+    ```
 
-6. `mv`: Moves files using `rsync` and removes the source files.
+- `mv`: Moves files using `rsync` and removes the source files.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     mv source destination
-     ```
+    ```bash
+    mv source destination
+    ```
 
-7. `mvn`: Native move with verbose output.
+- `mvn`: Native move with verbose output.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     mvn source destination
-     ```
+    ```bash
+    mvn source destination
+    ```
 
 ---
 
 ### **Search and Find Aliases**
 
-1. `gh`: Searches your Bash history using `grep`.
+- `gh`: Searches your Bash history using `grep`.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     gh keyword
-     ```
+    ```bash
+    gh keyword
+    ```
 
-2. `findr`: Finds files or directories by name.
+- `findr`: Finds files or directories by name.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     findr filename
-     ```
+    ```bash
+    findr filename
+    ```
 
-3. `grep`, `egrep`, `fgrep`: Grep commands with color-enabled output.
+- `grep`, `egrep`, `fgrep`: Grep commands with color-enabled output.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     grep pattern file
-     egrep pattern file
-     fgrep pattern file
-     ```
+    ```bash
+    grep pattern file
+    egrep pattern file
+    fgrep pattern file
+    ```
 
 ---
 
 ### **Trash Aliases (Using trash-cli)**
 
-1. `rm`: Moves files to trash instead of permanently deleting.
+- `rm`: Moves files to trash instead of permanently deleting.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     rm file
-     ```
+    ```bash
+    rm file
+    ```
 
-2. `rmv`: Deletes files with verbose output.
+- `rmv`: Deletes files with verbose output.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     rmv file
-     ```
+    ```bash
+    rmv file
+    ```
 
-3. `tempty`: Empties the trash.
+- `tempty`: Empties the trash.
 
-   - **Usage**:
+- `tlist`: Lists items in the trash.
 
-     ```bash
-     tempty
-     ```
+- `srmt`: Deletes files with sudo privileges using trash.
 
-4. `tlist`: Lists items in the trash.
+  - **Usage**:
 
-   - **Usage**:
-
-     ```bash
-     tlist
-     ```
-
-5. `srmt`: Deletes files with sudo privileges using trash.
-
-   - **Usage**:
-
-     ```bash
-     srmt file
-     ```
+    ```bash
+    srmt file
+    ```
 
 ---
 
 ### **File Size and Storage Aliases**
 
-1. `fdisk`: Lists disk partitions and sizes.
+- `fdisk`: Lists disk partitions and sizes.
 
-   - **Usage**:
+- `uuid`: Retrieves the UUID of a volume.
 
-     ```bash
-     fdisk
-     ```
+  - **Usage**:
 
-2. `uuid`: Retrieves the UUID of a volume.
+    ```bash
+    uuid /dev/sda1
+    ```
 
-   - **Usage**:
+- `ls`: Lists directory contents with color and sorting directories first.
 
-     ```bash
-     uuid /dev/sda1
-     ```
+- `ll`: Lists all files in a detailed format with human-readable file sizes.
 
-3. `ls`: Lists directory contents with color and sorting directories first.
+- `lt`: Lists files sorted by size.
 
-   - **Usage**:
+- `lsr`: Lists files sorted by recently modified.
 
-     ```bash
-     ls
-     ```
+- `mnt`: Lists mounted drives.
 
-4. `ll`: Lists all files in a detailed format with human-readable file sizes.
+- `dirsize`: Shows the size of directories.
 
-   - **Usage**:
+- `dirusage`: Shows the disk usage of the current directory.
 
-     ```bash
-     ll
-     ```
+- `diskusage`: Shows total disk usage.
 
-5. `lt`: Lists files sorted by size.
+- `partusage`: Shows partition usages excluding temporary memory.
 
-   - **Usage**:
-
-     ```bash
-     lt
-     ```
-
-6. `lsr`: Lists files sorted by recently modified.
-
-   - **Usage**:
-
-     ```bash
-     lsr
-     ```
-
-7. `mnt`: Lists mounted drives.
-
-   - **Usage**:
-
-     ```bash
-     mnt
-     ```
-
-8. `dirsize`: Shows the size of directories.
-
-   - **Usage**:
-
-     ```bash
-     dirsize
-     ```
-
-9. `dirusage`: Shows the disk usage of the current directory.
-
-   - **Usage**:
-
-     ```bash
-     dirusage
-     ```
-
-10. `diskusage`: Shows total disk usage.
-
-- **Usage**:
-
-  ```bash
-  diskusage
-  ```
-
-11. `partusage`: Shows partition usages excluding temporary memory.
-
-- **Usage**:
-
-  ```bash
-  partusage
-  ```
-
-12. `usage10`: Shows the top 10 items using the most space in the current directory.
-
-- **Usage**:
-
-  ```bash
-  usage10
-  ```
+- `usage10`: Shows the top 10 items using the most space in the current directory.
 
 ---
 
 ### **Bash Aliases**
 
-1. `baupdate`: Reloads your Bash configuration.
+- `baupdate`: Reloads your Bash configuration.
 
-   - **Usage**:
+- `baedit`: Opens your Bash aliases file for editing.
 
-     ```bash
-     baupdate
-     ```
+- `bacopy`: Copies your Bash aliases to the root directory.
 
-2. `baedit`: Opens your Bash aliases file for editing.
-
-   - **Usage**:
-
-     ```bash
-     baedit
-     ```
-
-3. `bacopy`: Copies your Bash aliases to the root directory.
-
-   - **Usage**:
-
-     ```bash
-     bacopy
-     ```
-
-4. `baget`: Downloads the latest Bash aliases from the internet.
-
-   - **Usage**:
-
-     ```bash
-     baget
-     ```
+- `baget`: Downloads the latest Bash aliases from the internet.
 
 ---
 
 ### **Git and Site Management Aliases**
 
-1. `gcpush`: Pushes changes to the Docker-Traefik repository.
+- `gcpush`: Pushes changes to the Docker-Traefik repository.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     gcpush ../commits/date.txt
-     ```
+    ```bash
+    gcpush ../commits/date.txt
+    ```
 
-2. `gpush`: Pushes changes to your Git repository.
+- `gpush`: Pushes changes to your Git repository.
 
-   - **Usage**:
-
-     ```bash
-     gpush
-     ```
-
-3. `ggraph`: Displays a visual Git log graph.
-
-   - **Usage**:
-
-     ```bash
-     ggraph
-     ```
+- `ggraph`: Displays a visual Git log graph.
 
 ---
 
 ### **Mail Server Testing Aliases**
 
-1. `nullsend`: Sends a null mail to trigger the mail server.
+- `nullsend`: Sends a null mail to trigger the mail server.
 
-   - **Usage**:
+- `tmail1`: Sends a test email from `tmail1`.
 
-     ```bash
-     nullsend
-     ```
+- `tmail2`: Sends a test email from `tmail2` with a provided email address.
 
-2. `tmail1`: Sends a test email from `tmail1`.
+  - **Usage**:
 
-   - **Usage**:
-
-     ```bash
-     tmail1
-     ```
-
-3. `tmail2`: Sends a test email from `tmail2` with a provided email address.
-
-   - **Usage**:
-
-     ```bash
-     tmail2 email@example.com
-     ```
+    ```bash
+    tmail2 email@example.com
+    ```
 
 ---
 
 ### **UFW Firewall Aliases**
 
-1. `ufwenable`: Enables the UFW firewall.
+- `ufwenable`: Enables the UFW firewall.
 
-   - **Usage**:
+- `ufwdisable`: Disables the UFW firewall.
 
-     ```bash
-     ufwenable
-     ```
+- `ufwallow`: Allows a service or port through the firewall.
 
-2. `ufwdisable`: Disables the UFW firewall.
+  - **Usage**:
 
-   - **Usage**:
+    ```bash
+    ufwallow service_name_or_port
+    ```
 
-     ```bash
-     ufwdisable
-     ```
+- `ufwlimit`: Limits access to a service or port.
 
-3. `ufwallow`: Allows a service or port through the firewall.
+  - **Usage**:
 
-   - **Usage**:
+    ```bash
+    ufwlimit service_name_or_port
+    ```
 
-     ```bash
-     ufwallow service_name_or_port
-     ```
+- `ufwlist`: Lists firewall rules with numbered entries.
 
-4. `ufwlimit`: Limits access to a service or port.
+- `ufwdelete`: Deletes a firewall rule.
 
-   - **Usage**:
+  - **Usage**:
 
-     ```bash
-     ufwlimit service_name_or_port
-     ```
+    ```bash
+    ufwdelete rule_number
+    ```
 
-5. `ufwlist`: Lists firewall rules with numbered entries.
+- `ufwreload`: Reloads the firewall settings.
 
-   - **Usage**:
-
-     ```bash
-     ufwlist
-     ```
-
-6. `ufwdelete`: Deletes a firewall rule.
-
-   - **Usage**:
-
-     ```bash
-     ufwdelete rule_number
-     ```
-
-7. `ufwreload`: Reloads the firewall settings.
-
-   - **Usage**:
-
-     ```bash
-     ufwreload
-     ```
+---
 
 ### **Systemd Start, Stop, and Restart Aliases**
 
