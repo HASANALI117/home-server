@@ -64,6 +64,7 @@ create_env_file() {
         ["TZ"]="$TZ"
         ["PUID"]="$PUID"
         ["PGID"]="$PGID"
+        ["PLEX_CLAIM"]="$PLEX_CLAIM"
         ["HOMEPAGE_VAR_PLEX_URL"]="http://$SERVER_IP:32400/web"
         ["HOMEPAGE_VAR_PORTAINER_URL"]="http://$SERVER_IP:9000"
         ["HOMEPAGE_VAR_DOZZLE_URL"]="http://$SERVER_IP:8082"
@@ -217,6 +218,15 @@ add_docker_aliases() {
         echo "Added 'source $BASH_CONFIG' to $BASHRC to load .bash_aliases."
     else
         echo "$BASHRC already sources $BASH_CONFIG."
+    fi
+
+    # Copy bash_aliases.env.example to $SHARED/config/bash_aliases.env
+    if [[ -f "./bash_aliases.env.example" ]]; then
+        mkdir -p "$SHARED/config"
+        cp "./bash_aliases.env.example" "$SHARED/config/bash_aliases.env"
+        echo "Copied bash_aliases.env.example to $SHARED/config/bash_aliases.env."
+    else
+        error_exit "bash_aliases.env.example file not found in the current directory."
     fi
 
     # Source the .bashrc to apply changes immediately

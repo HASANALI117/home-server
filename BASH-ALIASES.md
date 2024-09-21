@@ -36,10 +36,12 @@
 
 ## Setup
 
-**Copy and rename the starter bash aliases file**:
+**Fill in the environment variables in the bash aliases file**:
+
+The script already copies the `bash_aliases.env.example` file to `$SHARED/config/bash_aliases.env`. You just need to fill in the environment variables in `$SHARED/config/bash_aliases.env`.
 
 ```bash
-mv shared/config/bash_aliases.env.example shared/config/bash_aliases.env
+nano $SHARED/config/bash_aliases.env
 ```
 
 ---
