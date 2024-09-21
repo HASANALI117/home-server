@@ -120,8 +120,8 @@ create_directories() {
 # Set permissions
 set_permissions() {
     echo "Setting permissions for secrets folder and .env file..."
-    sudo chown root:root "$SECRETS" "$ENV_FILE" "$CONFIG_FILE"
-    sudo chmod 600 "$SECRETS" "$ENV_FILE" "$CONFIG_FILE"
+    sudo chown root:root "$SECRETS" "$ENV_FILE"
+    sudo chmod 600 "$SECRETS" "$ENV_FILE"
     echo "Permissions set for secrets folder, .env file and config file."
 
     echo "Setting permissions for Docker root folder..."
