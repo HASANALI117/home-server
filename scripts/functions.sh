@@ -200,8 +200,17 @@ edit_qbittorrent_config() {
 add_docker_aliases() { 
     echo "Adding Docker aliases from bash_aliases to $BASH_CONFIG..."
 
-    # Create .config.env file
-    export_config_to_env
+    # Copy bash_aliases.env.example to $BASH_ENV
+    if [[ -f "./bash_aliases.env.example" ]]; then
+        mkdir -p "$SHARED/config"
+        cp "./bash_aliases.env.example" "$BASH_ENV"
+        echo "Copied bash_aliases.env.example to $BASH_ENV."
+    else
+        error_exit "bash_aliases.env.example file not found in the current directory."
+    fi
+
+    # Add variables to bash_aliases.env file
+    cat "./config.sh" >> "$BASH_ENV"
 
     # Check if bash_aliases file exists in the same directory as the script
     if [[ -f "./bash_aliases" ]]; then
@@ -218,15 +227,6 @@ add_docker_aliases() {
         echo "Added 'source $BASH_CONFIG' to $BASHRC to load .bash_aliases."
     else
         echo "$BASHRC already sources $BASH_CONFIG."
-    fi
-
-    # Copy bash_aliases.env.example to $SHARED/config/bash_aliases.env
-    if [[ -f "./bash_aliases.env.example" ]]; then
-        mkdir -p "$SHARED/config"
-        cp "./bash_aliases.env.example" "$SHARED/config/bash_aliases.env"
-        echo "Copied bash_aliases.env.example to $SHARED/config/bash_aliases.env."
-    else
-        error_exit "bash_aliases.env.example file not found in the current directory."
     fi
 
     # Source the .bashrc to apply changes immediately
@@ -253,11 +253,4 @@ download_docker_gc_exclude() {
             exit 1
         fi
     fi
-}
-
-
-# Function to copy config.sh to .config.env
-export_config_to_env() {
-    cp "./config.sh" "$CONFIG_FILE"
-    echo "Config file created at $CONFIG_FILE"
 }
