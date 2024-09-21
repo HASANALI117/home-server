@@ -132,6 +132,10 @@ set_permissions() {
     sudo setfacl -Rdm g:docker:rwx "$DOCKER_ROOT"
     sudo setfacl -Rm g:docker:rwx "$DOCKER_ROOT"
     echo "Permissions set for Docker root folder: $DOCKER_ROOT"
+
+    echo "Setting permissions for Jellyfin directory..."
+    sudo chown -R "$USER":"$USER" "$DOCKER_ROOT/appdata/jellyfin"
+    echo "Permissions set for Jellyfin directory: $DOCKER_ROOT/appdata/jellyfin"
 }
 
 # Create Docker Compose files
