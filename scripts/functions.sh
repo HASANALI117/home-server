@@ -18,6 +18,15 @@ download_file() {
 
 # Install Docker and Docker Compose
 install_docker() {
+    # Check if curl is installed, if not, install it
+    if ! command -v curl &> /dev/null; then
+        echo "curl is not installed. Installing curl..."
+        sudo apt-get update || error_exit "Failed to update package list."
+        sudo apt-get install -y curl || error_exit "Failed to install curl."
+        echo "curl installed successfully."
+    fi
+
+    # Check if docker is installed, if not, install it
     if ! command -v docker &> /dev/null; then
         echo "Installing Docker and Docker Compose..."
         curl -fsSL https://get.docker.com -o install-docker.sh || error_exit "Failed to download Docker installation script."
