@@ -65,7 +65,7 @@ create_env_file() {
 
     declare -A env_vars=(
         ["HOSTNAME"]="$HOSTNAME"
-        ["USERDIR"]="$HOST"
+        ["USERDIR"]="$HOME"
         ["DOCKERDIR"]="$DOCKER_ROOT"
         ["SECRETSDIR"]="$SECRETS"
         ["SERVER_IP"]="$SERVER_IP"
