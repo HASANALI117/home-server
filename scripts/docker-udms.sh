@@ -7,6 +7,8 @@ source ./functions.sh
 
 # Main function
 main() {
+    print_intro
+    echo
     create_directories
     echo
     install_docker

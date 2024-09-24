@@ -3,10 +3,32 @@
 # Source configuration file
 source ./config.sh
 
+# Intro message with logo
+print_intro() {
+    echo "============================================="
+    echo "                                             "
+    echo "   /$$   /$$ /$$$$$$$  /$$      /$$  /$$$$$$ "
+    echo "  | $$  | $$| $$__  $$| $$$    /$$$ /$$__  $$"
+    echo "  | $$  | $$| $$  \ $$| $$$$  /$$$$| $$  \__/"
+    echo "  | $$  | $$| $$  | $$| $$ $$/$$ $$|  $$$$$$ "
+    echo "  | $$  | $$| $$  | $$| $$  $$$| $$ \____  $$"
+    echo "  | $$  | $$| $$  | $$| $$\  $ | $$ /$$  \ $$"
+    echo "  |  $$$$$$/| $$$$$$$/| $$ \/  | $$|  $$$$$$/"
+    echo "   \______/ |_______/ |__/     |__/ \______/ "
+    echo "                                             "
+    echo "============================================="
+    echo "                                             "
+    echo "Welcome to the Ultimate Docker Media Server Setup!"
+    echo "This script will help you set up your home server with Docker and Docker Compose."
+    echo "                                             "
+    echo "============================================="
+}
+
 # Error handling
 error_exit() {
-    echo "$1" | tee -a "$LOGS/error.log" 1>&2
-    exit 1
+    message="$1"
+    echo -e "$(printf "\e[31m$message\e[0m")" | tee -a "$LOGS/error.log" 1>&2
+    exit 255
 }
 
 # Download file helper function
@@ -18,6 +40,19 @@ download_file() {
 
 # Install Docker and Docker Compose
 install_docker() {
+
+    echo "============================================="
+    echo "                    ##        .              "
+    echo "              ## ## ##       ==              "
+    echo "           ## ## ## ##      ===              "
+    echo "       /""""""""""""""""\___/ ===            "
+    echo "  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~     "
+    echo "       \______ o          __/                "
+    echo "         \    \        __/                   "
+    echo "          \____\______/                      "
+    echo "============================================="
+    echo "Installing Docker and Docker Compose...      "
+
     # Check if curl is installed, if not, install it
     if ! command -v curl &> /dev/null; then
         echo "curl is not installed. Installing curl..."
@@ -28,7 +63,6 @@ install_docker() {
 
     # Check if docker is installed, if not, install it
     if ! command -v docker &> /dev/null; then
-        echo "Installing Docker and Docker Compose..."
         curl -fsSL https://get.docker.com -o install-docker.sh || error_exit "Failed to download Docker installation script."
         sudo sh install-docker.sh || error_exit "Docker installation failed."
         echo "Docker and Docker Compose installed."
