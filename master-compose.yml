@@ -22,28 +22,28 @@ include:
   # HOSTNAME=udms - defined in .env
 
   # CORE
-  - compose/$HOSTNAME/socket-proxy.yml
-  - compose/$HOSTNAME/portainer.yml
-  - compose/$HOSTNAME/dozzle.yml
-  - compose/$HOSTNAME/homepage.yml
+  - compose/socket-proxy.yml
+  - compose/portainer.yml
+  - compose/dozzle.yml
+  - compose/homepage.yml
   # MEDIA
-  - compose/$HOSTNAME/plex.yml
-  - compose/$HOSTNAME/jellyfin.yml
+  - compose/plex.yml
+  - compose/jellyfin.yml
   # DOWNLOADERS
-  # - compose/$HOSTNAME/sabnzbd.yml
-  - compose/$HOSTNAME/qbittorrent.yml
+  # - compose/sabnzbd.yml
+  - compose/qbittorrent.yml
   # PVRS
-  - compose/$HOSTNAME/radarr.yml
-  - compose/$HOSTNAME/sonarr.yml
-  - compose/$HOSTNAME/prowlarr.yml
+  - compose/radarr.yml
+  - compose/sonarr.yml
+  - compose/prowlarr.yml
   # COMPLEMENTARY APPS
-  - compose/$HOSTNAME/bazarr.yml
-  # - compose/$HOSTNAME/tautulli.yml
+  - compose/bazarr.yml
+  # - compose/tautulli.yml
   # MONITORING
-  # - compose/$HOSTNAME/uptime-kuma.yml
+  # - compose/uptime-kuma.yml
   # DATABASES
-  # - compose/$HOSTNAME/mariadb.yml
+  # - compose/mariadb.yml
   # UTILITIES
-  # - compose/$HOSTNAME/filebrowser.yml
+  # - compose/filebrowser.yml
   # MAINTENANCE
-  - compose/$HOSTNAME/docker-gc.yml
+  - compose/docker-gc.yml

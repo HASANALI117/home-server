@@ -76,19 +76,17 @@ install_docker() {
 # Verify Docker installation
 verify_docker() {
     echo "Verifying Docker installation..."
-    sudo docker version || error_exit "Docker is not installed correctly."
+    sudo docker --version || error_exit "Docker is not installed correctly."
     sudo docker compose version || error_exit "Docker Compose is not installed correctly."
     echo "Docker installation verified."
 }
 
 # Create .env file
 create_env_file() {
-    if [ ! -f "$ENV_FILE" ]; then
-        cp "$ENV_EXAMPLE" "$ENV_FILE"
-        echo ".env file created at $ENV_FILE"
-    else
-        echo ".env file already exists at $ENV_FILE"
-    fi
+    echo "Creating .env file..."
+
+    touch "$ENV_FILE"
+    echo ".env file created at $ENV_FILE"
 
     PUID=$(id -u)
     PGID=$(id -g)
@@ -124,17 +122,8 @@ create_env_file() {
     for key in "${!env_vars[@]}"; do
         update_env_var "$key" "${env_vars[$key]}"
     done
-}
 
-# Function to update or add environment variables in the .env file
-update_env_var() {
-    local key=$1
-    local value=$2
-    if grep -q "^$key=" "$ENV_FILE"; then
-        sed -i "s|^$key=.*|$key=$value|" "$ENV_FILE"
-    else
-        echo "$key=$value" >> "$ENV_FILE"
-    fi
+    echo ".env file has been populated with the necessary environment variables."
 }
 
 # Create necessary directories
@@ -282,25 +271,19 @@ add_docker_aliases() {
     source "$BASHRC"
 }
 
-# Function to download docker-gc-exclude file
-download_docker_gc_exclude() {
+# Function to create docker-gc-exclude file
+create_docker_gc_exclude() {
     echo "Downloading docker-gc-exclude file..."
 
     # Ensure the destination directory exists
     mkdir -p "$APPDATA/docker-gc"
 
-    wget -O "$APPDATA/docker-gc/docker-gc-exclude" https://raw.githubusercontent.com/clockworksoul/docker-gc-cron/master/compose/docker-gc-exclude
+    # Copy the docker-gc-exclude file from the local directory
+    cp "$DOCKERGC_EXCLUDE" "$APPDATA/docker-gc/docker-gc-exclude"
     if [ $? -eq 0 ]; then
-        echo "docker-gc-exclude file downloaded successfully."
+        echo "docker-gc-exclude file created successfully."
     else
-        echo "Failed to download docker-gc-exclude file. Attempting to copy from local configs..."
-        cp "$DOCKERGC_EXCLUDE" "$APPDATA/docker-gc/docker-gc-exclude"
-        if [ $? -eq 0 ]; then
-            echo "docker-gc-exclude file copied successfully from local configs."
-        else
-            echo "Failed to copy docker-gc-exclude file from local configs."
-            exit 1
-        fi
+        error_exit "Failed to create docker-gc-exclude file."
     fi
 }
 
