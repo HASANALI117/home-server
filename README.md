@@ -49,15 +49,15 @@ To quickly set up the script, use the following commands:
 3. **Make the script executable and run it**:
 
    ```bash
-   chmod +x docker-udms.sh
-   ./docker-udms.sh
+   chmod +x udms.sh
+   ./udms.sh
    ```
 
 Follow the prompts to provide configuration details. Examples of the prompts are:
 
 1. **Enter Time Zone (TZ):**
 
-   ```
+   ```plaintext
    Enter TZ: Europe/London
    ```
 
@@ -65,23 +65,25 @@ Follow the prompts to provide configuration details. Examples of the prompts are
 
 2. **Enter Server IP (SERVER_IP):**
 
-   ```
+   ```plaintext
    Enter SERVER_IP: 192.168.1.100
    ```
 
    This prompt asks for the IP address of your server. Enter the local IP address where you want to access your services.
 
 3. **Enter Plex Claim (PLEX_CLAIM):**
-   ```
+
+   ```plaintext
    Enter PLEX_CLAIM: YOUR_PLEX_CLAIM_TOKEN
    ```
+
    This prompt asks for a Plex claim token. If you’re using Plex, you’ll need to enter your Plex claim token to connect your server to your Plex account. You can keep it empty initially, and add the Plex claim token to the `plex_claim` file in the `SECRETS` directory when you have it. If you don't know what your Plex claim is, you can find it at [Plex Claim](https://plex.tv/claim).
 
 These prompts will help configure essential aspects of your home server setup. Make sure to provide accurate details to ensure that the script configures your environment correctly.
 
 ## What the Script Does
 
-The `docker-udms.sh` script performs the following tasks:
+The `udms.sh` script performs the following tasks:
 
 1. **Installs Docker and Docker Compose**: Ensures Docker and Docker Compose are installed on your system.
 
@@ -138,10 +140,10 @@ The script sets up Docker Compose files for the following services:
 
 There are 75+ apps in the `compose/` directory. For more information on these apps, refer to the [README in the compose directory](./compose/README.md). The script is a work in progress for adding all of them, for now to add more services, follow these steps:
 
-1. **Add Service Configuration**: Copy the desired service's Docker Compose YAML file from the [`compose/`]() directory.
-2. **Update [`docker-compose-udms.yml`]()**: Add the path to the copied service YAML file in the [`docker-compose-udms.yml`]() file under the appropriate section.
+1. **Add Service Configuration**: Copy the desired service's Docker Compose YAML file from the [`compose/`](./compose/) directory.
+2. **Update [`master-compose.yml`](./master-compose.yml)**: Add the path to the copied service YAML file in the [`master-compose.yml`](./master-compose.yml) file under the appropriate section.
 
-Example of adding a new service in [`docker-compose-udms.yml`]():
+Example of adding a new service in [`master-compose.yml`](./master-compose.yml):
 
 ```yml
 include:
@@ -149,25 +151,27 @@ include:
   # PREFIX udms = Ultimate Docker Media Server
   # HOSTNAME=udms - defined in .env
   # CORE
-  - compose/$HOSTNAME/socket-proxy.yml
-  - compose/$HOSTNAME/portainer.yml
-  - compose/$HOSTNAME/dozzle.yml
-  - compose/$HOSTNAME/homepage.yml
+  - compose/socket-proxy.yml
+  - compose/portainer.yml
+  - compose/dozzle.yml
+  - compose/homepage.yml
   # MEDIA
-  - compose/$HOSTNAME/plex.yml
-  - compose/$HOSTNAME/jellyfin.yml
+  - compose/plex.yml
+  - compose/jellyfin.yml
   # DOWNLOADERS
-  - compose/$HOSTNAME/qbittorrent.yml
+  - compose/qbittorrent.yml
   # PVRS
-  - compose/$HOSTNAME/radarr.yml
-  - compose/$HOSTNAME/sonarr.yml
-  - compose/$HOSTNAME/prowlarr.yml
-  # COMPLEMENTARY APPS
-  - compose/$HOSTNAME/bazarr.yml
+  - compose/radarr.yml
+  - compose/sonarr.yml
+  - compose/prowlarr.yml
+  # COMPLEMENTARY AP
+
+PS
+  - compose/bazarr.yml
   # MAINTENANCE
-  - compose/$HOSTNAME/docker-gc.yml
+  - compose/docker-gc.yml
   # Add your new service here
-  - compose/$HOSTNAME/new-service.yml
+  - compose/new-service.yml
 ```
 
 ## Credits
