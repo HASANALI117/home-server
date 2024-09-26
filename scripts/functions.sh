@@ -120,7 +120,7 @@ create_env_file() {
     )
 
     for key in "${!env_vars[@]}"; do
-        update_env_var "$key" "${env_vars[$key]}"
+        echo "$key=${env_vars[$key]}" >> "$ENV_FILE"
     done
 
     echo ".env file has been populated with the necessary environment variables."
