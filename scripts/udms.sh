@@ -19,9 +19,9 @@ main() {
     echo
     create_compose_files
     echo
-    edit_qbittorrent_config
+    create_qbittorrent_config
     echo
-    edit_homepage_config
+    create_homepage_config
     echo
     create_docker_gc_exclude
     echo

@@ -120,7 +120,7 @@ create_env_file() {
     )
 
     for key in "${!env_vars[@]}"; do
-        echo "$key=${env_vars[$key]}" >> "$ENV_FILE"
+        echo "$key=${env_vars[$key]}" > "$ENV_FILE"
     done
 
     echo ".env file has been populated with the necessary environment variables."
@@ -199,7 +199,7 @@ start_containers() {
 }
 
 # Replace homepage configuration files
-edit_homepage_config() {
+create_homepage_config() {
     echo "Creating homepage configuration files..."
 
     # Ensure the destination directory exists
@@ -220,29 +220,29 @@ edit_homepage_config() {
 }
 
 # Replace qBittorrent configuration file
-edit_qbittorrent_config() {
-    echo "Replacing qBittorrent configuration file..."
+create_qbittorrent_config() {
+    echo "Creating qBittorrent configuration file..."
     
     # Ensure the destination directory exists
     mkdir -p "$(dirname "$QBITTORRENT_CONF")"
     
     # Copy the configuration file
     if cp "$QBITTORRENT_CONFIG" "$QBITTORRENT_CONF"; then
-        echo "Copied qbittorrent.conf from $QBITTORRENT_CONFIG to $QBITTORRENT_CONF."
+        echo "Created $QBITTORRENT_CONF."
     else
-        echo "Failed to copy qbittorrent.conf from $QBITTORRENT_CONFIG."
+        echo "Failed to create qbittorrent.conf."
     fi
 }
 
 # Add Docker aliases to bash configuration
 add_docker_aliases() { 
-    echo "Adding Docker aliases from bash_aliases to $BASH_CONFIG..."
+    echo "Adding Docker aliases..."
 
     # Copy bash_aliases.env.example to $BASH_ENV
     if [[ -f "./bash_aliases.env.example" ]]; then
         mkdir -p "$SHARED/config"
         cp "./bash_aliases.env.example" "$BASH_ENV"
-        echo "Copied bash_aliases.env.example to $BASH_ENV."
+        echo "Created $BASH_ENV."
     else
         error_exit "bash_aliases.env.example file not found in the current directory."
     fi
@@ -273,7 +273,7 @@ add_docker_aliases() {
 
 # Function to create docker-gc-exclude file
 create_docker_gc_exclude() {
-    echo "Downloading docker-gc-exclude file..."
+    echo "Creating docker-gc-exclude file..."
 
     # Ensure the destination directory exists
     mkdir -p "$APPDATA/docker-gc"
