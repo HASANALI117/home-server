@@ -3,24 +3,37 @@
 # Source configuration file
 source ./config.sh
 
+# Function to create typing effect
+typing_print() {
+    local text="$1"
+    local delay=0.0001
+    
+    # Print each character with delay
+    for ((i=0; i<${#text}; i++)); do
+        echo -n "${text:$i:1}"
+        sleep "$delay"
+    done
+    echo ""
+}
+
 # Intro message with logo
 print_intro() {
     clear
     echo -e "\e[36m"
-    echo "=============================================="
-    echo "                                              "
-    echo "      ██╗   ██╗██████╗ ███╗   ███╗███████╗    "
-    echo "      ██║   ██║██╔══██╗████╗ ████║██╔════╝    "
-    echo "      ██║   ██║██║  ██║██╔████╔██║███████╗    "
-    echo "      ██║   ██║██║  ██║██║╚██╔╝██║╚════██║    "
-    echo "      ╚██████╔╝██████╔╝██║ ╚═╝ ██║███████║    "
-    echo "      ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝     "
-    echo "                                              "
-    echo "=============================================="
-    echo "                                              "
-    echo "Welcome to UDMS (Ultimate Docker Media Server)"
-    echo "                                              "
-    echo "=============================================="
+    typing_print "=============================================="
+    typing_print "                                              "
+    typing_print "      ██╗   ██╗██████╗ ███╗   ███╗███████╗    "
+    typing_print "      ██║   ██║██╔══██╗████╗ ████║██╔════╝    "
+    typing_print "      ██║   ██║██║  ██║██╔████╔██║███████╗    "
+    typing_print "      ██║   ██║██║  ██║██║╚██╔╝██║╚════██║    "
+    typing_print "      ╚██████╔╝██████╔╝██║ ╚═╝ ██║███████║    "
+    typing_print "      ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝     "
+    typing_print "                                              "
+    typing_print "=============================================="
+    typing_print "                                              "
+    typing_print "Welcome to UDMS (Ultimate Docker Media Server)"
+    typing_print "                                              "
+    typing_print "=============================================="
     echo -e "\e[0m"
 }
 
@@ -41,18 +54,18 @@ download_file() {
 # Install Docker and Docker Compose
 install_docker() {
     echo -e "\e[36m"
-    echo "============================================="
-    echo "  Installing Docker and Docker Compose...    "
-    echo "============================================="
-    echo "                    ##        .              "
-    echo "              ## ## ##       ==              "
-    echo "           ## ## ## ##      ===              "
-    echo "       /""""""""""""""""\___/ ===            "
-    echo "  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~     "
-    echo "       \______ o          __/                "
-    echo "         \    \        __/                   "
-    echo "          \____\______/                      "
-    echo "============================================="
+    typing_print "============================================="
+    typing_print "  Installing Docker and Docker Compose...    "
+    typing_print "============================================="
+    typing_print "                    ##        .              "
+    typing_print "              ## ## ##       ==              "
+    typing_print "           ## ## ## ##      ===              "
+    typing_print "       /""""""""""""""""\___/ ===            "
+    typing_print "  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~     "
+    typing_print "       \______ o          __/                "
+    typing_print "         \    \        __/                   "
+    typing_print "          \____\______/                      "
+    typing_print "============================================="
     echo -e "\e[0m"
 
     # Check if curl is installed, if not, install it
@@ -67,26 +80,26 @@ install_docker() {
     if ! command -v docker &> /dev/null; then
         curl -fsSL https://get.docker.com -o install-docker.sh || error_exit "Failed to download Docker installation script."
         sudo sh install-docker.sh || error_exit "Docker installation failed."
-        echo "Docker and Docker Compose installed."
+        typing_print "Docker and Docker Compose installed."
     else
-        echo "Docker is already installed."
+        typing_print "Docker is already installed."
     fi
 }
 
 # Verify Docker installation
 verify_docker() {
-    echo "Verifying Docker installation..."
+    typing_print "Verifying Docker installation..."
     sudo docker --version || error_exit "Docker is not installed correctly."
     sudo docker compose version || error_exit "Docker Compose is not installed correctly."
-    echo "Docker installation verified."
+    typing_print "Docker installation verified."
 }
 
 # Create .env file
 create_env_file() {
-    echo "Creating .env file..."
+    typing_print "Creating .env file..."
 
     touch "$ENV_FILE"
-    echo ".env file created at $ENV_FILE"
+    typing_print ".env file created at $ENV_FILE"
 
     PUID=$(id -u)
     PGID=$(id -g)
@@ -120,23 +133,24 @@ create_env_file() {
     )
 
     for key in "${!env_vars[@]}"; do
-        echo "$key=${env_vars[$key]}" > "$ENV_FILE"
+        echo "$key=${env_vars[$key]}" >> "$ENV_FILE"
     done
 
-    echo ".env file has been populated with the necessary environment variables."
+    echo
+    typing_print ".env file has been populated with the necessary environment variables."
 }
 
 # Create necessary directories
 create_directories() {
-    echo "Creating necessary directories..."
+    typing_print "Creating necessary directories..."
     mkdir -p "$APPDATA" "$COMPOSE" "$LOGS" "$SCRIPTS" "$SECRETS" "$SHARED"
-    echo "Directories created:"
-    echo "  - $APPDATA"
-    echo "  - $COMPOSE"
-    echo "  - $LOGS"
-    echo "  - $SCRIPTS"
-    echo "  - $SECRETS"
-    echo "  - $SHARED"
+    typing_print "Directories created:"
+    typing_print "  - $APPDATA"
+    typing_print "  - $COMPOSE"
+    typing_print "  - $LOGS"
+    typing_print "  - $SCRIPTS"
+    typing_print "  - $SECRETS"
+    typing_print "  - $SHARED"
 
     # Create .env file
     create_env_file
@@ -144,30 +158,30 @@ create_directories() {
 
 # Set permissions
 set_permissions() {
-    echo "Setting permissions for secrets folder and .env file..."
+    typing_print "Setting permissions for secrets folder and .env file..."
     sudo chown root:root "$SECRETS" "$ENV_FILE"
     sudo chmod 600 "$SECRETS" "$ENV_FILE"
-    echo "Permissions set for secrets folder, .env file and config file."
+    typing_print "Permissions set for secrets folder, .env file and config file."
 
-    echo "Setting permissions for Docker root folder..."
+    typing_print "Setting permissions for Docker root folder..."
     sudo apt install -y acl || error_exit "Failed to install ACL."
     sudo chmod 775 "$DOCKER_ROOT"
     sudo setfacl -Rdm u:"$USER":rwx "$DOCKER_ROOT"
     sudo setfacl -Rm u:"$USER":rwx "$DOCKER_ROOT"
     sudo setfacl -Rdm g:docker:rwx "$DOCKER_ROOT"
     sudo setfacl -Rm g:docker:rwx "$DOCKER_ROOT"
-    echo "Permissions set for Docker root folder: $DOCKER_ROOT"
+    typing_print "Permissions set for Docker root folder: $DOCKER_ROOT"
 
-    echo "Setting permissions for Jellyfin directory..."
+    typing_print "Setting permissions for Jellyfin directory..."
     sudo chown -R "$USER":"$USER" "$DOCKER_ROOT/appdata/jellyfin"
-    echo "Permissions set for Jellyfin directory: $DOCKER_ROOT/appdata/jellyfin"
+    typing_print "Permissions set for Jellyfin directory: $DOCKER_ROOT/appdata/jellyfin"
 }
 
 # Create Docker Compose files
 create_compose_files() {
-    echo "Creating master docker-compose file..."
+    typing_print "Creating master docker-compose file..."
     cp "$DOCKER_COMPOSE" "$MASTER_COMPOSE"
-    echo "Master docker-compose file created: $MASTER_COMPOSE"
+    typing_print "Master docker-compose file created: $MASTER_COMPOSE"
 
     local services=(
         "socket-proxy"
@@ -184,23 +198,23 @@ create_compose_files() {
         "docker-gc"
     )
 
-    echo "Creating compose files..."
+    typing_print "Creating compose files..."
     for service in "${services[@]}"; do
         cp "$COMPOSE_FILES/$service.yml" "$COMPOSE/$service.yml"
-        echo "Created: $COMPOSE/$service.yml"
+        typing_print "Created: $COMPOSE/$service.yml"
     done
-    echo "Compose files created."
+    typing_print "Compose files created."
 }
 
 # Start Docker containers
 start_containers() {
-    echo "Starting the containers..."
+    typing_print "Starting the containers..."
     sudo docker compose -f "$MASTER_COMPOSE" up -d || error_exit "Failed to start containers."
 }
 
 # Replace homepage configuration files
 create_homepage_config() {
-    echo "Creating homepage configuration files..."
+    typing_print "Creating homepage configuration files..."
 
     # Ensure the destination directory exists
     mkdir -p "$APPDATA/homepage"
@@ -210,25 +224,25 @@ create_homepage_config() {
     # Copy the configuration files
     for file in bookmarks.yaml services.yaml settings.yaml widgets.yaml; do
         if cp "$HOMEPAGE_CONFIG/$file" "$APPDATA/homepage/$file"; then
-            echo "Created $file"
+            typing_print "Created $file"
         else
             echo "Failed to create $file"
         fi
     done
     
-    echo "Homepage configuration files created."
+    typing_print "Homepage configuration files created."
 }
 
 # Replace qBittorrent configuration file
 create_qbittorrent_config() {
-    echo "Creating qBittorrent configuration file..."
+    typing_print "Creating qBittorrent configuration file..."
     
     # Ensure the destination directory exists
     mkdir -p "$(dirname "$QBITTORRENT_CONF")"
     
     # Copy the configuration file
     if cp "$QBITTORRENT_CONFIG" "$QBITTORRENT_CONF"; then
-        echo "Created $QBITTORRENT_CONF."
+        typing_print "Created $QBITTORRENT_CONF."
     else
         echo "Failed to create qbittorrent.conf."
     fi
@@ -236,13 +250,13 @@ create_qbittorrent_config() {
 
 # Add Docker aliases to bash configuration
 add_docker_aliases() { 
-    echo "Adding Docker aliases..."
+    typing_print "Adding Docker aliases..."
 
     # Copy bash_aliases.env.example to $BASH_ENV
     if [[ -f "./bash_aliases.env.example" ]]; then
         mkdir -p "$SHARED/config"
         cp "./bash_aliases.env.example" "$BASH_ENV"
-        echo "Created $BASH_ENV."
+        typing_print "Created $BASH_ENV."
     else
         error_exit "bash_aliases.env.example file not found in the current directory."
     fi
@@ -254,7 +268,7 @@ add_docker_aliases() {
     if [[ -f "./bash_aliases" ]]; then
         # Append the contents of bash_aliases to the bash configuration
         cat "./bash_aliases" >> "$BASH_CONFIG"
-        echo "Docker aliases added from bash_aliases to $BASH_CONFIG."
+        typing_print "Docker aliases added to $BASH_CONFIG."
     else
         error_exit "bash_aliases file not found in the current directory."
     fi
@@ -262,9 +276,9 @@ add_docker_aliases() {
     # Ensure .bashrc sources .bash_aliases
     if ! grep -q "source $BASH_CONFIG" "$BASHRC"; then
         echo "source $BASH_CONFIG" >> "$BASHRC"
-        echo "Added 'source $BASH_CONFIG' to $BASHRC to load .bash_aliases."
+        typing_print "Added 'source $BASH_CONFIG' to $BASHRC to load .bash_aliases."
     else
-        echo "$BASHRC already sources $BASH_CONFIG."
+        typing_print "$BASHRC already sources $BASH_CONFIG."
     fi
 
     # Source the .bashrc to apply changes immediately
@@ -273,7 +287,7 @@ add_docker_aliases() {
 
 # Function to create docker-gc-exclude file
 create_docker_gc_exclude() {
-    echo "Creating docker-gc-exclude file..."
+    typing_print "Creating docker-gc-exclude file..."
 
     # Ensure the destination directory exists
     mkdir -p "$APPDATA/docker-gc"
@@ -281,7 +295,7 @@ create_docker_gc_exclude() {
     # Copy the docker-gc-exclude file from the local directory
     cp "$DOCKERGC_EXCLUDE" "$APPDATA/docker-gc/docker-gc-exclude"
     if [ $? -eq 0 ]; then
-        echo "docker-gc-exclude file created successfully."
+        typing_print "docker-gc-exclude file created successfully."
     else
         error_exit "Failed to create docker-gc-exclude file."
     fi
@@ -289,12 +303,12 @@ create_docker_gc_exclude() {
 
 print_setup_complete() {
     echo -e "\e[32m"
-    echo "██████╗  ██████╗ ███╗   ██╗███████╗"
-    echo "██╔══██╗██╔═══██╗████╗  ██║██╔════╝"
-    echo "██║  ██║██║   ██║██╔██╗ ██║█████╗  "
-    echo "██║  ██║██║   ██║██║╚██╗██║██╔══╝  "
-    echo "██████╔╝╚██████╔╝██║ ╚████║███████╗"
-    echo "╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝"
-    echo "Setup complete."
+    typing_print "██████╗  ██████╗ ███╗   ██╗███████╗"
+    typing_print "██╔══██╗██╔═══██╗████╗  ██║██╔════╝"
+    typing_print "██║  ██║██║   ██║██╔██╗ ██║█████╗  "
+    typing_print "██║  ██║██║   ██║██║╚██╗██║██╔══╝  "
+    typing_print "██████╔╝╚██████╔╝██║ ╚████║███████╗"
+    typing_print "╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝"
+    typing_print "Setup complete."
     echo -e "\e[0m"
 }
