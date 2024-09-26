@@ -5,21 +5,23 @@ source ./config.sh
 
 # Intro message with logo
 print_intro() {
-    echo "======================================"
-    echo "                                      "
-    echo "  ██╗   ██╗██████╗ ███╗   ███╗███████╗"
-    echo "  ██║   ██║██╔══██╗████╗ ████║██╔════╝"
-    echo "  ██║   ██║██║  ██║██╔████╔██║███████╗"
-    echo "  ██║   ██║██║  ██║██║╚██╔╝██║╚════██║"
-    echo "  ╚██████╔╝██████╔╝██║ ╚═╝ ██║███████║"
-    echo "   ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝"
-    echo "                                      "
-    echo "======================================"
-    echo "                                      "
-    echo "Welcome to the Ultimate Docker Media Server Setup!"
-    echo "This script will help you set up your home server with Docker and Docker Compose."
-    echo "                                             "
-    echo "============================================="
+    clear
+    echo -e "\e[36m"
+    echo "=============================================="
+    echo "                                              "
+    echo "      ██╗   ██╗██████╗ ███╗   ███╗███████╗    "
+    echo "      ██║   ██║██╔══██╗████╗ ████║██╔════╝    "
+    echo "      ██║   ██║██║  ██║██╔████╔██║███████╗    "
+    echo "      ██║   ██║██║  ██║██║╚██╔╝██║╚════██║    "
+    echo "      ╚██████╔╝██████╔╝██║ ╚═╝ ██║███████║    "
+    echo "      ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝     "
+    echo "                                              "
+    echo "=============================================="
+    echo "                                              "
+    echo "Welcome to UDMS (Ultimate Docker Media Server)"
+    echo "                                              "
+    echo "=============================================="
+    echo -e "\e[0m"
 }
 
 # Error handling
@@ -38,7 +40,9 @@ download_file() {
 
 # Install Docker and Docker Compose
 install_docker() {
-
+    echo -e "\e[36m"
+    echo "============================================="
+    echo "  Installing Docker and Docker Compose...    "
     echo "============================================="
     echo "                    ##        .              "
     echo "              ## ## ##       ==              "
@@ -49,7 +53,7 @@ install_docker() {
     echo "         \    \        __/                   "
     echo "          \____\______/                      "
     echo "============================================="
-    echo "Installing Docker and Docker Compose...      "
+    echo -e "\e[0m"
 
     # Check if curl is installed, if not, install it
     if ! command -v curl &> /dev/null; then
@@ -298,4 +302,16 @@ download_docker_gc_exclude() {
             exit 1
         fi
     fi
+}
+
+print_setup_complete() {
+    echo -e "\e[32m"
+    echo "██████╗  ██████╗ ███╗   ██╗███████╗"
+    echo "██╔══██╗██╔═══██╗████╗  ██║██╔════╝"
+    echo "██║  ██║██║   ██║██╔██╗ ██║█████╗  "
+    echo "██║  ██║██║   ██║██║╚██╗██║██╔══╝  "
+    echo "██████╔╝╚██████╔╝██║ ╚████║███████╗"
+    echo "╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝"
+    echo "Setup complete."
+    echo -e "\e[0m"
 }

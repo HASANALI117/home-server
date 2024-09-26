@@ -29,8 +29,7 @@ main() {
     echo
     start_containers
     echo
-
-    echo "Setup complete."
+    print_setup_complete
 }
 
 main
