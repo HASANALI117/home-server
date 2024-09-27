@@ -42,6 +42,7 @@ print_intro() {
     typing_print "                                              "
     typing_print "=============================================="
     echo -e "\e[0m"
+    typing_print "Initializing UDMS setup..."
 }
 
 print_setup_complete() {

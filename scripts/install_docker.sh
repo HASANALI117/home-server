@@ -35,10 +35,8 @@ install_docker() {
         sudo sh install-docker.sh || error_exit "Docker installation failed."
         typing_print "Docker and Docker Compose installed."
     else
-        typing_print "Docker is already installed."
+        verify_docker
     fi
-
-    verify_docker
 }
 
 # Verify Docker installation
