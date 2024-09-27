@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source configuration file
-source ./config.sh
+source ./config.env
 
 # Function to create typing effect
 typing_print() {
@@ -256,7 +256,7 @@ add_docker_aliases() {
     fi
 
     # Add variables to bash_aliases.env file
-    cat "./config.sh" >> "$BASH_ENV"
+    cat "./config.env" >> "$BASH_ENV"
 
     # Check if bash_aliases file exists in the same directory as the script
     if [[ -f "./bash_aliases" ]]; then
