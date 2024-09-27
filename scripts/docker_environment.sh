@@ -136,6 +136,5 @@ start_containers() {
     typing_print "  Step 5: Starting Docker containers...         "
     typing_print "================================================"
     echo -e "\e[0m"
-    typing_print "Starting the containers..."
     sudo docker compose -f "$MASTER_COMPOSE" up -d || error_exit "Failed to start containers."
 }
