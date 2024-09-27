@@ -3,31 +3,23 @@
 # set -e
 
 # Source functions and configurations
-source ./functions.sh
+source ./utilities.sh
+source ./install_docker.sh
+source ./docker_environment.sh
+source ./config_creation.sh
+source ./add_docker_aliases.sh
 
 # Main function
 main() {
     print_intro
     echo
-    create_directories
-    echo
     install_docker
     echo
-    verify_docker
+    setup_docker_environment
     echo
-    set_permissions
-    echo
-    create_compose_files
-    echo
-    create_qbittorrent_config
-    echo
-    create_homepage_config
-    echo
-    create_docker_gc_exclude
+    create_configs
     echo
     add_docker_aliases
-    echo
-    start_containers
     echo
     print_setup_complete
 }
