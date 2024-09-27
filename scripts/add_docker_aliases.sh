@@ -22,15 +22,15 @@ add_docker_aliases() {
     fi
 
     # Add variables to bash_aliases.env file
-    cat "./config.env" >> "$BASH_ENV"
+    cat "../configs/config.env" >> "$BASH_ENV"
 
     # Check if bash_aliases file exists in the same directory as the script
-    if [[ -f "./bash_aliases" ]]; then
+    if [[ -f "../configs/bash_aliases" ]]; then
         # Copy the bash_aliases file to the bash configuration
-        cp "./bash_aliases" "$BASH_CONFIG"
+        cp "../configs/bash_aliases" "$BASH_CONFIG"
         typing_print "Docker aliases added to $BASH_CONFIG."
     else
-        error_exit "bash_aliases file not found in the current directory."
+        error_exit "bash_aliases file not found."
     fi
 
     # Ensure .bashrc sources .bash_aliases
