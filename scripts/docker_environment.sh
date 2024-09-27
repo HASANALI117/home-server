@@ -12,13 +12,12 @@ setup_docker_environment() {
     typing_print "================================================"
     echo -e "\e[0m"
     create_directories
-    create_env
+    create_env_file
     set_permissions
     create_compose_files
     echo -e "\e[32m"
     typing_print "Docker environment setup complete."
     echo -e "\e[0m"
-    start_containers
 }
 
 # Create necessary directories

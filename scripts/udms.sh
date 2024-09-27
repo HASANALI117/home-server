@@ -21,6 +21,8 @@ main() {
     echo
     add_docker_aliases
     echo
+    start_containers
+    echo
     print_setup_complete
 }
 
