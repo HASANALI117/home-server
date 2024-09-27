@@ -1,9 +1,9 @@
 # Rename shared/config/bash_aliases.env.example and use it as a starter
 
 # SOURCE ENVIRONMENTAL VARIABLES FOR BASH_ALIASES
-if [[ -f "$SHARED/config/bash_aliases.env" ]]; then
-  source $SHARED/config/bash_aliases.env 
-fi 
+if [[ -f "./bash_aliases.env" ]]; then
+  source ./bash_aliases.env
+fi
 
 # CHANGE TO CUSTOM BASH PROMPT
 username="$USER" # or use $USER

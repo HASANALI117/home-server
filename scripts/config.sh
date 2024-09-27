@@ -26,6 +26,6 @@ DOCKERGC_EXCLUDE="../configs/docker-gc/docker-gc-exclude"
 COMPOSE_FILES="../compose"
 
 # Bash configuration
-BASH_CONFIG="$HOME/.bash_aliases"
+BASH_CONFIG="$SHARED/config/.bash_aliases"
 BASHRC="$HOME/.bashrc"
 BASH_ENV="$SHARED/config/bash_aliases.env"

@@ -44,28 +44,21 @@ error_exit() {
     exit 255
 }
 
-# Download file helper function
-download_file() {
-    local url="$1"
-    local destination="$2"
-    curl -o "$destination" "$url" || error_exit "Failed to download $url"
-}
-
 # Install Docker and Docker Compose
 install_docker() {
     echo -e "\e[36m"
-    typing_print "============================================="
-    typing_print "  Installing Docker and Docker Compose...    "
-    typing_print "============================================="
-    typing_print "                    ##        .              "
-    typing_print "              ## ## ##       ==              "
-    typing_print "           ## ## ## ##      ===              "
-    typing_print "       /""""""""""""""""\___/ ===            "
-    typing_print "  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~     "
-    typing_print "       \______ o          __/                "
-    typing_print "         \    \        __/                   "
-    typing_print "          \____\______/                      "
-    typing_print "============================================="
+    typing_print "================================================"
+    typing_print "  Step 1: Installing Docker and Docker Compose  "
+    typing_print "================================================"
+    typing_print "                      ##        .               "
+    typing_print "                ## ## ##       ==               "
+    typing_print "             ## ## ## ##      ===               "
+    typing_print "         /""""""""""""""""\___/ ===             "
+    typing_print "    ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~      "
+    typing_print "         \______ o          __/                 "
+    typing_print "           \    \        __/                    "
+    typing_print "            \____\______/                       "
+    typing_print "================================================"
     echo -e "\e[0m"
 
     # Check if curl is installed, if not, install it
@@ -121,6 +114,7 @@ create_env_file() {
         ["PUID"]="$PUID"
         ["PGID"]="$PGID"
         ["PLEX_CLAIM"]="$PLEX_CLAIM"
+        ["LOCAL_IPS"]=127.0.0.1/32,10.0.0.0/8,192.168.0.0/16,172.16.0.0/12
         ["HOMEPAGE_VAR_PLEX_URL"]="http://$SERVER_IP:32400/web"
         ["HOMEPAGE_VAR_PORTAINER_URL"]="http://$SERVER_IP:9000"
         ["HOMEPAGE_VAR_DOZZLE_URL"]="http://$SERVER_IP:8082"
