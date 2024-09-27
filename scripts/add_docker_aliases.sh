@@ -13,12 +13,12 @@ add_docker_aliases() {
     echo -e "\e[0m"
     
     # Copy bash_aliases.env.example to $BASH_ENV
-    if [[ -f "./bash_aliases.env.example" ]]; then
+    if [[ -f "$BASH_ENV_EXAMPLE" ]]; then
         mkdir -p "$SHARED/config"
-        cp "./bash_aliases.env.example" "$BASH_ENV"
+        cp "$BASH_ENV_EXAMPLE" "$BASH_ENV"
         typing_print "Created $BASH_ENV."
     else
-        error_exit "bash_aliases.env.example file not found in the current directory."
+        error_exit "bash_aliases.env.example file not found."
     fi
 
     # Add variables to bash_aliases.env file

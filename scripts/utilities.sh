@@ -19,7 +19,7 @@ typing_print() {
 # Error handling
 error_exit() {
     message="$1"
-    echo -e "$(printf "\e[31m$message\e[0m")" | tee -a "$LOGS/error.log" 1>&2
+    echo -e "$(printf "\e[31m[ERROR] $message\e[0m")" | tee -a "$LOGS/error.log" 1>&2
     exit 255
 }
 
