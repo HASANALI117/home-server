@@ -45,5 +45,6 @@ include:
   # - compose/mariadb.yml
   # UTILITIES
   # - compose/filebrowser.yml
+  - compose/vscode.yml
   # MAINTENANCE
   - compose/docker-gc.yml

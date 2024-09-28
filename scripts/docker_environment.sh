@@ -94,6 +94,11 @@ set_permissions() {
     done_msg "Permissions set for Docker root folder: $DOCKER_ROOT"
 
     info_msg "Setting permissions for Jellyfin directory..."
+    if [ ! -d "$DOCKER_ROOT/appdata/jellyfin" ]; then
+        info_msg "Jellyfin directory does not exist. Creating directory..."
+        sudo mkdir -p "$DOCKER_ROOT/appdata/jellyfin"
+        done_msg "Jellyfin directory created: $DOCKER_ROOT/appdata/jellyfin"
+    fi
     sudo chown -R "$USER":"$USER" "$DOCKER_ROOT/appdata/jellyfin"
     done_msg "Permissions set for Jellyfin directory: $DOCKER_ROOT/appdata/jellyfin"
 }
