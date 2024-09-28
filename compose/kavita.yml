@@ -5,13 +5,9 @@ services:
     ports:
       - "5000:5000" # Change the public port (the first 5000) if you have conflicts with other services
     volumes:
-      - $DOCKERDIR/appdata/kavita:/config # Change './data if you want to have the config files in a different place.
+      - $DOCKERDIR/appdata/kavita:/kavita/config # Change './data if you want to have the config files in a different place.
         # /kavita/config must not be changed
-      - $DATADIR/data/media/manga:/data/manga # Manga is just an example you can have the name you want. See the following
-      - $DATADIR/data/media/comics:/data/comics # Use as many as you want
-      - $DATADIR/data/media/manhwa:/data/manhwa #
-      - $DATADIR/data/media/manhua:/data/manhua #
-      - $DATADIR/data/media/books:/data/books #
+      - $DATADIR/media/manga:/manga # Manga is just an example you can have the name you want. See the following
     environment:
-      - TZ: $TZ
+      TZ: $TZ
     restart: unless-stopped

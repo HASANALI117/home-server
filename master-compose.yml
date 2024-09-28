@@ -36,6 +36,7 @@ include:
   - compose/radarr.yml
   - compose/sonarr.yml
   - compose/prowlarr.yml
+  - compose/kavita.yml
   # COMPLEMENTARY APPS
   - compose/bazarr.yml
   # - compose/tautulli.yml

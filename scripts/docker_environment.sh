@@ -120,8 +120,10 @@ create_compose_files() {
         "sonarr"
         "radarr"
         "prowlarr"
+        "kavita"
         "bazarr"
         "docker-gc"
+        "vscode"
     )
 
     info_msg "Creating compose files..."
