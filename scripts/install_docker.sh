@@ -33,7 +33,7 @@ install_docker() {
     if ! command -v docker &> /dev/null; then
         curl -fsSL https://get.docker.com -o install-docker.sh || error_exit "Failed to download Docker installation script."
         sudo sh install-docker.sh || error_exit "Docker installation failed."
-        typing_print "Docker and Docker Compose installed."
+        done_msg "Docker and Docker Compose installed."
     else
         verify_docker
     fi
@@ -41,8 +41,8 @@ install_docker() {
 
 # Verify Docker installation
 verify_docker() {
-    typing_print "Verifying Docker installation..."
+    info_msg "Verifying Docker installation..."
     sudo docker --version || error_exit "Docker is not installed correctly."
     sudo docker compose version || error_exit "Docker Compose is not installed correctly."
-    typing_print "Docker installation verified."
+    done_msg "Docker installation verified."
 }

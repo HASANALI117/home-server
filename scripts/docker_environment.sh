@@ -15,16 +15,14 @@ setup_docker_environment() {
     create_env_file
     set_permissions
     create_compose_files
-    echo -e "\e[32m"
-    typing_print "Docker environment setup complete."
-    echo -e "\e[0m"
+    done_msg "Docker environment setup complete."
 }
 
 # Create necessary directories
 create_directories() {
-    typing_print "Creating necessary directories..."
+    info_msg "Creating necessary directories..."
     mkdir -p "$APPDATA" "$COMPOSE" "$LOGS" "$SCRIPTS" "$SECRETS" "$SHARED"
-    typing_print "Directories created:"
+    done_msg "Directories created:"
     typing_print "  - $APPDATA"
     typing_print "  - $COMPOSE"
     typing_print "  - $LOGS"
@@ -35,7 +33,7 @@ create_directories() {
 
 # Create .env file
 create_env_file() {
-    typing_print "Creating .env file..."
+    info_msg "Creating .env file..."
 
     touch "$ENV_FILE"
 
@@ -76,35 +74,35 @@ create_env_file() {
     done
 
     echo
-    typing_print ".env file created and has been populated with the necessary environment variables."
+    done_msg ".env file created and has been populated with the necessary environment variables."
 }
 
 # Set permissions
 set_permissions() {
-    typing_print "Setting permissions for secrets folder and .env file..."
+    info_msg "Setting permissions for secrets folder and .env file..."
     sudo chown root:root "$SECRETS" "$ENV_FILE"
     sudo chmod 600 "$SECRETS" "$ENV_FILE"
-    typing_print "Permissions set for secrets folder, .env file and config file."
+    done_msg "Permissions set for secrets folder, .env file and config file."
 
-    typing_print "Setting permissions for Docker root folder..."
+    info_msg "Setting permissions for Docker root folder..."
     sudo apt install -y acl || error_exit "Failed to install ACL."
     sudo chmod 775 "$DOCKER_ROOT"
     sudo setfacl -Rdm u:"$USER":rwx "$DOCKER_ROOT"
     sudo setfacl -Rm u:"$USER":rwx "$DOCKER_ROOT"
     sudo setfacl -Rdm g:docker:rwx "$DOCKER_ROOT"
     sudo setfacl -Rm g:docker:rwx "$DOCKER_ROOT"
-    typing_print "Permissions set for Docker root folder: $DOCKER_ROOT"
+    done_msg "Permissions set for Docker root folder: $DOCKER_ROOT"
 
-    typing_print "Setting permissions for Jellyfin directory..."
+    info_msg "Setting permissions for Jellyfin directory..."
     sudo chown -R "$USER":"$USER" "$DOCKER_ROOT/appdata/jellyfin"
-    typing_print "Permissions set for Jellyfin directory: $DOCKER_ROOT/appdata/jellyfin"
+    done_msg "Permissions set for Jellyfin directory: $DOCKER_ROOT/appdata/jellyfin"
 }
 
 # Create Docker Compose files
 create_compose_files() {
-    typing_print "Creating master docker-compose file..."
+    info_msg "Creating master docker-compose file..."
     cp "$DOCKER_COMPOSE" "$MASTER_COMPOSE"
-    typing_print "Master docker-compose file created: $MASTER_COMPOSE"
+    done_msg "Master docker-compose file created: $MASTER_COMPOSE"
 
     local services=(
         "socket-proxy"
@@ -121,12 +119,12 @@ create_compose_files() {
         "docker-gc"
     )
 
-    typing_print "Creating compose files..."
+    info_msg "Creating compose files..."
     for service in "${services[@]}"; do
         cp "$COMPOSE_FILES/$service.yml" "$COMPOSE/$service.yml"
         typing_print "Created: $COMPOSE/$service.yml"
     done
-    typing_print "Compose files created."
+    done_msg "Compose files created."
 }
 
 # Start Docker containers

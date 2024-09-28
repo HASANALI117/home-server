@@ -18,7 +18,7 @@ create_configs() {
 
 # Create homepage configuration files
 create_homepage_config() {
-    typing_print "Creating homepage configuration files..."
+    info_msg "Creating homepage configuration files..."
 
     # Ensure the destination directory exists
     mkdir -p "$APPDATA/homepage"
@@ -30,32 +30,32 @@ create_homepage_config() {
         if cp "$HOMEPAGE_CONFIG/$file" "$APPDATA/homepage/$file"; then
             typing_print "Created $file"
         else
-            echo "Failed to create $file"
+            error_exit "Failed to create $file"
         fi
     done
     
-    typing_print "Homepage configuration files created."
+    done_msg "Homepage configuration files created."
 }
 
 # Create qBittorrent configuration file
 create_qbittorrent_config() {
-    typing_print "Creating qBittorrent configuration file..."
+    info_msg "Creating qBittorrent configuration file..."
     
     # Ensure the destination directory exists
     mkdir -p "$(dirname "$QBITTORRENT_CONF")"
     
     # Copy the configuration file
     if cp "$QBITTORRENT_CONFIG" "$QBITTORRENT_CONF"; then
-        typing_print "Created $QBITTORRENT_CONF."
+        done_msg "Created $QBITTORRENT_CONF."
     else
-        echo "Failed to create qbittorrent.conf."
+        error_exit "Failed to create qbittorrent.conf."
     fi
 }
 
 
 # Create docker-gc-exclude file
 create_docker_gc_exclude() {
-    typing_print "Creating docker-gc-exclude file..."
+    info_msg "Creating docker-gc-exclude file..."
 
     # Ensure the destination directory exists
     mkdir -p "$APPDATA/docker-gc"
@@ -63,7 +63,7 @@ create_docker_gc_exclude() {
     # Copy the docker-gc-exclude file from the local directory
     cp "$DOCKERGC_EXCLUDE" "$APPDATA/docker-gc/docker-gc-exclude"
     if [ $? -eq 0 ]; then
-        typing_print "docker-gc-exclude file created successfully."
+        done_msg "docker-gc-exclude file created successfully."
     else
         error_exit "Failed to create docker-gc-exclude file."
     fi

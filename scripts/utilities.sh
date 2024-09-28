@@ -18,9 +18,21 @@ typing_print() {
 
 # Error handling
 error_exit() {
-    message="$1"
+    local message="$1"
     echo -e "$(printf "\e[31m[ERROR] $message\e[0m")" | tee -a "$LOGS/error.log" 1>&2
     exit 255
+}
+
+# Info printing
+info_msg() {
+    local message="$1"
+    typing_print "$(echo -e "\e[34m[INFO]\e[0m $message")"
+}
+
+# Done printing
+done_msg() {
+    local message="$1"
+    typing_print "$(echo -e "\e[32m[DONE]\e[0m $message")"
 }
 
 # Intro message with logo
