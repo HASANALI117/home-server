@@ -1,34 +1,38 @@
 services:
   # Plex - Media Server
   plex:
-    image: lscr.io/linuxserver/plex:latest
+    image: plexinc/pms-docker:latest
     container_name: plex
     networks:
       - default
+    security_opt:
+      - no-new-privileges:true
     restart: "no"
     # profiles: ["media", "all"]
     # devices:
     # - /dev/dri:/dev/dri # for hardware transcoding
     ports:
       - "32400:32400/tcp"
-      - "1900:1900/udp"
-      - "5353:5353/udp"
+      - "3005:3005/tcp"
       - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
       - "32410:32410/udp"
       - "32412:32412/udp"
       - "32413:32413/udp"
       - "32414:32414/udp"
-      - "32469:32469/tcp"
     volumes:
       - $DOCKERDIR/appdata/plex:/config
-      - $DATADIR/media/tvseries:/tv
-      - $DATADIR/media/movies:/movies
+      - $DATADIR/media/tvseries:/tv # Media Folder 1
+      - $DATADIR/media/movies:/movies # Media Folder 2
       - /dev/shm:/data/transcode # Offload transcoding to RAM if you have enough RAM
     environment:
-      PUID: $PUID
-      PGID: $PGID
       TZ: $TZ
-      VERSION: latest
-      FILE__PLEX_CLAIM: /run/secrets/plex_claim #optional
+      HOSTNAME: "myPlex"
+      PLEX_CLAIM_FILE: /run/secrets/plex_claim # Not required initially
+      PLEX_UID: $PUID
+      PLEX_GID: $PGID
+      ADVERTISE_IP: "http://$SERVER_IP:32400/"
+      ALLOWED_NETWORKS: $LOCAL_IPS
     secrets:
       - plex_claim
