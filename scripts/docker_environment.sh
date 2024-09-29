@@ -44,7 +44,7 @@ create_env_file() {
     read -p "Enter SERVER_IP: " SERVER_IP
     read -p "Enter PLEX_CLAIM (leave empty if not available): " PLEX_CLAIM
 
-    [ -n "$PLEX_CLAIM" ] && echo "$PLEX_CLAIM" | sudo tee "$SECRETS/plex_claim" > /dev/null
+    [ -n "$PLEX_CLAIM" ] && printf "%s" "$PLEX_CLAIM" > "$SECRETS/plex_claim"
 
     declare -A env_vars=(
         ["HOSTNAME"]="$HOSTNAME"
@@ -56,7 +56,6 @@ create_env_file() {
         ["TZ"]="$TZ"
         ["PUID"]="$PUID"
         ["PGID"]="$PGID"
-        ["PLEX_CLAIM"]="$PLEX_CLAIM"
         ["LOCAL_IPS"]=127.0.0.1/32,10.0.0.0/8,192.168.0.0/16,172.16.0.0/12
         ["HOMEPAGE_VAR_PLEX_URL"]="http://$SERVER_IP:32400/web"
         ["HOMEPAGE_VAR_PORTAINER_URL"]="http://$SERVER_IP:9000"
