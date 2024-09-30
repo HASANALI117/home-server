@@ -10,9 +10,9 @@ username="$USER" # or use $USER
 export PS1='[\e[0;32m\u\e[0m@\e[0;33m\H\e[0m: \e[0;36m\w\e[0m]\$ '
 
 # DOCKER - All Docker commands start with "d" AND Docker Compose commands start with "dc"
-alias dstop='sudo docker stop $(sudo docker ps -a -q)' # usage: dstop container_name
+alias dstop='sudo docker stop' # usage: dstop container_name
 alias dstopall='sudo docker stop $(sudo docker ps -aq)' # stop all containers
-alias drm='sudo docker rm $(sudo docker ps -a -q)' # usage: drm container_name
+alias drm='sudo docker rm' # usage: drm container_name
 alias dprunevol='sudo docker volume prune' # remove unused volumes
 alias dprunesys='sudo docker system prune -a' # remove unsed docker data
 alias ddelimages='sudo docker rmi $(sudo docker images -q)' # remove unused docker images
