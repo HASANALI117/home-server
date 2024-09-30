@@ -15,7 +15,7 @@ services:
     volumes:
       - $DOCKERDIR:/data/docker
       - $DOCKERDIR/appdata/vscode:/config
-      - $DATADIR1:/data/data
+      - $DATADIR:/data/data
     environment:
       TZ: $TZ
       PUID: $PUID
