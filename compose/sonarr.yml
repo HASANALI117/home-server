@@ -21,3 +21,7 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID
+      # DOCKER_MODS: ghcr.io/themepark-dev/theme.park:sonarr
+      # TP_THEME: hotline
+      # TP_COMMUNITY_THEME: true
+      # TP_ADDON: sonarr-4k-logo

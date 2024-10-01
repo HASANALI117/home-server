@@ -3,7 +3,7 @@ services:
   # After starting container for first time dexec and mysqladmin -u root password <password>
   mariadb:
     container_name: mariadb
-    image: lscr.io/linuxserver/mariadb
+    image: lscr.io/linuxserver/mariadb:latest
     networks:
       - default
     security_opt:

@@ -45,14 +45,6 @@
           password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
           node: storinator
 - Containers:
-    - Rancher:
-        icon: rancher.svg
-        href: "{{HOMEPAGE_VAR_RACNHER_URL}}"
-        description: k8s
-    - Longhorn:
-        icon: longhorn.svg
-        href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
-        description: k8s storage
     - Portainer:
         icon: portainer.svg
         href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
@@ -62,10 +54,27 @@
           url: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
           env: 2
           key: "{{HOMEPAGE_VAR_PORTAINER_API_KEY}}"
+    - Dockge:
+        icon: dockge-light.svg
+        href: "{{HOMEPAGE_VAR_DOCKGE_URL}}"
+        description: docker
+        widget:
+          type: dockge
+          url: "{{HOMEPAGE_VAR_DOCKGE_URL}}"
+          env: 2
+          key: "{{HOMEPAGE_VAR_DOCKGE_API_KEY}}"
     - Dozzle:
         icon: dozzle.svg
         href: "{{HOMEPAGE_VAR_DOZZLE_URL}}"
         description: container logs
+    - Rancher:
+        icon: rancher.svg
+        href: "{{HOMEPAGE_VAR_RACNHER_URL}}"
+        description: k8s
+    - Longhorn:
+        icon: longhorn.svg
+        href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
+        description: k8s storage
     - Homepage:
         icon: homepage.svg
         href: "{{HOMEPAGE_VAR_HOMEPAGE_URL}}"
@@ -79,6 +88,14 @@
         href: "{{HOMEPAGE_VAR_DOCKER_GC_URL}}"
         description: container garbage collection
 - DNS:
+    - AdGuard:
+        icon: adguard-home.svg
+        href: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
+        description: quasar
+        widget:
+          type: pihole
+          url: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
+          key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_1}}"
     - Pi-Hole1:
         icon: pi-hole.svg
         href: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
@@ -104,6 +121,14 @@
           url: "{{HOMEPAGE_VAR_PIHOLE_URL_3}}"
           key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_3}}"
 - Network:
+    - Uptime Kuma:
+        icon: uptime-kuma.svg
+        href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
+        description: internal
+        widget:
+          type: uptimekuma
+          url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
+          slug: home
     - UniFi:
         icon: unifi.svg
         href: "{{HOMEPAGE_VAR_UNIFI_NETWORK_URL}}"
@@ -113,14 +138,6 @@
           url: "{{HOMEPAGE_VAR_UNIFI_NETWORK_URL}}"
           username: "{{HOMEPAGE_VAR_UNIFI_NETWORK_USERNAME}}"
           password: "{{HOMEPAGE_VAR_UNIFI_NETWORK_PASSWORD}}"
-    - Uptime Kuma:
-        icon: uptime-kuma.svg
-        href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
-        description: internal
-        widget:
-          type: uptimekuma
-          url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
-          slug: home
     - Uptime Robot:
         icon: https://play-lh.googleusercontent.com/cUrv0t00FYQ1GKLuOTvv8qjo1lSDjqZC16IOp3Fb6ijew6Br5m4o16HhDp0GBu_Bw8Y=w240-h480-rw
         href: https://uptimerobot.com/dashboard
@@ -151,25 +168,22 @@
           type: plex
           url: "{{HOMEPAGE_VAR_PLEX_URL}}"
           key: "{{HOMEPAGE_VAR_PLEX_API_TOKEN}}"
-    - Tautulli:
-        icon: tautulli.svg
-        href: "{{HOMEPAGE_VAR_TAUTULLI_URL}}"
-        description: plex stats
-        widget:
-          type: tautulli
-          url: "{{HOMEPAGE_VAR_TAUTULLI_URL}}"
-          key: "{{HOMEPAGE_VAR_TAUTULLI_API_KEY}}"
-    - HDHomerun:
-        icon: hdhomerun.png
-        href: "{{HOMEPAGE_VAR_HDHOMERUN_URL}}"
-        description: flex 4k
-        widget:
-          type: hdhomerun
-          url: "{{HOMEPAGE_VAR_HDHOMERUN_URL}}"
     - Jellyfin:
         icon: jellyfin.svg
         href: "{{HOMEPAGE_VAR_JELLYFIN_URL}}"
         description: media server
+    - Emby:
+        icon: emby.svg
+        href: "{{HOMEPAGE_VAR_EMBY_URL}}"
+        description: media server
+    - Kavita:
+        icon: kavita.svg
+        href: "{{HOMEPAGE_VAR_KAVITA_URL}}"
+        description: manga
+    - Komga:
+        icon: komga.svg
+        href: "{{HOMEPAGE_VAR_KOMGA_URL}}"
+        description: manga
     - qBittorrent:
         icon: qbittorrent.svg
         href: "{{HOMEPAGE_VAR_QBITTORRENT_URL}}"
@@ -186,11 +200,27 @@
         icon: prowlarr.svg
         href: "{{HOMEPAGE_VAR_PROWLARR_URL}}"
         description: indexer manager
+    - Jackett:
+        icon: jackett.svg
+        href: "{{HOMEPAGE_VAR_JACKETT_URL}}"
+        description: indexer manager
     - Bazarr:
         icon: bazarr.svg
         href: "{{HOMEPAGE_VAR_BAZARR_URL}}"
         description: subtitles
+    - Tautulli:
+        icon: tautulli.svg
+        href: "{{HOMEPAGE_VAR_TAUTULLI_URL}}"
+        description: plex stats
+        widget:
+          type: tautulli
+          url: "{{HOMEPAGE_VAR_TAUTULLI_URL}}"
+          key: "{{HOMEPAGE_VAR_TAUTULLI_API_KEY}}"
 - Remote Access:
+    - VsCode:
+        icon: vscode.svg
+        href: "{{HOMEPAGE_VAR_VSCODE_URL}}"
+        description: remote kvm
     - PiKVM:
         icon: https://avatars.githubusercontent.com/u/41749659?s=200&v=4
         href: "{{HOMEPAGE_VAR_PIKVM_URL}}"
@@ -237,13 +267,17 @@
         href: "{{HOMEPAGE_VAR_BROADLINK_CONTROL_URL}}"
         description: light control
 - Other:
-    - GitLab:
-        icon: gitlab.svg
-        href: https://gitlab.com
-        description: source code
     - GitHub:
         icon: github.svg
         href: https://github.com/HASANALI117/home-server
+        description: source code
+    - Gitea:
+        icon: gitea.svg
+        href: "{{HOMEPAGE_VAR_GITEAL_URL}}"
+        description: source code
+    - GitLab:
+        icon: gitlab.svg
+        href: https://gitlab.com
         description: source code
     - Shlink:
         icon: https://shlink.io/images/shlink-logo-blue.svg

@@ -39,12 +39,12 @@ create_env_file() {
 
     PUID=$(id -u)
     PGID=$(id -g)
-    
+
     read -p "Enter TZ [America/New_York]: " TZ
     read -p "Enter SERVER_IP: " SERVER_IP
     read -p "Enter PLEX_CLAIM (leave empty if not available): " PLEX_CLAIM
 
-    [ -n "$PLEX_CLAIM" ] && printf "%s" "$PLEX_CLAIM" > "$SECRETS/plex_claim"
+    [ -n "$PLEX_CLAIM" ] && printf "%s" "$PLEX_CLAIM" >"$SECRETS/plex_claim"
 
     declare -A env_vars=(
         ["HOSTNAME"]="$HOSTNAME"
@@ -69,7 +69,7 @@ create_env_file() {
     )
 
     for key in "${!env_vars[@]}"; do
-        echo "$key=${env_vars[$key]}" >> "$ENV_FILE"
+        echo "$key=${env_vars[$key]}" >>"$ENV_FILE"
     done
 
     echo

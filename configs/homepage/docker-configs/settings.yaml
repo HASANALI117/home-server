@@ -17,6 +17,10 @@ color: slate
 useEqualHeights: true
 
 layout:
+  Media:
+    header: true
+    style: row
+    columns: 4
   Hypervisor:
     header: true
     style: row
@@ -38,10 +42,6 @@ layout:
     style: row
     columns: 4
   Storage:
-    header: true
-    style: row
-    columns: 4
-  Media:
     header: true
     style: row
     columns: 4
