@@ -7,9 +7,9 @@ source ../configs/config.env
 typing_print() {
     local text="$1"
     local delay=0.0001
-    
+
     # Print each character with delay
-    for ((i=0; i<${#text}; i++)); do
+    for ((i = 0; i < ${#text}; i++)); do
         echo -n "${text:$i:1}"
         sleep "$delay"
     done

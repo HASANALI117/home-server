@@ -1,8 +1,8 @@
 # Rename shared/config/bash_aliases.env.example and use it as a starter
 
 # SOURCE ENVIRONMENTAL VARIABLES FOR BASH_ALIASES
-if [[ -f "./bash_aliases.env" ]]; then
-  source ./bash_aliases.env
+if [[ -f "$HOME/docker/shared/config/bash_aliases.env" ]]; then
+  source $HOME/docker/shared/config/bash_aliases.env
 fi
 
 # CHANGE TO CUSTOM BASH PROMPT
@@ -10,43 +10,43 @@ username="$USER" # or use $USER
 export PS1='[\e[0;32m\u\e[0m@\e[0;33m\H\e[0m: \e[0;36m\w\e[0m]\$ '
 
 # DOCKER - All Docker commands start with "d" AND Docker Compose commands start with "dc"
-alias dstop='sudo docker stop' # usage: dstop container_name
-alias dstopall='sudo docker stop $(sudo docker ps -aq)' # stop all containers
-alias drm='sudo docker rm' # usage: drm container_name
-alias dprunevol='sudo docker volume prune' # remove unused volumes
-alias dprunesys='sudo docker system prune -a' # remove unsed docker data
-alias ddelimages='sudo docker rmi $(sudo docker images -q)' # remove unused docker images
-alias derase='dstopcont ; drmcont ; ddelimages ; dvolprune ; dsysprune' # WARNING: removes everything! 
-alias dprune='ddelimages ; dprunevol ; dprunesys' # remove unused data, volumes, and images (perfect for safe clean up)
-alias dexec='sudo docker exec -ti' # usage: dexec container_name (to access container terminal)
-alias dps='sudo docker ps -a' # running docker processes
+alias dstop='sudo docker stop'                                                                                      # usage: dstop container_name
+alias dstopall='sudo docker stop $(sudo docker ps -aq)'                                                             # stop all containers
+alias drm='sudo docker rm'                                                                                          # usage: drm container_name
+alias dprunevol='sudo docker volume prune'                                                                          # remove unused volumes
+alias dprunesys='sudo docker system prune -a'                                                                       # remove unsed docker data
+alias ddelimages='sudo docker rmi $(sudo docker images -q)'                                                         # remove unused docker images
+alias derase='dstopcont ; drmcont ; ddelimages ; dvolprune ; dsysprune'                                             # WARNING: removes everything!
+alias dprune='ddelimages ; dprunevol ; dprunesys'                                                                   # remove unused data, volumes, and images (perfect for safe clean up)
+alias dexec='sudo docker exec -ti'                                                                                  # usage: dexec container_name (to access container terminal)
+alias dps='sudo docker ps -a'                                                                                       # running docker processes
 alias dpss='sudo docker ps -a --format "table {{.Names}}\t{{.State}}\t{{.Status}}\t{{.Image}}" | (sed -u 1q; sort)' # running docker processes as nicer table
-alias ddf='sudo docker system df' # docker data usage (/var/lib/docker)
-alias dlogs='sudo docker logs -tf --tail="50" ' # usage: dlogs container_name
-alias dlogsize='sudo du -ch $(sudo docker inspect --format='{{.LogPath}}' $(sudo docker ps -qa)) | sort -h' # see the size of docker containers
+alias ddf='sudo docker system df'                                                                                   # docker data usage (/var/lib/docker)
+alias dlogs='sudo docker logs -tf --tail="50" '                                                                     # usage: dlogs container_name
+alias dlogsize='sudo du -ch $(sudo docker inspect --format='{{.LogPath}}' $(sudo docker ps -qa)) | sort -h'         # see the size of docker containers
 alias dips="sudo docker ps -q | xargs -n 1 sudo docker inspect -f '{{.Name}}%tab%{{range .NetworkSettings.Networks}}{{.IPAddress}}%tab%{{end}}' | sed 's#%tab%#\t#g' | sed 's#/##g' | sort | column -t -N NAME,IP\(s\) -o $'\t'"
 
-alias dp600="sudo chown -R root:root $SECRETS ; sudo chmod -R 600 $SECRETS ; sudo chown -R root:root $ENV_FILE ; sudo chmod -R 600 $ENV_FILE" # re-lock permissions
+alias dp600="sudo chown -R root:root $SECRETS ; sudo chmod -R 600 $SECRETS ; sudo chown -R root:root $ENV_FILE ; sudo chmod -R 600 $ENV_FILE"     # re-lock permissions
 alias dp777="sudo chown -R $USER:$USER $SECRETS ; sudo chmod -R 777 $SECRETS ; sudo chown -R $USER:$USER $ENV_FILE ; sudo chmod -R 777 $ENV_FILE" # open permissions for editing
 
-# DOCKER COMPOSE TRAEFIK 2 - All docker-compose commands start with "dc" 
+# DOCKER COMPOSE TRAEFIK 2 - All docker-compose commands start with "dc"
 case $HOSTNAME in
-    ds918) # synology at this point uses an old version of docker. Therefore, 'docker-compose' instead of 'docker compose'
-      alias dcrun="sudo docker-compose -f $MASTER_COMPOSE" # /volume1/docker symlinked to /var/services/homes/user/docker
-      ;;
-    *)
-      alias dcrun="sudo docker compose --profile all -f $MASTER_COMPOSE"
-      ;;
+ds918)                                                 # synology at this point uses an old version of docker. Therefore, 'docker-compose' instead of 'docker compose'
+  alias dcrun="sudo docker-compose -f $MASTER_COMPOSE" # /volume1/docker symlinked to /var/services/homes/user/docker
+  ;;
+*)
+  alias dcrun="sudo docker compose --profile all -f $MASTER_COMPOSE"
+  ;;
 esac
 
-alias dclogs="dcrun logs -tf --tail='50'" # usage: dclogs container_name
-alias dcup="dcrun up -d --build --remove-orphans" # up the stack
-alias dcdown="dcrun down --remove-orphans" # down the stack
-alias dcrec="dcrun up -d --force-recreate --remove-orphans" # usage: dcrec container_name
-alias dcstop="dcrun stop" # usage: dcstop container_name
-alias dcrestart="dcrun restart" # usage: dcrestart container_name
-alias dcstart="dcrun start" # usage: dcstart container_name
-alias dcpull="dcrun pull" # usage: dcpull to pull all new images or dcpull container_name
+alias dclogs="dcrun logs -tf --tail='50'"                       # usage: dclogs container_name
+alias dcup="dcrun up -d --build --remove-orphans"               # up the stack
+alias dcdown="dcrun down --remove-orphans"                      # down the stack
+alias dcrec="dcrun up -d --force-recreate --remove-orphans"     # usage: dcrec container_name
+alias dcstop="dcrun stop"                                       # usage: dcstop container_name
+alias dcrestart="dcrun restart"                                 # usage: dcrestart container_name
+alias dcstart="dcrun start"                                     # usage: dcstart container_name
+alias dcpull="dcrun pull"                                       # usage: dcpull to pull all new images or dcpull container_name
 alias traefiklogs="tail -f $LOGS/$HOSTNAME/traefik/traefik.log" # tail traefik logs
 
 # Manage "core" services as defined by profiles in docker compose
@@ -124,10 +124,10 @@ alias .5='cd ../../../../..'
 alias scp="scp -r"
 alias rsynce="sudo rsync -avzh --progress --force --delete --exclude-from $SHARED/config/rsync-exclude"
 alias rsyncne="sudo rsync -avzh --progress --force --delete"
-alias cpn="cp --verbose" # native copy
-alias cp="sudo rsync -avzh --info=progress2" # copy files with rsync
+alias cpn="cp --verbose"                                           # native copy
+alias cp="sudo rsync -avzh --info=progress2"                       # copy files with rsync
 alias mv="sudo rsync -avzh --info=progress2 --remove-source-files" # move files with rsync
-alias mvn="mv --verbose" # native move
+alias mvn="mv --verbose"                                           # native move
 
 # SEARCH AND FIND
 alias gh='history|grep' # search bash history
@@ -149,13 +149,13 @@ alias uuid='sudo vol_id -u'
 alias ls='ls -F --color=auto --group-directories-first'
 alias ll='ls -alh --color=auto --group-directories-first'
 alias lt='ls --human-readable --color=auto --size -1 -S --classify' # file size sorted
-alias lsr='ls --color=auto -t -1' # recently modified
-alias mnt='mount | grep -E ^/dev | column -t' # show mounted drives
+alias lsr='ls --color=auto -t -1'                                   # recently modified
+alias mnt='mount | grep -E ^/dev | column -t'                       # show mounted drives
 alias dirsize='sudo du -hx --max-depth=1'
-alias dirusage='du -ch | grep total' # Grabs the disk usage in the current directory
-alias diskusage='df -hl --total | grep total' # Gets the total disk usage on your machine
+alias dirusage='du -ch | grep total'                                   # Grabs the disk usage in the current directory
+alias diskusage='df -hl --total | grep total'                          # Gets the total disk usage on your machine
 alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs' # Shows the individual partition usages without the temporary memory values
-alias usage10='du -hsx * | sort -rh | head -10' # Gives you what is using the most space. Both directories and files. Varies on current directory
+alias usage10='du -hsx * | sort -rh | head -10'                        # Gives you what is using the most space. Both directories and files. Varies on current directory
 
 # BASH ALIASES
 alias baupdate=". ~/.bashrc"
@@ -249,9 +249,9 @@ alias portsused='sudo netstat -tulpn | grep LISTEN'
 alias showports='netstat -lnptu'
 alias showlistening='lsof -i -n | egrep "COMMAND|LISTEN"'
 alias ping='ping -c 5'
-alias ipe='curl ipinfo.io/ip' # external ip
+alias ipe='curl ipinfo.io/ip'      # external ip
 alias ipi='ipconfig getifaddr en0' # internal ip
-alias header='curl -I' # get web server headers 
+alias header='curl -I'             # get web server headers
 
 # SYNOLOGY DSM COMMANDS
 alias servicelist='sudo synoservicecfg --list' # does not work in DSM 7
@@ -269,12 +269,12 @@ alias nano="sudo nano -iSw$"
 alias scxterm="bash $SCRIPTS/xterm.sh"
 
 # SYSTEM MONITORING
-alias meminfo='free -m -l -t' # memory usage
-alias psmem='ps auxf | sort -nr -k 4' # get top process eating memory
-alias psmem10='ps auxf | sort -nr -k 4 | head -10' # get top process eating memory
-alias pscpu='ps auxf | sort -nr -k 3' # get top process eating cpu
-alias pscpu10='ps auxf | sort -nr -k 3 | head -10' # get top process eating cpu
-alias cpuinfo='lscpu' # Get server cpu info
+alias meminfo='free -m -l -t'                                 # memory usage
+alias psmem='ps auxf | sort -nr -k 4'                         # get top process eating memory
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'            # get top process eating memory
+alias pscpu='ps auxf | sort -nr -k 3'                         # get top process eating cpu
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'            # get top process eating cpu
+alias cpuinfo='lscpu'                                         # Get server cpu info
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log' # get GPU ram on desktop / laptop
 alias free='free -h'
 
@@ -290,9 +290,9 @@ alias rcstop="sudo bash $SCRIPTS/rclone-stop.sh"
 alias rcstart="sudo bash $SCRIPTS/rclone-start.sh"
 alias rcstatus="sudo bash $SCRIPTS/rclone-status.sh"
 alias rcps="ps -ef | grep '/usr/bin/rclone sync\|/usr/bin/rclone copy\|/usr/bin/rclone move'" # see running rclone copy sync or move
-alias rcupdate="sudo -v ; curl https://rclone.org/install.sh | sudo bash" # update rclone
-alias rcpurge="kill -SIGHUP $(pidof rclone)" # purge rclone cache
-alias rcforget="rclone rc vfs/forget" # rclone forget via remote control
+alias rcupdate="sudo -v ; curl https://rclone.org/install.sh | sudo bash"                     # update rclone
+alias rcpurge="kill -SIGHUP $(pidof rclone)"                                                  # purge rclone cache
+alias rcforget="rclone rc vfs/forget"                                                         # rclone forget via remote control
 
 # YT-DLP
 alias ytupdate="yt-dlp -U"
