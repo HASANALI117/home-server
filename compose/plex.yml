@@ -23,7 +23,7 @@ services:
       - "32469:32469/tcp"
     volumes:
       - $DOCKERDIR/appdata/plex:/config
-      - $DATADIR/media/tvseries:/tv
+      - $DATADIR/media/tvshows:/tvshows
       - $DATADIR/media/movies:/movies
       - /dev/shm:/data/transcode # Offload transcoding to RAM if you have enough RAM
     environment:
