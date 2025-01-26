@@ -3,17 +3,41 @@
 # Source configuration file
 source ../configs/config.env
 
-# Function to create typing effect
-typing_print() {
-    local text="$1"
-    local delay=0.0001
+# Dependency checks
+check_dependencies() {
+    # Check for curl
+    if ! command -v curl &>/dev/null; then
+        sudo apt-get update
+        sudo apt-get install -y curl
+    fi
 
-    # Print each character with delay
-    for ((i = 0; i < ${#text}; i++)); do
-        echo -n "${text:$i:1}"
-        sleep "$delay"
-    done
-    echo ""
+    # Install gum if missing
+    if ! command -v gum &>/dev/null; then
+        info_msg "Installing gum TUI toolkit..."
+        if ! curl -fsSL https://raw.githubusercontent.com/charmbracelet/gum/main/install.sh | sudo bash; then
+            error_exit "Failed to install gum! Please install manually and retry."
+        fi
+    fi
+
+    # Verify yq
+    if ! command -v yq &>/dev/null; then
+        info_msg "Installing yq YAML processor..."
+        sudo apt-get install -y yq
+    fi
+}
+
+# Enhanced print functions with gum fallback
+typing_print() {
+    if command -v gum &>/dev/null; then
+        gum style --margin "1 2" "$1"
+    else
+        local text="$1"
+        for ((i = 0; i < ${#text}; i++)); do
+            echo -n "${text:$i:1}"
+            sleep 0.03
+        done
+        echo
+    fi
 }
 
 # Error handling
