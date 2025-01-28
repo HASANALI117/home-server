@@ -3,6 +3,19 @@
 # Source configuration file
 source ../configs/config.env
 
+# Error handling function
+handle_error() {
+    gum style --foreground 196 --bold "Error: $1"
+    sleep 2
+    return 1
+}
+
+# Success notification
+success_msg() {
+    gum style --foreground 46 --bold "$1"
+    sleep 1
+}
+
 # Dependency checks
 check_dependencies() {
     # Check for curl
@@ -24,78 +37,4 @@ check_dependencies() {
         info_msg "Installing yq YAML processor..."
         sudo apt-get install -y yq
     fi
-}
-
-# Enhanced print functions with gum fallback
-typing_print() {
-    if command -v gum &>/dev/null; then
-        gum style --margin "1 2" "$1"
-    else
-        local text="$1"
-        for ((i = 0; i < ${#text}; i++)); do
-            echo -n "${text:$i:1}"
-            sleep 0.03
-        done
-        echo
-    fi
-}
-
-# Error handling
-error_exit() {
-    local message="$1"
-    echo -e "$(printf "\e[31m[ERROR] $message\e[0m")" | tee -a "$LOGS/error.log" 1>&2
-    exit 255
-}
-
-# Info printing
-info_msg() {
-    local message="$1"
-    typing_print "$(echo -e "\e[34m[INFO]\e[0m $message")"
-}
-
-# Done printing
-done_msg() {
-    local message="$1"
-    typing_print "$(echo -e "\e[32m[DONE]\e[0m $message")"
-}
-
-# Intro message with logo
-print_intro() {
-    clear
-    echo -e "\e[36m"
-    typing_print "=============================================="
-    typing_print "                                              "
-    typing_print "      ██╗   ██╗██████╗ ███╗   ███╗███████╗    "
-    typing_print "      ██║   ██║██╔══██╗████╗ ████║██╔════╝    "
-    typing_print "      ██║   ██║██║  ██║██╔████╔██║███████╗    "
-    typing_print "      ██║   ██║██║  ██║██║╚██╔╝██║╚════██║    "
-    typing_print "      ╚██████╔╝██████╔╝██║ ╚═╝ ██║███████║    "
-    typing_print "      ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝     "
-    typing_print "                                              "
-    typing_print "=============================================="
-    typing_print "                                              "
-    typing_print "Welcome to UDMS (Ultimate Docker Media Server)"
-    typing_print "                                              "
-    typing_print "=============================================="
-    echo -e "\e[0m"
-    typing_print "Initializing UDMS setup..."
-}
-
-print_setup_complete() {
-    echo -e "\e[32m"
-    typing_print "================================================"
-    typing_print "                                                "
-    typing_print "      ██████╗  ██████╗ ███╗   ██╗███████╗       "
-    typing_print "      ██╔══██╗██╔═══██╗████╗  ██║██╔════╝       "
-    typing_print "      ██║  ██║██║   ██║██╔██╗ ██║█████╗         "
-    typing_print "      ██║  ██║██║   ██║██║╚██╗██║██╔══╝         "
-    typing_print "      ██████╔╝╚██████╔╝██║ ╚████║███████╗       "
-    typing_print "      ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝       "
-    typing_print "                                                "
-    typing_print "================================================"
-    typing_print "                                                "
-    typing_print "                Setup complete.                 "
-    typing_print "                                                "
-    typing_print "================================================"
-    echo -e "\e[0m"
 }
